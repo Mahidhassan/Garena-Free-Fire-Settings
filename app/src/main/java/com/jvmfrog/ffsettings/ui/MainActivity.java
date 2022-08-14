@@ -7,13 +7,17 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.ContextThemeWrapper;
+import android.view.MenuItem;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.splashscreen.SplashScreen;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
+import com.google.android.material.navigation.NavigationBarView;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.play.core.appupdate.AppUpdateManager;
 import com.google.android.play.core.appupdate.AppUpdateManagerFactory;
@@ -35,6 +39,7 @@ import com.jvmfrog.ffsettings.MyApplication;
 import com.jvmfrog.ffsettings.R;
 import com.jvmfrog.ffsettings.databinding.ActivityMainBinding;
 import com.jvmfrog.ffsettings.ui.fragment.AboutAppFragment;
+import com.jvmfrog.ffsettings.ui.fragment.DevicesFragment;
 import com.jvmfrog.ffsettings.ui.fragment.ManufacturerFragment;
 import com.jvmfrog.ffsettings.utils.FragmentUtils;
 import com.jvmfrog.ffsettings.utils.SharedPreferencesUtils;
@@ -80,13 +85,30 @@ public class MainActivity extends AppCompatActivity {
         binding.bottomAppBar.setOnItemSelectedListener(item -> {
             switch (item.getItemId()) {
                 case R.id.home:
-                    FragmentUtils.changeFragment(this, new ManufacturerFragment(), R.id.frame, null);
+                    FragmentUtils.changeFragmentWithAnimTwo(this, new ManufacturerFragment(), R.id.frame);
                     break;
                 case R.id.about_app:
-                    FragmentUtils.changeFragment(this, new AboutAppFragment(), R.id.frame, null);
+                    FragmentUtils.changeFragmentWithAnimOne(this, new AboutAppFragment(), R.id.frame);
                     break;
             }
             return true;
+        });
+
+        binding.bottomAppBar.setOnItemReselectedListener(item -> {
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            FragmentTransaction transaction = fragmentManager.beginTransaction();
+            switch (item.getItemId()) {
+                case R.id.home:
+                    transaction.replace(R.id.frame, new ManufacturerFragment());
+                    transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+                    transaction.commit();
+                    break;
+                case R.id.about_app:
+                    transaction.replace(R.id.frame, new AboutAppFragment());
+                    transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+                    transaction.commit();
+                    break;
+            }
         });
     }
 
