@@ -16,6 +16,8 @@ import androidx.core.splashscreen.SplashScreen;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.google.android.material.color.DynamicColors;
+import com.google.android.material.color.DynamicColorsOptions;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.navigation.NavigationBarView;
 import com.google.android.material.snackbar.Snackbar;
@@ -66,6 +68,7 @@ public class MainActivity extends AppCompatActivity {
         showReviewCount = SharedPreferencesUtils.getInteger(this, "showReviewCount");
         Application application = getApplication();
         SplashScreen splashScreen = SplashScreen.installSplashScreen(this);
+        DynamicColors.applyToActivitiesIfAvailable(getApplication());
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         FragmentUtils.changeFragment(this, new ManufacturerFragment(), R.id.frame, null);

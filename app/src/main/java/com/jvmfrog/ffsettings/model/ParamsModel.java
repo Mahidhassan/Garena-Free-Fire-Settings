@@ -1,5 +1,8 @@
 package com.jvmfrog.ffsettings.model;
 
+import androidx.annotation.Keep;
+
+@Keep
 public class ParamsModel {
 
     public ParamsModel() {};
