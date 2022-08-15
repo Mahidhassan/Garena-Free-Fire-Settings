@@ -1,14 +1,21 @@
 package com.jvmfrog.ffsettings.ui.fragment;
 
+import android.content.Context;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AnimationUtils;
+import android.view.animation.LayoutAnimationController;
+
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -72,6 +79,7 @@ public class DevicesFragment extends Fragment {
                         .build();
 
         binding.recview.setLayoutManager(new GridLayoutManager(getContext(), 1));
+        binding.recview.setItemAnimator(new DefaultItemAnimator());
         devicesAdapter = new DevicesAdapter(options);
         binding.recview.setAdapter(devicesAdapter);
 
@@ -97,7 +105,6 @@ public class DevicesFragment extends Fragment {
         alertDialog = builder.create();
         alertDialog.show();
     }
-
     private void hideLoading() {
         alertDialog.dismiss();
     }
