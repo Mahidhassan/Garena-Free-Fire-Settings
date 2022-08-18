@@ -13,6 +13,8 @@ import com.jvmfrog.ffsettings.adapter.ManufacturersAdapter;
 import com.jvmfrog.ffsettings.utils.CustomTabUtil;
 import com.jvmfrog.ffsettings.R;
 import com.jvmfrog.ffsettings.databinding.FragmentManufacturerBinding;
+import com.jvmfrog.ffsettings.utils.SharedPreferencesUtils;
+
 import java.util.ArrayList;
 
 public class ManufacturerFragment extends Fragment {
@@ -31,12 +33,25 @@ public class ManufacturerFragment extends Fragment {
         binding = FragmentManufacturerBinding.inflate(inflater, container, false);
 
         arrayList = new ArrayList<>();
-        arrayList.add("Samsung");
-        arrayList.add("iPhone");
-        arrayList.add("Xiaomi");
-        arrayList.add("Redmi");
-        arrayList.add("Oppo");
-        arrayList.add("Huawei");
+
+        if (!SharedPreferencesUtils.getBoolean(getActivity(), "isScreenshotEdition")) {
+            arrayList.add("Samsung");
+            arrayList.add("iPhone");
+            arrayList.add("Xiaomi");
+            arrayList.add("Redmi");
+            arrayList.add("Oppo");
+            arrayList.add("Huawei");
+            arrayList.add("Poco");
+        } else {
+            arrayList.add("Sumsang");
+            arrayList.add("iRhone");
+            arrayList.add("Xioami");
+            arrayList.add("Rebmi");
+            arrayList.add("Oddo");
+            arrayList.add("Huowei");
+            arrayList.add("Poso");
+            arrayList.add("Mokia");
+        }
 
         LinearLayoutManager layoutManager = new GridLayoutManager(getActivity(), 2);
         binding.recview.setLayoutManager(layoutManager);
