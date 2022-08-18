@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.jvmfrog.ffsettings.R;
 import com.jvmfrog.ffsettings.ui.fragment.DevicesFragment;
 import com.jvmfrog.ffsettings.utils.FragmentUtils;
+import com.jvmfrog.ffsettings.utils.SharedPreferencesUtils;
 
 import java.util.ArrayList;
 
@@ -44,16 +45,31 @@ public class ManufacturersAdapter extends RecyclerView.Adapter<ManufacturersAdap
         holder.itemView.setOnClickListener(view -> {
             switch (position) {
                 case 0:
-                    finalBundle.putString("device", "samsung");
-                    FragmentUtils.changeFragmentWithBackStack((FragmentActivity) view.getContext(), new DevicesFragment(), R.id.frame, "back", finalBundle);
+                    if (!SharedPreferencesUtils.getBoolean(view.getContext(), "isScreenshotEdition")) {
+                        finalBundle.putString("device", "samsung");
+                        FragmentUtils.changeFragmentWithBackStack((FragmentActivity) view.getContext(), new DevicesFragment(), R.id.frame, "back", finalBundle);
+                    } else {
+                        finalBundle.putString("device", "sumsang");
+                        FragmentUtils.changeFragmentWithBackStack((FragmentActivity) view.getContext(), new DevicesFragment(), R.id.frame, "back", finalBundle);
+                    }
                     break;
                 case 1:
-                    finalBundle.putString("device", "iphone");
-                    FragmentUtils.changeFragmentWithBackStack((FragmentActivity) view.getContext(), new DevicesFragment(), R.id.frame, "back", finalBundle);
+                    if (!SharedPreferencesUtils.getBoolean(view.getContext(), "isScreenshotEdition")) {
+                        finalBundle.putString("device", "iphone");
+                        FragmentUtils.changeFragmentWithBackStack((FragmentActivity) view.getContext(), new DevicesFragment(), R.id.frame, "back", finalBundle);
+                    } else {
+                        finalBundle.putString("device", "irhone");
+                        FragmentUtils.changeFragmentWithBackStack((FragmentActivity) view.getContext(), new DevicesFragment(), R.id.frame, "back", finalBundle);
+                    }
                     break;
                 case 2:
-                    finalBundle.putString("device", "xiaomi");
-                    FragmentUtils.changeFragmentWithBackStack((FragmentActivity) view.getContext(), new DevicesFragment(), R.id.frame, "back", finalBundle);
+                    if (!SharedPreferencesUtils.getBoolean(view.getContext(), "isScreenshotEdition")) {
+                        finalBundle.putString("device", "xiaomi");
+                        FragmentUtils.changeFragmentWithBackStack((FragmentActivity) view.getContext(), new DevicesFragment(), R.id.frame, "back", finalBundle);
+                    } else {
+                        finalBundle.putString("device", "xioami");
+                        FragmentUtils.changeFragmentWithBackStack((FragmentActivity) view.getContext(), new DevicesFragment(), R.id.frame, "back", finalBundle);
+                    }
                     break;
                 case 3:
                     finalBundle.putString("device", "redmi");
