@@ -54,20 +54,7 @@ public class SettingsFragment extends Fragment {
             binding.autoRadioButton.setVisibility(View.GONE);
         }
         NIGHT_MODE = SharedPreferencesUtils.getInteger(getActivity(), "nightMode");
-        switch (NIGHT_MODE) {
-            case 0:
-                binding.themesRadioGroup.check(R.id.autoRadioButton);
-                break;
-            case 1:
-                binding.themesRadioGroup.check(R.id.systemRadioButton);
-                break;
-            case 2:
-                binding.themesRadioGroup.check(R.id.lightRadioButton);
-                break;
-            case 3:
-                binding.themesRadioGroup.check(R.id.darkRadioButton);
-                break;
-        }
+        binding.themesRadioGroup.check(NIGHT_MODE);
 
         binding.themesRadioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
@@ -76,25 +63,25 @@ public class SettingsFragment extends Fragment {
                     case R.id.autoRadioButton:
                         getActivity().recreate();
                         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_AUTO_TIME);
-                        SharedPreferencesUtils.saveInteger(getActivity(), "nightMode", 0);
+                        SharedPreferencesUtils.saveInteger(getActivity(), "nightMode", id);
                         Toast.makeText(getActivity(), "Enabled auto night mode", Toast.LENGTH_SHORT).show();
                         break;
                     case R.id.systemRadioButton:
                         getActivity().recreate();
                         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM);
-                        SharedPreferencesUtils.saveInteger(getActivity(), "nightMode", 1);
+                        SharedPreferencesUtils.saveInteger(getActivity(), "nightMode", id);
                         Toast.makeText(getActivity(), "Enabled system night mode", Toast.LENGTH_SHORT).show();
                         break;
                     case R.id.lightRadioButton:
                         getActivity().recreate();
                         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-                        SharedPreferencesUtils.saveInteger(getActivity(), "nightMode", 2);
+                        SharedPreferencesUtils.saveInteger(getActivity(), "nightMode", id);
                         Toast.makeText(getActivity(), "Enabled light mode", Toast.LENGTH_SHORT).show();
                         break;
                     case R.id.darkRadioButton:
                         getActivity().recreate();
                         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-                        SharedPreferencesUtils.saveInteger(getActivity(), "nightMode", 3);
+                        SharedPreferencesUtils.saveInteger(getActivity(), "nightMode", id);
                         Toast.makeText(getActivity(), "Enabled night mode", Toast.LENGTH_SHORT).show();
                         break;
                 }
@@ -103,49 +90,38 @@ public class SettingsFragment extends Fragment {
     }
     private void setAppLanguage() {
         APP_LANGUAGE = SharedPreferencesUtils.getInteger(getActivity(), "language");
-        switch (APP_LANGUAGE) {
-            case 0:
-                binding.languagesRadioGroup.check(R.id.enLanguageRadioButton);
-                break;
-            case 1:
-                binding.languagesRadioGroup.check(R.id.beLanguageRadioButton);
-                break;
-            case 2:
-                binding.languagesRadioGroup.check(R.id.ruLanguageRadioButton);
-                break;
-            case 3:
-                binding.languagesRadioGroup.check(R.id.ukLanguageRadioButton);
-                break;
-            case 4:
-                binding.languagesRadioGroup.check(R.id.trLanguageRadioButton);
-                break;
-        }
+        binding.languagesRadioGroup.check(APP_LANGUAGE);
+        LocaleListCompat enLocale = LocaleListCompat.forLanguageTags("en");
+        LocaleListCompat beLocale = LocaleListCompat.forLanguageTags("be");
+        LocaleListCompat ruLocale = LocaleListCompat.forLanguageTags("ru");
+        LocaleListCompat uaLocale = LocaleListCompat.forLanguageTags("uk");
+        LocaleListCompat trLocale = LocaleListCompat.forLanguageTags("tr");
 
         binding.languagesRadioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @SuppressLint("NewApi")
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, int id) {
+                // Call this on the main thread as it may require Activity.restart()
                 switch (radioGroup.getCheckedRadioButtonId()) {
                     case R.id.enLanguageRadioButton:
-                        SharedPreferencesUtils.saveInteger(getActivity(), "language", 0);
+                        SharedPreferencesUtils.saveInteger(getActivity(), "language", id);
+                        AppCompatDelegate.setApplicationLocales(enLocale);
                         break;
                     case R.id.beLanguageRadioButton:
-                        SharedPreferencesUtils.saveInteger(getActivity(), "language", 1);
-                        getActivity().getSystemService(LocaleManager.class)
-                                .setApplicationLocales(new LocaleList(Locale.forLanguageTag("ru-rBY")));
+                        SharedPreferencesUtils.saveInteger(getActivity(), "language", id);
+                        AppCompatDelegate.setApplicationLocales(beLocale);
                         break;
                     case R.id.ruLanguageRadioButton:
-                        SharedPreferencesUtils.saveInteger(getActivity(), "language", 2);
-                        getActivity().getSystemService(LocaleManager.class)
-                                .setApplicationLocales(new LocaleList(Locale.forLanguageTag("ru-rRU")));                        break;
+                        SharedPreferencesUtils.saveInteger(getActivity(), "language", id);
+                        AppCompatDelegate.setApplicationLocales(ruLocale);
+                        break;
                     case R.id.ukLanguageRadioButton:
-                        SharedPreferencesUtils.saveInteger(getActivity(), "language", 3);
-                        getActivity().getSystemService(LocaleManager.class)
-                                .setApplicationLocales(new LocaleList(Locale.forLanguageTag("ru-rUA")));                        break;
+                        SharedPreferencesUtils.saveInteger(getActivity(), "language", id);
+                        AppCompatDelegate.setApplicationLocales(uaLocale);
+                        break;
                     case R.id.trLanguageRadioButton:
-                        SharedPreferencesUtils.saveInteger(getActivity(), "language", 4);
-                        getActivity().getSystemService(LocaleManager.class)
-                                .setApplicationLocales(new LocaleList(Locale.forLanguageTag("tr-rTR")));                        break;
+                        SharedPreferencesUtils.saveInteger(getActivity(), "language", id);
+                        AppCompatDelegate.setApplicationLocales(trLocale);
+                        break;
                 }
             }
         });
