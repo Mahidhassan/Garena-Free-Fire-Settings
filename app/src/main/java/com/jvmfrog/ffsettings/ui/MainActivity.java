@@ -3,6 +3,7 @@ package com.jvmfrog.ffsettings.ui;
 import android.app.Application;
 import android.content.Intent;
 import android.content.IntentSender;
+import android.content.res.Configuration;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
@@ -12,6 +13,7 @@ import android.view.MenuItem;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.core.splashscreen.SplashScreen;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -43,6 +45,7 @@ import com.jvmfrog.ffsettings.databinding.ActivityMainBinding;
 import com.jvmfrog.ffsettings.ui.fragment.AboutAppFragment;
 import com.jvmfrog.ffsettings.ui.fragment.DevicesFragment;
 import com.jvmfrog.ffsettings.ui.fragment.ManufacturerFragment;
+import com.jvmfrog.ffsettings.ui.fragment.SettingsFragment;
 import com.jvmfrog.ffsettings.utils.FragmentUtils;
 import com.jvmfrog.ffsettings.utils.SharedPreferencesUtils;
 
@@ -68,7 +71,6 @@ public class MainActivity extends AppCompatActivity {
         showReviewCount = SharedPreferencesUtils.getInteger(this, "showReviewCount");
         Application application = getApplication();
         SplashScreen splashScreen = SplashScreen.installSplashScreen(this);
-        DynamicColors.applyToActivitiesIfAvailable(getApplication());
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         FragmentUtils.changeFragment(this, new ManufacturerFragment(), R.id.frame, null);
@@ -91,7 +93,7 @@ public class MainActivity extends AppCompatActivity {
                     FragmentUtils.changeFragmentWithAnimTwo(this, new ManufacturerFragment(), R.id.frame);
                     break;
                 case R.id.about_app:
-                    FragmentUtils.changeFragmentWithAnimOne(this, new AboutAppFragment(), R.id.frame);
+                    FragmentUtils.changeFragmentWithAnimOne(this, new SettingsFragment(), R.id.frame);
                     break;
             }
             return true;

@@ -56,4 +56,9 @@
 
     <!--Accessibility-->
     <string name="copy_settings_button">Copy settings button</string>
+
+    <string name="auto" translatable="false">Auto</string>
+    <string name="system" translatable="false">System</string>
+    <string name="light" translatable="false">Light</string>
+    <string name="dark" translatable="false">Dark</string>
 </resources>
