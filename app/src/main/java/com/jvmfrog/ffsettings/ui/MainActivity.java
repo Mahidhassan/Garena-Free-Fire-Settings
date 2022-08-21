@@ -93,7 +93,7 @@ public class MainActivity extends AppCompatActivity {
                     FragmentUtils.changeFragmentWithAnimTwo(this, new ManufacturerFragment(), R.id.frame);
                     break;
                 case R.id.about_app:
-                    FragmentUtils.changeFragmentWithAnimOne(this, new SettingsFragment(), R.id.frame);
+                    FragmentUtils.changeFragmentWithAnimOne(this, new AboutAppFragment(), R.id.frame);
                     break;
             }
             return true;

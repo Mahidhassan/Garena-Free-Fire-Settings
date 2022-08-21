@@ -87,6 +87,22 @@ public class ManufacturersAdapter extends RecyclerView.Adapter<ManufacturersAdap
                     finalBundle.putString("device", "poco");
                     FragmentUtils.changeFragmentWithBackStack((FragmentActivity) view.getContext(), new DevicesFragment(), R.id.frame, "back", finalBundle);
                     break;
+                case 7:
+                    finalBundle.putString("device", "honor");
+                    FragmentUtils.changeFragmentWithBackStack((FragmentActivity) view.getContext(), new DevicesFragment(), R.id.frame, "back", finalBundle);
+                    break;
+                case 8:
+                    finalBundle.putString("device", "lg");
+                    FragmentUtils.changeFragmentWithBackStack((FragmentActivity) view.getContext(), new DevicesFragment(), R.id.frame, "back", finalBundle);
+                    break;
+                case 9:
+                    finalBundle.putString("device", "zte");
+                    FragmentUtils.changeFragmentWithBackStack((FragmentActivity) view.getContext(), new DevicesFragment(), R.id.frame, "back", finalBundle);
+                    break;
+                case 10:
+                    finalBundle.putString("device", "vivo");
+                    FragmentUtils.changeFragmentWithBackStack((FragmentActivity) view.getContext(), new DevicesFragment(), R.id.frame, "back", finalBundle);
+                    break;
             }
         });
     }

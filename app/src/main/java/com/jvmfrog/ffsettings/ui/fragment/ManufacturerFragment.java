@@ -42,6 +42,10 @@ public class ManufacturerFragment extends Fragment {
             arrayList.add("Oppo");
             arrayList.add("Huawei");
             arrayList.add("Poco");
+            arrayList.add("Honor");
+            arrayList.add("LG");
+            arrayList.add("ZTE");
+            arrayList.add("Vivo");
         } else {
             arrayList.add("Sumsang");
             arrayList.add("iRhone");
@@ -50,7 +54,10 @@ public class ManufacturerFragment extends Fragment {
             arrayList.add("Oddo");
             arrayList.add("Huowei");
             arrayList.add("Poso");
-            arrayList.add("Mokia");
+            arrayList.add("Hohor");
+            arrayList.add("GL");
+            arrayList.add("TZE");
+            arrayList.add("Wivo");
         }
 
         LinearLayoutManager layoutManager = new GridLayoutManager(getActivity(), 2);
