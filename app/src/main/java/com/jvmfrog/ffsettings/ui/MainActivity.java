@@ -3,38 +3,23 @@ package com.jvmfrog.ffsettings.ui;
 import android.app.Application;
 import android.content.Intent;
 import android.content.IntentSender;
-import android.content.res.Configuration;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.ContextThemeWrapper;
-import android.view.MenuItem;
+import android.widget.Toast;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.app.AppCompatDelegate;
 import androidx.core.splashscreen.SplashScreen;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-
-import com.google.android.material.color.DynamicColors;
-import com.google.android.material.color.DynamicColorsOptions;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
-import com.google.android.material.navigation.NavigationBarView;
-import com.google.android.material.snackbar.Snackbar;
+import com.google.android.play.core.appupdate.AppUpdateInfo;
 import com.google.android.play.core.appupdate.AppUpdateManager;
 import com.google.android.play.core.appupdate.AppUpdateManagerFactory;
-import com.google.android.play.core.install.InstallState;
-import com.google.android.play.core.install.InstallStateUpdatedListener;
 import com.google.android.play.core.install.model.AppUpdateType;
-import com.google.android.play.core.install.model.InstallStatus;
 import com.google.android.play.core.install.model.UpdateAvailability;
-import com.google.android.play.core.review.ReviewInfo;
-import com.google.android.play.core.review.ReviewManager;
-import com.google.android.play.core.review.ReviewManagerFactory;
-import com.google.android.play.core.tasks.OnCompleteListener;
-import com.google.android.play.core.tasks.Task;
 import com.google.android.ump.ConsentDebugSettings;
 import com.google.android.ump.ConsentInformation;
 import com.google.android.ump.ConsentRequestParameters;
@@ -43,9 +28,7 @@ import com.jvmfrog.ffsettings.MyApplication;
 import com.jvmfrog.ffsettings.R;
 import com.jvmfrog.ffsettings.databinding.ActivityMainBinding;
 import com.jvmfrog.ffsettings.ui.fragment.AboutAppFragment;
-import com.jvmfrog.ffsettings.ui.fragment.DevicesFragment;
 import com.jvmfrog.ffsettings.ui.fragment.ManufacturerFragment;
-import com.jvmfrog.ffsettings.ui.fragment.SettingsFragment;
 import com.jvmfrog.ffsettings.utils.FragmentUtils;
 import com.jvmfrog.ffsettings.utils.SharedPreferencesUtils;
 
@@ -58,11 +41,9 @@ public class MainActivity extends AppCompatActivity {
     private Boolean isFirstOpen;
     private int showReviewCount = 0;
 
-    private ReviewManager reviewManager;
-    private ReviewInfo reviewlnfo;
-
     private static final int UPDATE_CODE = 100;
     private AppUpdateManager appUpdateManager;
+    private AppUpdateInfo appUpdateInfo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,12 +58,41 @@ public class MainActivity extends AppCompatActivity {
         bottomAppBar();
         firstOpenDialog();
         initConsent();
-        getReviewInfo();
 
         if (isFirstOpen) {
             ((MyApplication) application).showAdIfAvailable(this, () -> {
                 //
             });
+        }
+
+        appUpdateManager = AppUpdateManagerFactory.create(this);
+
+        // Returns an intent object that you use to check for an update.
+        Task<AppUpdateInfo> appUpdateInfoTask = appUpdateManager.getAppUpdateInfo();
+
+        // Checks that the platform will allow the specified type of update.
+        appUpdateInfoTask.addOnSuccessListener(appUpdateInfo -> {
+            if (appUpdateInfo.updateAvailability() == UpdateAvailability.UPDATE_AVAILABLE
+                    // This example applies an immediate update. To apply a flexible update
+                    // instead, pass in AppUpdateType.FLEXIBLE
+                    && appUpdateInfo.isUpdateTypeAllowed(AppUpdateType.IMMEDIATE)) {
+                // Request the update.
+            }
+        });
+
+        try {
+            appUpdateManager.startUpdateFlowForResult(
+                    // Pass the intent that is returned by 'getAppUpdateInfo()'.
+                    appUpdateInfo,
+                    // Or 'AppUpdateType.FLEXIBLE' for flexible updates.
+                    AppUpdateType.IMMEDIATE,
+                    // The current activity making the update request.
+                    this,
+                    // Include a request code to later monitor this update request.
+                    UPDATE_CODE);
+        } catch (IntentSender.SendIntentException e) {
+            e.printStackTrace();
+            Toast.makeText(this, e.toString(), Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -169,93 +179,26 @@ public class MainActivity extends AppCompatActivity {
         );
     }
 
+    // Checks that the update is not stalled during 'onResume()'.
+// However, you should execute this check at all entry points into the app.
     @Override
-    protected void onStart() {
-        super.onStart();
-        appUpdateManager = AppUpdateManagerFactory.create(this);
-        appUpdateManager.registerListener(installStateUpdatedListener);
-        appUpdateManager.getAppUpdateInfo().addOnSuccessListener(appUpdateInfo -> {
-            if (appUpdateInfo.updateAvailability() == UpdateAvailability.UPDATE_AVAILABLE
-                    && appUpdateInfo.isUpdateTypeAllowed(AppUpdateType.FLEXIBLE /*AppUpdateType.IMMEDIATE*/)){
-                try {
-                    appUpdateManager.startUpdateFlowForResult(
-                            appUpdateInfo, AppUpdateType.FLEXIBLE /*AppUpdateType.IMMEDIATE*/,
-                            MainActivity.this,
-                            UPDATE_CODE);
-                } catch (IntentSender.SendIntentException e) {
-                    e.printStackTrace();
-                }
-            } else if (appUpdateInfo.installStatus() == InstallStatus.DOWNLOADED){
-                popupSnackbarForCompleteUpdate();
-            } else {
-                Log.e("In-App Update: ", "check for app update availability: something else");
-            }
-        });
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-        if (appUpdateManager != null) {
-            appUpdateManager.unregisterListener(installStateUpdatedListener);
-        }
-    }
-
-    InstallStateUpdatedListener installStateUpdatedListener = new InstallStateUpdatedListener() {
-                @Override
-                public void onStateUpdate(InstallState state) {
-                    if (state.installStatus() == InstallStatus.DOWNLOADED){
-                        popupSnackbarForCompleteUpdate();
-                    } else if (state.installStatus() == InstallStatus.INSTALLED){
-                        if (appUpdateManager != null){
-                            appUpdateManager.unregisterListener(installStateUpdatedListener);
+    protected void onResume() {
+        super.onResume();
+        appUpdateManager.getAppUpdateInfo().addOnSuccessListener(
+                appUpdateInfo -> {
+                    if (appUpdateInfo.updateAvailability() == UpdateAvailability.UPDATE_AVAILABLE) {
+                        // If an in-app update is already running, resume the update.
+                        try {
+                            appUpdateManager.startUpdateFlowForResult(
+                                    appUpdateInfo,
+                                    AppUpdateType.IMMEDIATE,
+                                    this,
+                                    UPDATE_CODE);
+                        } catch (IntentSender.SendIntentException e) {
+                            e.printStackTrace();
+                            Toast.makeText(this, e.toString(), Toast.LENGTH_SHORT).show();
                         }
-                    } else {
-                        Log.d("In-App Update: ", "install state updated listener: state: " + state.installStatus());
                     }
-                }
-            };
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == UPDATE_CODE) {
-            if (resultCode != RESULT_OK) {
-                Log.e("In-App Update: ", "on activity result: app download failed");
-            }
-        }
-    }
-
-    private void popupSnackbarForCompleteUpdate() {
-        Snackbar snackbar = Snackbar.make(findViewById(android.R.id.content), R.string.update_available, Snackbar.LENGTH_INDEFINITE);
-        snackbar.setAction(R.string.install, view -> {
-            if (appUpdateManager != null){
-                appUpdateManager.completeUpdate();
-            }
-        });
-        snackbar.setActionTextColor(Color.parseColor("#FF3F9F45"));
-        snackbar.show();
-    }
-
-    private void getReviewInfo() {
-        reviewManager = ReviewManagerFactory.create(getApplicationContext());
-        Task<ReviewInfo> manager = reviewManager.requestReviewFlow();
-        manager.addOnCompleteListener(task -> {
-            if (task.isSuccessful()) {
-                reviewlnfo = task.getResult();
-            } else {
-                Log.d("In-App Review: ", "in-app review failed get");
-            }
-        });
-    }
-    public void startReviewFlow() {
-        showReviewCount += 1;
-        SharedPreferencesUtils.saveInteger(this, "showReviewCount", showReviewCount);
-        if (showReviewCount <= 16) {
-            Task<Void> flow = reviewManager.launchReviewFlow(this, reviewlnfo);
-            flow.addOnCompleteListener(task -> Log.d("In-App Review: ", "in-app review complete"));
-        } else if (showReviewCount <= 64) {
-            SharedPreferencesUtils.saveInteger(this, "showReviewCount", 0);
-        }
+                });
     }
 }

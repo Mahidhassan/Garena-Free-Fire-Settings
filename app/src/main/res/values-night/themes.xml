@@ -30,8 +30,6 @@
 
         <item name="android:statusBarColor">#424941</item>
         <item name="android:navigationBarColor">#212B22</item>
-
-        <item name="SpinKit_Color">@color/md_theme_dark_onSurfaceVariant</item>
         <item name="materialAlertDialogTheme">@style/Theme.FFSettings.MaterialAlertDialog</item>
     </style>
 
