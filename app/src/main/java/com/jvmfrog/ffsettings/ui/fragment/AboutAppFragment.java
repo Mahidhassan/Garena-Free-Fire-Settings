@@ -15,6 +15,7 @@ import com.jvmfrog.ffsettings.BuildConfig;
 import com.jvmfrog.ffsettings.R;
 import com.jvmfrog.ffsettings.databinding.FragmentAboutAppBinding;
 import com.jvmfrog.ffsettings.utils.CustomTabUtil;
+import com.jvmfrog.ffsettings.utils.BugReportHelper;
 import com.jvmfrog.ffsettings.utils.OtherUtils;
 import com.jvmfrog.ffsettings.utils.SharedPreferencesUtils;
 
@@ -47,22 +48,7 @@ public class AboutAppFragment extends Fragment {
         });
         binding.sourceCodeBtn.setOnClickListener(v -> new CustomTabUtil().OpenCustomTab(getActivity(), getString(R.string.source_code_url), R.color.md_theme_light_onSecondary));
         binding.ibragimBtn.setOnClickListener(v -> new CustomTabUtil().OpenCustomTab(getActivity(), getString(R.string.ibragim_url), R.color.md_theme_light_onSecondary));
-        binding.mailBtn.setOnClickListener(v -> {
-            final Intent emailIntent = new Intent(Intent.ACTION_SEND);
-            emailIntent.setType("text/plain");
-            emailIntent.putExtra(android.content.Intent.EXTRA_EMAIL, new String[]{getString(R.string.email)});
-            emailIntent.putExtra(Intent.EXTRA_SUBJECT, R.string.feedback);
-            emailIntent.putExtra(Intent.EXTRA_TEXT, getString(R.string.version) + ": " + BuildConfig.VERSION_NAME + "(" + BuildConfig.VERSION_CODE + ")");
-
-            emailIntent.setType("message/rfc822");
-
-            try {
-                startActivity(Intent.createChooser(emailIntent, "Send email using..."));
-            } catch (android.content.ActivityNotFoundException ex) {
-                Toast.makeText(getActivity(),
-                        "No email clients installed.", Toast.LENGTH_SHORT).show();
-            }
-        });
+        binding.mailBtn.setOnClickListener(v -> BugReportHelper.sendEmail(getActivity()));
         binding.rateBtn.setOnClickListener(v -> OtherUtils.reviewAppInGooglePlay(getActivity()));
         binding.vkGroupBtn.setOnClickListener(v -> new CustomTabUtil().OpenCustomTab(getActivity(), getString(R.string.JVMFrog), R.color.md_theme_light_onSecondary));
         binding.otherAppsBtn.setOnClickListener(view1 -> {
