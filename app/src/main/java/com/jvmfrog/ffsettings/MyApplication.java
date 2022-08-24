@@ -140,7 +140,7 @@ public class MyApplication extends Application
             AdRequest request = new AdRequest.Builder().build();
             AppOpenAd.load(
                     context,
-                    AD_UNIT_ID,
+                    TEST_AD_UNIT_ID,
                     request,
                     AppOpenAd.APP_OPEN_AD_ORIENTATION_PORTRAIT,
                     new AppOpenAd.AppOpenAdLoadCallback() {

@@ -1,6 +1,8 @@
 package com.jvmfrog.ffsettings.ui;
 
+import android.app.Activity;
 import android.app.Application;
+import android.app.PendingIntent;
 import android.content.Intent;
 import android.content.IntentSender;
 import android.graphics.Color;
@@ -9,10 +11,15 @@ import android.util.Log;
 import android.view.ContextThemeWrapper;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.splashscreen.SplashScreen;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.play.core.appupdate.AppUpdateInfo;
@@ -20,10 +27,15 @@ import com.google.android.play.core.appupdate.AppUpdateManager;
 import com.google.android.play.core.appupdate.AppUpdateManagerFactory;
 import com.google.android.play.core.install.model.AppUpdateType;
 import com.google.android.play.core.install.model.UpdateAvailability;
+import com.google.android.play.core.review.ReviewInfo;
+import com.google.android.play.core.review.ReviewManager;
+import com.google.android.play.core.review.ReviewManagerFactory;
+import com.google.android.play.core.review.model.ReviewErrorCode;
 import com.google.android.ump.ConsentDebugSettings;
 import com.google.android.ump.ConsentInformation;
 import com.google.android.ump.ConsentRequestParameters;
 import com.google.android.ump.UserMessagingPlatform;
+import com.jvmfrog.ffsettings.BuildConfig;
 import com.jvmfrog.ffsettings.MyApplication;
 import com.jvmfrog.ffsettings.R;
 import com.jvmfrog.ffsettings.databinding.ActivityMainBinding;
@@ -32,6 +44,8 @@ import com.jvmfrog.ffsettings.ui.fragment.ManufacturerFragment;
 import com.jvmfrog.ffsettings.utils.FragmentUtils;
 import com.jvmfrog.ffsettings.utils.SharedPreferencesUtils;
 
+import java.util.Locale;
+
 public class MainActivity extends AppCompatActivity {
 
     private ActivityMainBinding binding;
@@ -39,17 +53,18 @@ public class MainActivity extends AppCompatActivity {
     private ConsentInformation consentInformation;
 
     private Boolean isFirstOpen;
-    private int showReviewCount = 0;
 
     private static final int UPDATE_CODE = 100;
     private AppUpdateManager appUpdateManager;
     private AppUpdateInfo appUpdateInfo;
 
+    private AdRequest adRequest;
+    private AdView adView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         isFirstOpen = SharedPreferencesUtils.getBoolean(this, "isFirstOpen");
-        showReviewCount = SharedPreferencesUtils.getInteger(this, "showReviewCount");
         Application application = getApplication();
         SplashScreen splashScreen = SplashScreen.installSplashScreen(this);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
@@ -60,10 +75,18 @@ public class MainActivity extends AppCompatActivity {
         initConsent();
 
         if (isFirstOpen) {
-            ((MyApplication) application).showAdIfAvailable(this, () -> {
-                //
-            });
+            ((MyApplication) application).showAdIfAvailable(this, null);
         }
+
+        MobileAds.initialize(this);
+        adRequest = new AdRequest.Builder().build();
+        String BUILD_TYPE = BuildConfig.BUILD_TYPE.toLowerCase(Locale.ROOT);
+        if (BUILD_TYPE == "debug") {
+            binding.bannerAd.setAdUnitId(String.valueOf(R.string.admob_banner_test_ad_id));
+        } else {
+            binding.bannerAd.setAdUnitId(String.valueOf(R.string.admob_banner_main_activity));
+        }
+        binding.bannerAd.loadAd(adRequest);
 
         appUpdateManager = AppUpdateManagerFactory.create(this);
 
@@ -82,17 +105,13 @@ public class MainActivity extends AppCompatActivity {
 
         try {
             appUpdateManager.startUpdateFlowForResult(
-                    // Pass the intent that is returned by 'getAppUpdateInfo()'.
                     appUpdateInfo,
-                    // Or 'AppUpdateType.FLEXIBLE' for flexible updates.
                     AppUpdateType.IMMEDIATE,
-                    // The current activity making the update request.
                     this,
-                    // Include a request code to later monitor this update request.
                     UPDATE_CODE);
         } catch (IntentSender.SendIntentException e) {
             e.printStackTrace();
-            Toast.makeText(this, e.toString(), Toast.LENGTH_SHORT).show();
+            //Toast.makeText(this, e.toString(), Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -180,7 +199,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     // Checks that the update is not stalled during 'onResume()'.
-// However, you should execute this check at all entry points into the app.
+    // However, you should execute this check at all entry points into the app.
     @Override
     protected void onResume() {
         super.onResume();
