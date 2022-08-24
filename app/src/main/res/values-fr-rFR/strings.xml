@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Settings for Free Fire</string>
+
+    <string name="review">Examen</string>
+    <string name="collimator">Collimateur</string>
+    <string name="x2_scope">Portée x2</string>
+    <string name="x4_scope">Portée x4</string>
+    <string name="sniper_scope">Portée de tireur d\'élite</string>
+    <string name="free_review">Examen gratuit</string>
+    <string name="dpi">DPI</string>
+    <string name="fire_button">Bouton de feu</string>
+    <string name="source">La source:</string>
+
+    <string name="dont_have_your_phone_model">Vous n\'avez pas votre modèle de téléphone?</string>
+    <string name="then_click_here">Alors cliquez ici!</string>
+    <string name="copy">Copie</string>
+    <string name="copied">Copié</string>
+    <string name="link">Lien</string>
+    <string name="copy_link">Copier le lien</string>
+    <string name="open_link">Ouvrir le lien</string>
+    <string name="error">Erreur</string>
+
+    <string name="about_app">À candidature</string>
+    <string name="home">Domicile</string>
+    <string name="version">Version</string>
+    <string name="source_code">La source</string>
+    <string name="ibragim">Ibragim Maltsagov</string>
+    <string name="report_a_bug">Signaler un bug</string>
+    <string name="not_installed_email_client">Client de messagerie non installé</string>
+    <string name="rate_the_app">Évaluer l\'application</string>
+    <string name="we_are_on_vk">Nous sommes sur VK</string>
+    <string name="other_apps">Autres applications</string>
+
+    <string name="update_available">Mise à jour disponible!</string>
+    <string name="install">Installer</string>
+    <string name="thank_for_review">Merci pour les commentaires :)</string>
+
+    <string name="welcome">Accueillir!</string>
+    <string name="welcome_message">
+        Merci d\'avoir installé notre application.
+        \nVous trouverez ici les paramètres de sensibilité de votre appareil, et si votre modèle de téléphone ne figure pas parmi les paramètres, vous pouvez les demander.    </string>
+
+    <!--Accessibility-->
+    <string name="copy_settings_button">Bouton Copier les paramètres</string>
+</resources>
