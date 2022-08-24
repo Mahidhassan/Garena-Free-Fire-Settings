@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Configurações do Free Fire</string>
+
+    <string name="review">Análise</string>
+    <string name="collimator">Colimador</string>
+    <string name="x2_scope">x2 Escopo</string>
+    <string name="x4_scope">x4 Escopo</string>
+    <string name="sniper_scope">Mira de atirador</string>
+    <string name="free_review">Revisão gratuita</string>
+    <string name="dpi">DPI</string>
+    <string name="fire_button">Botão de disparo</string>
+    <string name="source">Fonte:</string>
+
+    <string name="dont_have_your_phone_model">Não tem o modelo do seu telefone?</string>
+    <string name="then_click_here">Então clique aqui!</string>
+    <string name="copy">Cópia de</string>
+    <string name="copied">Copiado</string>
+    <string name="link">Link de cópia</string>
+    <string name="copy_link">Link de cópia</string>
+    <string name="open_link">Link aberto</string>
+    <string name="error">Erro</string>
+
+    <string name="about_app">Sobre o Aplicativo</string>
+    <string name="home">Casa</string>
+    <string name="version">Versão</string>
+    <string name="source_code">Fonte</string>
+    <string name="ibragim">Ibragim Maltsagov</string>
+    <string name="report_a_bug">Reportar um erro</string>
+    <string name="not_installed_email_client">Cliente de e-mail não instalado</string>
+    <string name="rate_the_app">Avalie o aplicativo</string>
+    <string name="we_are_on_vk">Estamos no VK</string>
+    <string name="other_apps">Outras aplicações</string>
+
+    <string name="update_available">Atualização disponível!</string>
+    <string name="install">Instalar</string>
+    <string name="thank_for_review">Obrigado pelo feedback :)</string>
+
+    <string name="welcome">Bem-vindo!</string>
+    <string name="welcome_message">
+        Obrigado por instalar nosso aplicativo.
+        \nAqui você encontra as configurações de sensibilidade do seu dispositivo e, caso o modelo do seu telefone não esteja entre as configurações, você pode solicitá-las.    </string>
+
+    <!--Accessibility-->
+    <string name="copy_settings_button">Bouton Copier les paramètres</string>
+</resources>
