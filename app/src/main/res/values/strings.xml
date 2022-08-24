@@ -43,8 +43,9 @@
     <string name="source_code">Source Code</string>
     <string name="ibragim">Ibragim Maltsagov</string>
 
-    <string name="write_to_us">Write to us</string>
-    <string name="feedback">Feedback</string>
+    <string name="report_a_bug">Report a bug</string>
+    <string name="bug_report" translatable="false">Bug Report</string>
+    <string name="not_installed_email_client">E-mail client not installed</string>
     <string name="rate_the_app">Review the app</string>
     <string name="we_are_on_vk">We are on VK</string>
     <string name="other_apps">Other Apps</string>

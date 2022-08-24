@@ -46,6 +46,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="@string/app_name"
+                            android:singleLine="true"
                             android:textSize="24sp"
                             android:textStyle="bold"/>
 
@@ -125,9 +126,9 @@
                         android:id="@+id/mailBtn"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@string/write_to_us"
+                        android:text="@string/report_a_bug"
                         android:textSize="24sp"
-                        app:icon="@drawable/ic_round_alternate_email_24"
+                        app:icon="@drawable/ic_round_bug_report_24"
                         app:iconPadding="16dp"
                         app:iconSize="24dp"
                         android:textAlignment="textStart"

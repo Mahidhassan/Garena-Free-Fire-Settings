@@ -38,12 +38,12 @@ public class BugReportHelper {
         Intent intent = new Intent(Intent.ACTION_SENDTO);
         intent.setData(Uri.parse("mailto:"));
         intent.putExtra(Intent.EXTRA_EMAIL , new String[]{"ibremminer837.dev@gmail.com"});
-        intent.putExtra(Intent.EXTRA_SUBJECT, "Bug Report");
+        intent.putExtra(Intent.EXTRA_SUBJECT, context.getString(R.string.bug_report));
         intent.putExtra(Intent.EXTRA_TEXT , app_info + "\n\n" + device_info);
         try {
-            context.startActivity(Intent.createChooser(intent, "Send mail..."));
+            context.startActivity(Intent.createChooser(intent, ""));
         } catch (android.content.ActivityNotFoundException ex) {
-            Toast.makeText(context, "No email client configured. Please check.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, R.string.not_installed_email_client, Toast.LENGTH_SHORT).show();
         }
     }
 

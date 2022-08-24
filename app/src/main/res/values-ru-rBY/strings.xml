@@ -26,8 +26,8 @@
     <string name="version">Версія</string>
     <string name="source_code">Зыходны Код</string>
     <string name="ibragim">Ібрагім Мальцагаў</string>
-    <string name="write_to_us">Напішыце нам</string>
-    <string name="feedback">Зваротная сувязь</string>
+    <string name="report_a_bug">Паведаміць пра памылку</string>
+    <string name="not_installed_email_client">Не ўсталяваны E-mail кліент</string>
     <string name="rate_the_app">Ацаніць дадатак</string>
     <string name="we_are_on_vk">Мы ва Укантакце</string>
     <string name="other_apps">Іншыя Прыкладанні</string>

@@ -26,8 +26,8 @@
     <string name="version">Sürüm</string>
     <string name="source_code">Kaynak</string>
     <string name="ibragim">İbrahim Maltsagov</string>
-    <string name="write_to_us">Bize yazın</string>
-    <string name="feedback">Geri bildirim</string>
+    <string name="report_a_bug">Hata bildir</string>
+    <string name="not_installed_email_client">E-posta istemcisi yüklenmedi</string>
     <string name="rate_the_app">Uygulamayı oyla</string>
     <string name="we_are_on_vk">VK\'dayız</string>
     <string name="other_apps">Diğer uygulamalar</string>
