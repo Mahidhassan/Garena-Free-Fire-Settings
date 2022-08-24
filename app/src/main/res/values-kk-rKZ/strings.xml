@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Free Fire үшін параметрлер</string>
+
+    <string name="review">Қарау</string>
+    <string name="collimator">Коллиматор</string>
+    <string name="x2_scope">x2 Ауқымы</string>
+    <string name="x4_scope">x4 Ауқымы</string>
+    <string name="sniper_scope">Mергендік нысаны</string>
+    <string name="free_review">Тегін шолу</string>
+    <string name="dpi">DPI</string>
+    <string name="fire_button">Өрт түймесі</string>
+    <string name="source">Дереккөз:</string>
+
+    <string name="dont_have_your_phone_model">Телефоныңыздың үлгісі жоқ па?</string>
+    <string name="then_click_here">Содан кейін мына жерді басыңыз!</string>
+    <string name="copy">Көшіру</string>
+    <string name="copied">Көшірілген</string>
+    <string name="link">Сілтеме</string>
+    <string name="copy_link">Сілтемені көшіру</string>
+    <string name="open_link">Сілтемені ашу</string>
+    <string name="error">Қате</string>
+
+    <string name="about_app">Қолданба туралы</string>
+    <string name="home">үй</string>
+    <string name="version">Нұсқа</string>
+    <string name="source_code">Дереккөз</string>
+    <string name="ibragim">Ибрагим Малцагов</string>
+    <string name="report_a_bug">Қате туралы хабарлау</string>
+    <string name="not_installed_email_client">Электрондық пошта клиенті орнатылмаған</string>
+    <string name="rate_the_app">Қолданбаны бағалаңыз</string>
+    <string name="we_are_on_vk">Біз ВКонтакте желісіндеміз</string>
+    <string name="other_apps">Басқа қолданбалар</string>
+
+    <string name="update_available">Жаңарту қолжетімді!</string>
+    <string name="install">Орнату</string>
+    <string name="thank_for_review">Пікіріңізге рахмет :)</string>
+
+    <string name="welcome">Қош келдіңіз!</string>
+    <string name="welcome_message">
+        Біздің қолданбаны орнатқаныңыз үшін рақмет.
+        \nОсы жерден құрылғының сезімталдық параметрлерін табасыз және телефон үлгісі параметрлер арасында болмаса, оларды сұрауға болады.    </string>
+
+    <!--Accessibility-->
+    <string name="copy_settings_button">Параметрлерді көшіру түймесі</string>
+</resources>
