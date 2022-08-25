@@ -9,8 +9,6 @@
     <string name="email" translatable="false">ibremminer837.dev@gmail.com</string>
 
     <string name="admob_app_id" translatable="false">ca-app-pub-4193046598871025~2670224662</string>
-    <string name="admob_banner_test_ad_id" translatable="false">"ca-app-pub-3940256099942544/6300978111"</string>
-    <string name="admob_banner_main_activity" translatable="false">ca-app-pub-4193046598871025/3862225673</string>
     <string name="admob_banner_recycler" translatable="false">ca-app-pub-4193046598871025/8458826678</string>
     <string name="admob_interstellar_test_ad_id" translatable="false">ca-app-pub-3940256099942544/1033173712</string>
     <string name="admob_reward_test_ad_id" translatable="false">ca-app-pub-3940256099942544/5224354917</string>

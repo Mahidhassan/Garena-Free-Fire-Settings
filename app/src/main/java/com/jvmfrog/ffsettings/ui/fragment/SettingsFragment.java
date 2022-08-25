@@ -1,10 +1,12 @@
 package com.jvmfrog.ffsettings.ui.fragment;
 
+import android.app.LocaleManager;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.fragment.app.Fragment;
 
+import android.os.LocaleList;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +17,8 @@ import com.jvmfrog.ffsettings.R;
 import com.jvmfrog.ffsettings.databinding.FragmentSettingsBinding;
 import com.jvmfrog.ffsettings.utils.LocaleHelper;
 import com.jvmfrog.ffsettings.utils.SharedPreferencesUtils;
+
+import java.util.Locale;
 
 public class SettingsFragment extends Fragment {
 
@@ -90,23 +94,23 @@ public class SettingsFragment extends Fragment {
                 switch (radioGroup.getCheckedRadioButtonId()) {
                     case R.id.enLanguageRadioButton:
                         SharedPreferencesUtils.saveInteger(getActivity(), "language", id);
-                        AppCompatDelegate.setApplicationLocales(LocaleHelper.Locale.ENGLISH);
+                        AppCompatDelegate.setApplicationLocales(LocaleHelper.ENGLISH);
                         break;
                     case R.id.beLanguageRadioButton:
                         SharedPreferencesUtils.saveInteger(getActivity(), "language", id);
-                        AppCompatDelegate.setApplicationLocales(LocaleHelper.Locale.BELARUSIAN);
+                        AppCompatDelegate.setApplicationLocales(LocaleHelper.BELARUSIAN);
                         break;
                     case R.id.ruLanguageRadioButton:
                         SharedPreferencesUtils.saveInteger(getActivity(), "language", id);
-                        AppCompatDelegate.setApplicationLocales(LocaleHelper.Locale.RUSSIAN);
+                        AppCompatDelegate.setApplicationLocales(LocaleHelper.RUSSIAN);
                         break;
                     case R.id.ukLanguageRadioButton:
                         SharedPreferencesUtils.saveInteger(getActivity(), "language", id);
-                        AppCompatDelegate.setApplicationLocales(LocaleHelper.Locale.UKRAINIAN);
+                        AppCompatDelegate.setApplicationLocales(LocaleHelper.UKRAINIAN);
                         break;
                     case R.id.trLanguageRadioButton:
                         SharedPreferencesUtils.saveInteger(getActivity(), "language", id);
-                        AppCompatDelegate.setApplicationLocales(LocaleHelper.Locale.TURKISH);
+                        AppCompatDelegate.setApplicationLocales(LocaleHelper.TURKISH);
                         break;
                 }
             }

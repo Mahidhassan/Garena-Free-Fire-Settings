@@ -10,7 +10,7 @@ android {
         applicationId "com.jvmfrog.ffsettings"
         minSdk 23
         targetSdk 33
-        versionCode 9
+        versionCode 11
         versionName "v1.0.5"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"

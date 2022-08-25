@@ -31,6 +31,7 @@ import com.jvmfrog.ffsettings.R;
 import com.jvmfrog.ffsettings.databinding.ActivityMainBinding;
 import com.jvmfrog.ffsettings.ui.fragment.AboutAppFragment;
 import com.jvmfrog.ffsettings.ui.fragment.ManufacturerFragment;
+import com.jvmfrog.ffsettings.ui.fragment.SettingsFragment;
 import com.jvmfrog.ffsettings.utils.FragmentUtils;
 import com.jvmfrog.ffsettings.utils.SharedPreferencesUtils;
 
@@ -41,13 +42,12 @@ public class MainActivity extends AppCompatActivity {
     private ActivityMainBinding binding;
 
     private ConsentInformation consentInformation;
-
     private Boolean isFirstOpen;
-
     private static final int UPDATE_CODE = 100;
     private AppUpdateManager appUpdateManager;
     private AppUpdateInfo appUpdateInfo;
-
+    private static String TEST_ADMOB_BANNER_ID = "ca-app-pub-3940256099942544/6300978111";
+    private static String ADMOB_BANNER_ID = "ca-app-pub-4193046598871025/3862225673";
     private AdRequest adRequest;
     private AdView adView;
 
@@ -65,17 +65,11 @@ public class MainActivity extends AppCompatActivity {
         initConsent();
 
         if (isFirstOpen) {
-            ((MyApplication) application).showAdIfAvailable(this, null);
+            ((MyApplication) application).showAdIfAvailable(this, () -> {});
         }
 
         MobileAds.initialize(this);
         adRequest = new AdRequest.Builder().build();
-        String BUILD_TYPE = BuildConfig.BUILD_TYPE.toLowerCase(Locale.ROOT);
-        if (BUILD_TYPE == "debug") {
-            binding.bannerAd.setAdUnitId(String.valueOf(R.string.admob_banner_test_ad_id));
-        } else {
-            binding.bannerAd.setAdUnitId(String.valueOf(R.string.admob_banner_main_activity));
-        }
         binding.bannerAd.loadAd(adRequest);
 
         appUpdateManager = AppUpdateManagerFactory.create(this);
