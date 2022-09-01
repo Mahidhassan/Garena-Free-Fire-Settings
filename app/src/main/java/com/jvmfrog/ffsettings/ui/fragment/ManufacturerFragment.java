@@ -65,7 +65,9 @@ public class ManufacturerFragment extends Fragment {
         ManufacturersAdapter adapter = new ManufacturersAdapter(arrayList);
         binding.recview.setAdapter(adapter);
 
+        binding.googleFormText.setText(getString(R.string.dont_have_your_phone_model) + " " + getString(R.string.then_click_here));
         binding.googleFormBtn.setOnClickListener(view -> new CustomTabUtil().OpenCustomTab(getActivity(), getString(R.string.google_form), R.color.md_theme_light_onSecondary));
+        binding.translateAppBtn.setOnClickListener(view -> new CustomTabUtil().OpenCustomTab(getActivity(), getString(R.string.crowdin), R.color.md_theme_light_onSecondary));
 
         return binding.getRoot();
     }

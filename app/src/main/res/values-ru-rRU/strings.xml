@@ -13,7 +13,8 @@
     <string name="source">Источник:</string>
 
     <string name="dont_have_your_phone_model">Нету модели вашего телефона?</string>
-    <string name="then_click_here">Тогда жми сюда!</string>
+    <string name="then_click_here">Тогда жми!</string>
+    <string name="improve_translation">Улучшить перевод</string>
     <string name="copy">Скопировать</string>
     <string name="copied">Скопировано</string>
     <string name="link">Ссылка</string>

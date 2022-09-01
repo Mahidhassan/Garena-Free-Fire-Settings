@@ -7,6 +7,7 @@
     <string name="GOOGLE_PLAY" translatable="false">https://play.google.com/store/apps/dev?id=8551876312630719902</string>
     <string name="google_form" translatable="false">https://forms.gle/4HcvAjPVC1ogNcRS8</string>
     <string name="email" translatable="false">ibremminer837.dev@gmail.com</string>
+    <string name="crowdin" translatable="false">https://crwd.in/settings-for-free-fire-app</string>
 
     <string name="admob_app_id" translatable="false">ca-app-pub-4193046598871025~2670224662</string>
     <string name="admob_banner_recycler" translatable="false">ca-app-pub-4193046598871025/8458826678</string>
@@ -28,6 +29,7 @@
 
     <string name="dont_have_your_phone_model">Don\'t have your phone model?</string>
     <string name="then_click_here">Then click here</string>
+    <string name="improve_translation">Improve Translation</string>
     <string name="copy">Copy</string>
     <string name="copied">Copied</string>
     <string name="link">Link</string>
