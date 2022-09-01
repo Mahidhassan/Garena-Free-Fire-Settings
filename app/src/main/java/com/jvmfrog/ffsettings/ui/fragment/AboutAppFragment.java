@@ -36,6 +36,7 @@ public class AboutAppFragment extends Fragment {
 
         binding.appVersionBtn.setText(getString(R.string.version) + ": " + BuildConfig.VERSION_NAME + "(" + BuildConfig.VERSION_CODE + ")");
         binding.appVersionBtn.setOnClickListener(v -> {countToScreenshotEdition += 1;});
+        binding.donateBtn.setOnClickListener(v -> new CustomTabUtil().OpenCustomTab(getActivity(), "https://www.donationalerts.com/r/ibragim837", R.color.md_theme_light_onSecondary));
         binding.appVersionBtn.setOnLongClickListener(v -> {
             if (countToScreenshotEdition == 7 && !SharedPreferencesUtils.getBoolean(getActivity(), "isScreenshotEdition")) {
                 SharedPreferencesUtils.saveBoolean(getActivity(), "isScreenshotEdition", true);
@@ -51,6 +52,7 @@ public class AboutAppFragment extends Fragment {
         binding.mailBtn.setOnClickListener(v -> BugReportHelper.sendEmail(getActivity()));
         binding.rateBtn.setOnClickListener(v -> OtherUtils.reviewAppInGooglePlay(getActivity()));
         binding.vkGroupBtn.setOnClickListener(v -> new CustomTabUtil().OpenCustomTab(getActivity(), getString(R.string.JVMFrog), R.color.md_theme_light_onSecondary));
+        binding.telegramBtn.setOnClickListener(v -> new CustomTabUtil().OpenCustomTab(getActivity(), "t.me/freefiresettingsapp", R.color.md_theme_light_onSecondary));
         binding.otherAppsBtn.setOnClickListener(view1 -> {
             try {
                 startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://search?q=pub:JVMFrog")));

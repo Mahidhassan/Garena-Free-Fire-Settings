@@ -173,6 +173,20 @@
                         style="@style/Widget.Material3.Button.TextButton"/>
 
                     <com.google.android.material.button.MaterialButton
+                        android:id="@+id/telegramBtn"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Telegram"
+                        android:textSize="24sp"
+                        app:icon="@drawable/telegram"
+                        app:iconPadding="16dp"
+                        app:iconSize="24dp"
+                        app:iconTintMode="screen"
+                        app:iconTint="#00ffffff"
+                        android:textAlignment="textStart"
+                        style="@style/Widget.Material3.Button.TextButton"/>
+
+                    <com.google.android.material.button.MaterialButton
                         android:id="@+id/otherAppsBtn"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
