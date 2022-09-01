@@ -16,7 +16,7 @@
             android:layout_height="wrap_content"
             app:cardCornerRadius="16dp"
             app:cardUseCompatPadding="true"
-            style="@style/Widget.Material3.CardView.Filled">
+            style="@style/Widget.Material3.CardView.Elevated">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -88,6 +88,18 @@
                         app:iconSize="24dp"
                         android:textAlignment="textStart"
                         style="@style/Widget.Material3.Button.TextButton"/>
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/donateBtn"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Donate"
+                        android:textSize="24sp"
+                        app:icon="@drawable/ic_round_payment_24"
+                        app:iconPadding="16dp"
+                        app:iconSize="24dp"
+                        android:textAlignment="textStart"
+                        style="@style/Widget.Material3.Button.TextButton"/>
                 </LinearLayout>
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
@@ -97,7 +109,7 @@
             android:layout_height="wrap_content"
             app:cardCornerRadius="16dp"
             app:cardUseCompatPadding="true"
-            style="@style/Widget.Material3.CardView.Filled">
+            style="@style/Widget.Material3.CardView.Elevated">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -152,9 +164,11 @@
                         android:layout_height="wrap_content"
                         android:text="@string/we_are_on_vk"
                         android:textSize="24sp"
-                        app:icon="@drawable/ic_round_public_24"
+                        app:icon="@drawable/vk"
                         app:iconPadding="16dp"
                         app:iconSize="24dp"
+                        app:iconTintMode="screen"
+                        app:iconTint="#00ffffff"
                         android:textAlignment="textStart"
                         style="@style/Widget.Material3.Button.TextButton"/>
 
