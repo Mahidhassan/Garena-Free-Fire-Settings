@@ -52,7 +52,7 @@ public class AboutAppFragment extends Fragment {
         binding.mailBtn.setOnClickListener(v -> BugReportHelper.sendEmail(getActivity()));
         binding.rateBtn.setOnClickListener(v -> OtherUtils.reviewAppInGooglePlay(getActivity()));
         binding.vkGroupBtn.setOnClickListener(v -> new CustomTabUtil().OpenCustomTab(getActivity(), getString(R.string.JVMFrog), R.color.md_theme_light_onSecondary));
-        binding.telegramBtn.setOnClickListener(v -> new CustomTabUtil().OpenCustomTab(getActivity(), "t.me/freefiresettingsapp", R.color.md_theme_light_onSecondary));
+        binding.telegramBtn.setOnClickListener(v -> new CustomTabUtil().OpenCustomTab(getActivity(), "https://t.me/freefiresettingsapp", R.color.md_theme_light_onSecondary));
         binding.otherAppsBtn.setOnClickListener(view1 -> {
             try {
                 startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://search?q=pub:JVMFrog")));

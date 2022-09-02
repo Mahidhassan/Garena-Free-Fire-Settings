@@ -41,69 +41,19 @@ public class ManufacturersAdapter extends RecyclerView.Adapter<ManufacturersAdap
     public void onBindViewHolder(@NonNull ManufacturersAdapter.holder holder, int position) {
         holder.device_name.setText(arrayList.get(position));
 
-        Bundle finalBundle = new Bundle();
         holder.itemView.setOnClickListener(view -> {
-            switch (position) {
-                case 0:
-                    if (!SharedPreferencesUtils.getBoolean(view.getContext(), "isScreenshotEdition")) {
-                        finalBundle.putString("device", "samsung");
-                        FragmentUtils.changeFragmentWithBackStack((FragmentActivity) view.getContext(), new DevicesFragment(), R.id.frame, "back", finalBundle);
-                    } else {
-                        finalBundle.putString("device", "sumsang");
-                        FragmentUtils.changeFragmentWithBackStack((FragmentActivity) view.getContext(), new DevicesFragment(), R.id.frame, "back", finalBundle);
-                    }
-                    break;
-                case 1:
-                    if (!SharedPreferencesUtils.getBoolean(view.getContext(), "isScreenshotEdition")) {
-                        finalBundle.putString("device", "iphone");
-                        FragmentUtils.changeFragmentWithBackStack((FragmentActivity) view.getContext(), new DevicesFragment(), R.id.frame, "back", finalBundle);
-                    } else {
-                        finalBundle.putString("device", "irhone");
-                        FragmentUtils.changeFragmentWithBackStack((FragmentActivity) view.getContext(), new DevicesFragment(), R.id.frame, "back", finalBundle);
-                    }
-                    break;
-                case 2:
-                    if (!SharedPreferencesUtils.getBoolean(view.getContext(), "isScreenshotEdition")) {
-                        finalBundle.putString("device", "xiaomi");
-                        FragmentUtils.changeFragmentWithBackStack((FragmentActivity) view.getContext(), new DevicesFragment(), R.id.frame, "back", finalBundle);
-                    } else {
-                        finalBundle.putString("device", "xioami");
-                        FragmentUtils.changeFragmentWithBackStack((FragmentActivity) view.getContext(), new DevicesFragment(), R.id.frame, "back", finalBundle);
-                    }
-                    break;
-                case 3:
-                    finalBundle.putString("device", "redmi");
-                    FragmentUtils.changeFragmentWithBackStack((FragmentActivity) view.getContext(), new DevicesFragment(), R.id.frame, "back", finalBundle);
-                    break;
-                case 4:
-                    finalBundle.putString("device", "oppo");
-                    FragmentUtils.changeFragmentWithBackStack((FragmentActivity) view.getContext(), new DevicesFragment(), R.id.frame, "back", finalBundle);
-                    break;
-                case 5:
-                    finalBundle.putString("device", "huawei");
-                    FragmentUtils.changeFragmentWithBackStack((FragmentActivity) view.getContext(), new DevicesFragment(), R.id.frame, "back", finalBundle);
-                    break;
-                case 6:
-                    finalBundle.putString("device", "poco");
-                    FragmentUtils.changeFragmentWithBackStack((FragmentActivity) view.getContext(), new DevicesFragment(), R.id.frame, "back", finalBundle);
-                    break;
-                case 7:
-                    finalBundle.putString("device", "honor");
-                    FragmentUtils.changeFragmentWithBackStack((FragmentActivity) view.getContext(), new DevicesFragment(), R.id.frame, "back", finalBundle);
-                    break;
-                case 8:
-                    finalBundle.putString("device", "lg");
-                    FragmentUtils.changeFragmentWithBackStack((FragmentActivity) view.getContext(), new DevicesFragment(), R.id.frame, "back", finalBundle);
-                    break;
-                case 9:
-                    finalBundle.putString("device", "zte");
-                    FragmentUtils.changeFragmentWithBackStack((FragmentActivity) view.getContext(), new DevicesFragment(), R.id.frame, "back", finalBundle);
-                    break;
-                case 10:
-                    finalBundle.putString("device", "vivo");
-                    FragmentUtils.changeFragmentWithBackStack((FragmentActivity) view.getContext(), new DevicesFragment(), R.id.frame, "back", finalBundle);
-                    break;
-            }
+            Bundle finalBundle = new Bundle();
+            String[] manufacturers = {
+                    "samsung", "iphone", "xiaomi", "redmi", "oppo",
+                    "huawei", "poco", "honor", "lg", "zte", "vivo"
+            };
+            finalBundle.putString("device", manufacturers[position]);
+            FragmentUtils.changeFragmentWithBackStack(
+                    (FragmentActivity) view.getContext(),
+                    new DevicesFragment(),
+                    R.id.frame,
+                    "back",
+                    finalBundle);
         });
     }
 
