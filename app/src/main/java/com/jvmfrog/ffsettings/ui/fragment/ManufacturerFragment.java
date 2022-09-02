@@ -15,6 +15,8 @@ import com.jvmfrog.ffsettings.R;
 import com.jvmfrog.ffsettings.databinding.FragmentManufacturerBinding;
 import com.jvmfrog.ffsettings.utils.SharedPreferencesUtils;
 
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 
 public class ManufacturerFragment extends Fragment {

@@ -32,4 +32,18 @@ public class SharedPreferencesUtils {
         SharedPreferences prefs = context.getSharedPreferences("app_config", Context.MODE_PRIVATE);
         return prefs.getInt(key, 0);
     }
+
+    // create function to save string value in shared preference
+    public static void saveString(Context context, String key, String value) {
+        SharedPreferences prefs = context.getSharedPreferences("app_config", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putString(key, value);
+        editor.apply();
+    }
+
+    // create function to get string value from shared preference
+    public static String getString(Context context, String key) {
+        SharedPreferences prefs = context.getSharedPreferences("app_config", Context.MODE_PRIVATE);
+        return prefs.getString(key, "");
+    }
 }

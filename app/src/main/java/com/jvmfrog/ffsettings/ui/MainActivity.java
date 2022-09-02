@@ -3,9 +3,11 @@ package com.jvmfrog.ffsettings.ui;
 import android.app.Application;
 import android.content.IntentSender;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.ContextThemeWrapper;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.splashscreen.SplashScreen;
 import androidx.fragment.app.FragmentManager;
@@ -14,6 +16,7 @@ import androidx.fragment.app.FragmentTransaction;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.play.core.appupdate.AppUpdateInfo;
@@ -25,7 +28,6 @@ import com.google.android.ump.ConsentDebugSettings;
 import com.google.android.ump.ConsentInformation;
 import com.google.android.ump.ConsentRequestParameters;
 import com.google.android.ump.UserMessagingPlatform;
-import com.jvmfrog.ffsettings.BuildConfig;
 import com.jvmfrog.ffsettings.MyApplication;
 import com.jvmfrog.ffsettings.R;
 import com.jvmfrog.ffsettings.databinding.ActivityMainBinding;
@@ -48,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
     private AppUpdateInfo appUpdateInfo;
     private static String TEST_ADMOB_BANNER_ID = "ca-app-pub-3940256099942544/6300978111";
     private static String ADMOB_BANNER_ID = "ca-app-pub-4193046598871025/3862225673";
+
     private AdRequest adRequest;
     private AdView adView;
 
@@ -67,6 +70,7 @@ public class MainActivity extends AppCompatActivity {
         if (isFirstOpen) {
             ((MyApplication) application).showAdIfAvailable(this, () -> {});
         }
+
 
         MobileAds.initialize(this);
         adRequest = new AdRequest.Builder().build();

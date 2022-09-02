@@ -76,7 +76,7 @@ public class DeviceSettingsFragment extends Fragment {
         binding.textViewFireButton.setText(getString(R.string.fire_button) + ":" + " " + (int) finalBundle.getFloat("fire_button"));
         binding.sliderFireButton.setValue(finalBundle.getFloat("fire_button"));
 
-        if (finalBundle.getString("settings_source_url") == null) {
+        if (finalBundle.getString("settings_source_url") == null || finalBundle.getString("settings_source_url").equals("")) {
             binding.textViewSettingsSourceUrl.setVisibility(View.GONE);
             binding.textViewSource.setVisibility(View.GONE);
         } else {
