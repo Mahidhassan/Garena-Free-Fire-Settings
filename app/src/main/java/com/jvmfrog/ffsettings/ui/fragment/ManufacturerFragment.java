@@ -36,7 +36,7 @@ public class ManufacturerFragment extends Fragment {
 
         arrayList = new ArrayList<>();
 
-        if (!SharedPreferencesUtils.getBoolean(getActivity(), "isScreenshotEdition")) {
+        if (!SharedPreferencesUtils.getBoolean(getActivity(), "isFakeManufacturerNames")) {
             arrayList.add("Samsung");
             arrayList.add("iPhone");
             arrayList.add("Xiaomi");
@@ -48,6 +48,7 @@ public class ManufacturerFragment extends Fragment {
             arrayList.add("LG");
             arrayList.add("ZTE");
             arrayList.add("Vivo");
+            arrayList.add("Motorola");
         } else {
             arrayList.add("Sumsang");
             arrayList.add("iRhone");
@@ -60,6 +61,7 @@ public class ManufacturerFragment extends Fragment {
             arrayList.add("GL");
             arrayList.add("TZE");
             arrayList.add("Wivo");
+            arrayList.add("Notorola");
         }
 
         LinearLayoutManager layoutManager = new GridLayoutManager(getActivity(), 2);
@@ -69,7 +71,6 @@ public class ManufacturerFragment extends Fragment {
 
         binding.googleFormText.setText(getString(R.string.dont_have_your_phone_model) + " " + getString(R.string.then_click_here));
         binding.googleFormBtn.setOnClickListener(view -> new CustomTabUtil().OpenCustomTab(getActivity(), getString(R.string.google_form), R.color.md_theme_light_onSecondary));
-        binding.translateAppBtn.setOnClickListener(view -> new CustomTabUtil().OpenCustomTab(getActivity(), getString(R.string.crowdin), R.color.md_theme_light_onSecondary));
 
         return binding.getRoot();
     }

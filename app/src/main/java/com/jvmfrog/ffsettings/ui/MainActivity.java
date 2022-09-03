@@ -5,6 +5,8 @@ import android.content.IntentSender;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.ContextThemeWrapper;
+import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -67,10 +69,21 @@ public class MainActivity extends AppCompatActivity {
         firstOpenDialog();
         initConsent();
 
+        if (!SharedPreferencesUtils.getBoolean(this, "isFakeAppName")) {
+            binding.appName.setText(R.string.app_name);
+        } else {
+            binding.appName.setText(R.string.fake_app_name);
+        }
+
+        if (!SharedPreferencesUtils.getBoolean(this, "isAdBannerHidden")) {
+            binding.bannerAd.setVisibility(View.GONE);
+        } else {
+            binding.bannerAd.setVisibility(View.VISIBLE);
+        }
+
         if (isFirstOpen) {
             ((MyApplication) application).showAdIfAvailable(this, () -> {});
         }
-
 
         MobileAds.initialize(this);
         adRequest = new AdRequest.Builder().build();

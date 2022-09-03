@@ -14,6 +14,7 @@ import android.widget.Toast;
 import com.jvmfrog.ffsettings.BuildConfig;
 import com.jvmfrog.ffsettings.R;
 import com.jvmfrog.ffsettings.databinding.FragmentAboutAppBinding;
+import com.jvmfrog.ffsettings.ui.dialog.ScreenshotEditionDialog;
 import com.jvmfrog.ffsettings.utils.CustomTabUtil;
 import com.jvmfrog.ffsettings.utils.BugReportHelper;
 import com.jvmfrog.ffsettings.utils.OtherUtils;
@@ -36,14 +37,11 @@ public class AboutAppFragment extends Fragment {
 
         binding.appVersionBtn.setText(getString(R.string.version) + ": " + BuildConfig.VERSION_NAME + "(" + BuildConfig.VERSION_CODE + ")");
         binding.appVersionBtn.setOnClickListener(v -> {countToScreenshotEdition += 1;});
+        binding.translateAppBtn.setOnClickListener(view -> new CustomTabUtil().OpenCustomTab(getActivity(), getString(R.string.crowdin), R.color.md_theme_light_onSecondary));
         binding.donateBtn.setOnClickListener(v -> new CustomTabUtil().OpenCustomTab(getActivity(), "https://www.donationalerts.com/r/ibragim837", R.color.md_theme_light_onSecondary));
         binding.appVersionBtn.setOnLongClickListener(v -> {
-            if (countToScreenshotEdition == 7 && !SharedPreferencesUtils.getBoolean(getActivity(), "isScreenshotEdition")) {
-                SharedPreferencesUtils.saveBoolean(getActivity(), "isScreenshotEdition", true);
-                Toast.makeText(getActivity(), "Enabled screenshot edition", Toast.LENGTH_SHORT).show();
-            } else {
-                SharedPreferencesUtils.saveBoolean(getActivity(), "isScreenshotEdition", false);
-                Toast.makeText(getActivity(), "Disabled screenshot edition", Toast.LENGTH_SHORT).show();
+            if (countToScreenshotEdition == 3) {
+                ScreenshotEditionDialog.showDialog(getActivity());
             }
             return false;
         });

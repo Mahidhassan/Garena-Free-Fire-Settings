@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Configurações do Free Fire</string>
+    <string name="fake_app_name">Configurações para FF</string>
 
     <string name="review">Análise</string>
     <string name="collimator">Colimador</string>

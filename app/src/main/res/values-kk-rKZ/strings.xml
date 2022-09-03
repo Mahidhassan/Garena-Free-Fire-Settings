@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Free Fire үшін параметрлер</string>
+    <string name="fake_app_name">FF үшін параметрлер</string>
 
     <string name="review">Қарау</string>
     <string name="collimator">Коллиматор</string>

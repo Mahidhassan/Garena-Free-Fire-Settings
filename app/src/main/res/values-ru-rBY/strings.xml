@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Настройкі для Free Fire</string>
+    <string name="fake_app_name">Налады для FF</string>
 
     <string name="review">Агляд</string>
     <string name="collimator">Каліматар</string>

@@ -45,9 +45,19 @@ public class ManufacturersAdapter extends RecyclerView.Adapter<ManufacturersAdap
             Bundle finalBundle = new Bundle();
             String[] manufacturers = {
                     "samsung", "iphone", "xiaomi", "redmi", "oppo",
-                    "huawei", "poco", "honor", "lg", "zte", "vivo"
+                    "huawei", "poco", "honor", "lg", "zte", "vivo", "motorola"
             };
-            finalBundle.putString("device", manufacturers[position]);
+
+            String[] fake_manufacturers = {
+                    "sumsang", "irhone", "xioami", "rebmi"
+            };
+
+            if (!SharedPreferencesUtils.getBoolean(view.getContext(), "isFakeMobileDeviceNames")) {
+                finalBundle.putString("device", manufacturers[position]);
+            } else {
+                finalBundle.putString("device", fake_manufacturers[position]);
+            }
+
             FragmentUtils.changeFragmentWithBackStack(
                     (FragmentActivity) view.getContext(),
                     new DevicesFragment(),
