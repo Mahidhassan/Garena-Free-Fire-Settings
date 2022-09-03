@@ -3,6 +3,15 @@
     <string name="app_name">Налаштування для Free Fire</string>
     <string name="fake_app_name">Налаштування для FF</string>
 
+    <string name="welcome">Ласкаво просимо</string>
+    <string name="user_name">Ім\'я користувача</string>
+    <string name="enter_user_name">Введіть ім\'я користувача</string>
+    <string name="save">Зберегти</string>
+    <string name="reset">Скинути</string>
+
+    <string name="welcome_message">Дякуємо, що встановили наш додаток.
+        \nТут ви знайдете налаштування чутливості для вашого пристрою, і якщо вашої моделі телефону немає серед налаштувань, ви можете запросити їх.</string>
+
     <string name="review">Огляд</string>
     <string name="collimator">Коліматор</string>
     <string name="x2_scope">x2 Приціл</string>
@@ -39,8 +48,5 @@
     <string name="install">Встановити</string>
     <string name="thank_for_review">Дякуємо за відгук :)</string>
 
-    <string name="welcome">Ласкаво просимо!</string>
-    <string name="welcome_message">Дякуємо, що встановили наш додаток.
-        \nТут ви знайдете налаштування чутливості для вашого пристрою, і якщо вашої моделі телефону немає серед налаштувань, ви можете запросити їх.</string>
     <string name="copy_settings_button">Кнопка копіювання налаштувань</string>
 </resources>

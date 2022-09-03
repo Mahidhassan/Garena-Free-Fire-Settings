@@ -3,6 +3,16 @@
     <string name="app_name">Настройкі для Free Fire</string>
     <string name="fake_app_name">Налады для FF</string>
 
+    <string name="welcome">Сардэчна запрашаем</string>
+    <string name="user_name">Імя карыстальніка</string>
+    <string name="enter_user_name">Увядзіце імя карыстальніка</string>
+    <string name="save">Захаваць</string>
+    <string name="reset">Скінуць</string>
+
+    <string name="welcome_message">
+        Дзякуй за ўстаноўку нашага прыкладання.
+        \nТут вы знойдзеце настройкі адчувальнасці для сваёй прылады, а калі сярод настроек няма мадэлі вашага тэлефона вы можаце запытаць іх.    </string>
+
     <string name="review">Агляд</string>
     <string name="collimator">Каліматар</string>
     <string name="x2_scope">x2 Прыцэл</string>
@@ -37,11 +47,6 @@
     <string name="update_available">Даступна абнаўленне!</string>
     <string name="install">Усталяваць</string>
     <string name="thank_for_review">Дзякуй за водгук :)</string>
-
-    <string name="welcome">Сардэчна запрашаем!</string>
-    <string name="welcome_message">
-        Дзякуй за ўстаноўку нашага прыкладання.
-        \nТут вы знойдзеце настройкі адчувальнасці для сваёй прылады, а калі сярод настроек няма мадэлі вашага тэлефона вы можаце запытаць іх.    </string>
 
     <!--Accessibility-->
     <string name="copy_settings_button">Кнопка капіявання налад</string>

@@ -3,6 +3,16 @@
     <string name="app_name">Serbest Ateş Ayarları</string>
     <string name="fake_app_name">FF Ayarları</string>
 
+    <string name="welcome">Hoş geldin</string>
+    <string name="user_name">Kullanıcı adı</string>
+    <string name="enter_user_name">Kullanıcı adı girin</string>
+    <string name="save">Kaydetmek</string>
+    <string name="reset">Sıfırla</string>
+
+    <string name="welcome_message">
+        Uygulamamızı yüklediğiniz için teşekkür ederiz.
+        \nBurada cihazınızın hassasiyet ayarlarını bulacaksınız ve telefon modeliniz ayarlar arasında değilse talep edebilirsiniz.</string>
+
     <string name="review">Gözden geçirmek</string>
     <string name="collimator">Kolimatör</string>
     <string name="x2_scope">x2 Kapsam</string>
@@ -37,11 +47,6 @@
     <string name="update_available">Güncelleme uygun!</string>
     <string name="install">Düzenlemek</string>
     <string name="thank_for_review">Geri dönüşünüz için teşekkür ederiz :)</string>
-
-    <string name="welcome">Hoş geldin!</string>
-    <string name="welcome_message">
-        Uygulamamızı yüklediğiniz için teşekkür ederiz.
-        \nBurada cihazınızın hassasiyet ayarlarını bulacaksınız ve telefon modeliniz ayarlar arasında değilse talep edebilirsiniz.</string>
 
     <!--Accessibility-->
     <string name="copy_settings_button">Ayarları kopyala düğmesi</string>

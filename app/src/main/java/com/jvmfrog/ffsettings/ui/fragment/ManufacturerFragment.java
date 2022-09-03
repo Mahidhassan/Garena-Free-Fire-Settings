@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import com.jvmfrog.ffsettings.adapter.ManufacturersAdapter;
+import com.jvmfrog.ffsettings.ui.dialog.ChangeUsernameDialog;
 import com.jvmfrog.ffsettings.utils.CustomTabUtil;
 import com.jvmfrog.ffsettings.R;
 import com.jvmfrog.ffsettings.databinding.FragmentManufacturerBinding;
@@ -33,6 +34,12 @@ public class ManufacturerFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         binding = FragmentManufacturerBinding.inflate(inflater, container, false);
+
+        if (SharedPreferencesUtils.getString(getActivity(), "user_name") == null || SharedPreferencesUtils.getString(getActivity(), "user_name").equals("")) {
+            binding.welcomeAndUserName.setText(getString(R.string.welcome) + "," + "\n" + getString(R.string.user_name) + "!");
+        } else {
+            binding.welcomeAndUserName.setText(getString(R.string.welcome) + "," + "\n" + SharedPreferencesUtils.getString(getActivity(), "user_name") + "!");
+        }
 
         arrayList = new ArrayList<>();
 
@@ -69,7 +76,7 @@ public class ManufacturerFragment extends Fragment {
         ManufacturersAdapter adapter = new ManufacturersAdapter(arrayList);
         binding.recview.setAdapter(adapter);
 
-        binding.googleFormText.setText(getString(R.string.dont_have_your_phone_model) + " " + getString(R.string.then_click_here));
+        binding.setUserNameBtn.setOnClickListener(view -> ChangeUsernameDialog.showDialog(getActivity()));
         binding.googleFormBtn.setOnClickListener(view -> new CustomTabUtil().OpenCustomTab(getActivity(), getString(R.string.google_form), R.color.md_theme_light_onSecondary));
 
         return binding.getRoot();

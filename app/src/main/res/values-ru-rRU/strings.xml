@@ -3,6 +3,17 @@
     <string name="app_name">Настройки для Free Fire</string>
     <string name="fake_app_name">Настройки для FF</string>
 
+    <string name="welcome">Добро Пожаловать</string>
+    <string name="user_name">Имя пользователя</string>
+    <string name="enter_user_name">Введите Имя пользователя</string>
+    <string name="save">Сохранить</string>
+    <string name="reset">Сбросить</string>
+
+    <string name="welcome_message">
+        Спасибо за установку нашего приложения.
+        \nЗдесь вы найдете настройки чувствительности для своего устройства, а если среди настроек нету модели вашего телефона вы запроста можете запросить их.
+    </string>
+
     <string name="review">Обзор</string>
     <string name="collimator">Коллиматор</string>
     <string name="x2_scope">x2 Прицел</string>
@@ -14,7 +25,7 @@
     <string name="source">Источник:</string>
 
     <string name="dont_have_your_phone_model">Нету модели вашего телефона?</string>
-    <string name="then_click_here">Тогда жми!</string>
+    <string name="then_click_here">Тогда жми сюда!</string>
     <string name="improve_translation">Улучшить перевод</string>
     <string name="copy">Скопировать</string>
     <string name="copied">Скопировано</string>
@@ -37,12 +48,6 @@
     <string name="update_available">Доступно обновление!</string>
     <string name="install">Установить</string>
     <string name="thank_for_review">Спасибо за отзыв :)</string>
-
-    <string name="welcome">Добро Пожаловать!</string>
-    <string name="welcome_message">
-        Спасибо за установку нашего приложения.
-        \nЗдесь вы найдете настройки чувствительности для своего устройства, а если среди настроек нету модели вашего телефона вы запроста можете запросить их.
-    </string>
 
     <!--Accessibility-->
     <string name="copy_settings_button">Кнопка копирования настроек</string>

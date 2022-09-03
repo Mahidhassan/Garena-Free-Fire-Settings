@@ -3,6 +3,16 @@
     <string name="app_name">Paramètres pour Free Fire</string>
     <string name="fake_app_name">Paramètres pour FF</string>
 
+    <string name="welcome">Bonjour</string>
+    <string name="user_name">Nom d\'utilisateur</string>
+    <string name="enter_user_name">Saisissez votre nom d\'utilisateur</string>
+    <string name="save">Sauvegarder</string>
+    <string name="reset">Réinitialiser</string>
+
+    <string name="welcome_message">
+        Merci d\'avoir installé notre application.
+        \nVous trouverez ici les paramètres de sensibilité de votre appareil, et si votre modèle de téléphone ne figure pas parmi les paramètres, vous pouvez les demander.</string>
+
     <string name="review">Examen</string>
     <string name="collimator">Collimateur</string>
     <string name="x2_scope">Portée x2</string>
@@ -37,11 +47,6 @@
     <string name="update_available">Mise à jour disponible!</string>
     <string name="install">Installer</string>
     <string name="thank_for_review">Merci pour les commentaires :)</string>
-
-    <string name="welcome">Accueillir!</string>
-    <string name="welcome_message">
-        Merci d\'avoir installé notre application.
-        \nVous trouverez ici les paramètres de sensibilité de votre appareil, et si votre modèle de téléphone ne figure pas parmi les paramètres, vous pouvez les demander.    </string>
 
     <!--Accessibility-->
     <string name="copy_settings_button">Bouton Copier les paramètres</string>

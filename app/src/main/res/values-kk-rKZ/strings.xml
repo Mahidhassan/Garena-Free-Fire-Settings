@@ -3,6 +3,16 @@
     <string name="app_name">Free Fire үшін параметрлер</string>
     <string name="fake_app_name">FF үшін параметрлер</string>
 
+    <string name="welcome">Қош келдіңіз</string>
+    <string name="user_name">Пайдаланушы аты</string>
+    <string name="enter_user_name">Пайдаланушы атын енгізіңіз</string>
+    <string name="save">Сақтау</string>
+    <string name="reset">Қалпына келтіру</string>
+
+    <string name="welcome_message">
+        Біздің қолданбаны орнатқаныңыз үшін рақмет.
+        \nОсы жерден құрылғының сезімталдық параметрлерін табасыз және телефон үлгісі параметрлер арасында болмаса, оларды сұрауға болады.</string>
+
     <string name="review">Қарау</string>
     <string name="collimator">Коллиматор</string>
     <string name="x2_scope">x2 Ауқымы</string>
@@ -37,11 +47,6 @@
     <string name="update_available">Жаңарту қолжетімді!</string>
     <string name="install">Орнату</string>
     <string name="thank_for_review">Пікіріңізге рахмет :)</string>
-
-    <string name="welcome">Қош келдіңіз!</string>
-    <string name="welcome_message">
-        Біздің қолданбаны орнатқаныңыз үшін рақмет.
-        \nОсы жерден құрылғының сезімталдық параметрлерін табасыз және телефон үлгісі параметрлер арасында болмаса, оларды сұрауға болады.    </string>
 
     <!--Accessibility-->
     <string name="copy_settings_button">Параметрлерді көшіру түймесі</string>
