@@ -14,7 +14,7 @@
   <a href="https://play.google.com/store/apps/details?id=com.jvmfrog.ffsettings" style="text-decoration:none" area-label="Play Store">
     <img src="https://img.shields.io/badge/Download-Google_Play-green.svg">
   </a>
-  <a href="https://github.com/RetroMusicPlayer/RetroMusicPlayer/blob/master/LICENSE.md" style="text-decoration:none" area-label="License: GPL v3">
+  <a href="https://github.com/IbremMiner837/Garena-Free-Fire-Settings/blob/master/LICENSE.md" style="text-decoration:none" area-label="License: GPL v3">
     <img src="https://img.shields.io/badge/License-GPL%20v3-blue.svg">
   </a>
   <a title="Crowdin" target="_blank" href="https://crowdin.com/project/settings-for-free-fire-app"><img src="https://badges.crowdin.net/settings-for-free-fire-app/localized.svg">
