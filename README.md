@@ -30,7 +30,7 @@ ___
 ___
 
 ## 📱 Screenshots
-| <img src="screenshot_0.jpg" width="200"/> | <img src="screenshot_1.jpg" width="200"/> | <img src="screenshot_2.jpg" width="200"/> |
+| <img src="github-files/screenshot_0.jpg" width="200"/> | <img src="github-files/screenshot_1.jpg" width="200"/> | <img src="github-files/screenshot_2.jpg" width="200"/> |
 |:---:|:---:|:---:|
 |Main Screen| Screen with mobile devices | Screen with settings display|
 
