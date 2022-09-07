@@ -1,0 +1,8 @@
+{
+  "version": 1,
+  "manufacturers": [
+    "Samsung", "iPhone", "Xiaomi", "Redmi", "Oppo", "Huawei",
+    "Poco", "Honor", "LG", "ZTE", "Vivo", "Motorola"
+    "Realme", "OnePlus"
+  ]
+}

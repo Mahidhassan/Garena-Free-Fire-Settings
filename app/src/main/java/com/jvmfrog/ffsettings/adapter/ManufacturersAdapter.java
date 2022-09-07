@@ -44,8 +44,9 @@ public class ManufacturersAdapter extends RecyclerView.Adapter<ManufacturersAdap
         holder.itemView.setOnClickListener(view -> {
             Bundle finalBundle = new Bundle();
             String[] manufacturers = {
-                    "samsung", "iphone", "xiaomi", "redmi", "oppo",
-                    "huawei", "poco", "honor", "lg", "zte", "vivo", "motorola"
+                    "samsung", "iphone", "xiaomi", "redmi", "oppo", "huawei",
+                    "poco", "honor", "lg", "zte", "vivo", "motorola",
+                    "Realme", "OnePlus"
             };
 
             String[] fake_manufacturers = {

@@ -56,6 +56,8 @@ public class ManufacturerFragment extends Fragment {
             arrayList.add("ZTE");
             arrayList.add("Vivo");
             arrayList.add("Motorola");
+            arrayList.add("Realme");
+            arrayList.add("OnePlus");
         } else {
             arrayList.add("Sumsang");
             arrayList.add("iRhone");
