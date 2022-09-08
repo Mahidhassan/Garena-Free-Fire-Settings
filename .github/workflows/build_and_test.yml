@@ -1,15 +1,7 @@
 name: Build and Test
 
 on:
-  push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
-  tags:
-    - "v*"
-  workflow_dispatch:
-  schedule:
-    - cron: '0 1 * * *'
+  workflow_dispatch: # Allows manual triggering of the workflow
 
 jobs:
   local_test_job:
