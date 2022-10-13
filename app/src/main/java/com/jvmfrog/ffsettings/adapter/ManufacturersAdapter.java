@@ -46,7 +46,7 @@ public class ManufacturersAdapter extends RecyclerView.Adapter<ManufacturersAdap
             String[] manufacturers = {
                     "samsung", "iphone", "xiaomi", "redmi", "oppo", "huawei",
                     "poco", "honor", "lg", "zte", "vivo", "motorola",
-                    "Realme", "OnePlus"
+                    "realme", "oneplus"
             };
 
             String[] fake_manufacturers = {
