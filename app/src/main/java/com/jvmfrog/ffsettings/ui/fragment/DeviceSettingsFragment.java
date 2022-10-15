@@ -22,8 +22,6 @@ public class DeviceSettingsFragment extends Fragment {
     private FragmentDeviceSettingsBinding binding;
     private Float dpi = null;
 
-    private int showAdCount;
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,22 +32,6 @@ public class DeviceSettingsFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         binding = FragmentDeviceSettingsBinding.inflate(inflater, container, false);
-        showAdCount = SharedPreferencesUtils.getInteger(getContext(), "showAdCount");
-
-        Application application = getActivity().getApplication();
-        if (showAdCount == 0) {
-            showAdCount++;
-            SharedPreferencesUtils.saveInteger(getContext(), "showAdCount", showAdCount);
-        } else if (showAdCount >= 3) {
-            showAdCount = 0;
-            SharedPreferencesUtils.saveInteger(getContext(), "showAdCount", showAdCount);
-            ((MyApplication) application).showAdIfAvailable(getActivity(), () -> {
-                //
-            });
-        } else {
-            showAdCount++;
-            SharedPreferencesUtils.saveInteger(getContext(), "showAdCount", showAdCount);
-        }
 
         Bundle finalBundle = new Bundle();
         finalBundle.putAll(getArguments());

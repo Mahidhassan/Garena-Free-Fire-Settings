@@ -76,7 +76,7 @@ public class DevicesFragment extends Fragment {
 
         binding.recview.setLayoutManager(new GridLayoutManager(getContext(), 1));
         binding.recview.setItemAnimator(new DefaultItemAnimator());
-        devicesAdapter = new DevicesAdapter(options);
+        devicesAdapter = new DevicesAdapter(options, requireActivity());
         binding.recview.setAdapter(devicesAdapter);
 
         return binding.getRoot();
