@@ -10,7 +10,7 @@ android {
         applicationId "com.jvmfrog.ffsettings"
         minSdk 23
         targetSdk 33
-        versionCode 15
+        versionCode 16
         versionName "v1.1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -32,6 +32,7 @@ android {
         enabled = true
     }
     namespace 'com.jvmfrog.ffsettings'
+
     buildFeatures {
         viewBinding true
     }

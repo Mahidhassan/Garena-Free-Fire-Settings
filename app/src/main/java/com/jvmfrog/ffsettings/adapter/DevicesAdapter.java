@@ -36,9 +36,7 @@ import java.util.Locale;
 
 public class DevicesAdapter extends FirestoreRecyclerAdapter<ParamsModel, DevicesAdapter.holder> {
 
-    private static final String TOAST_TEXT = "Test ads are being shown. "
-            + "To show live ads, replace the ad unit ID in res/values/strings.xml with your own ad unit ID.";
-    private static final String TAG = "AdMobFragment";
+    private static final String TAG = "Interstitial Ad";
     private InterstitialAd mInterstitialAd;
     private Context context;
 
@@ -86,7 +84,7 @@ public class DevicesAdapter extends FirestoreRecyclerAdapter<ParamsModel, Device
 
     private void loadInterstitialAd(Context context) {
         AdRequest adRequest = new AdRequest.Builder().build();
-        InterstitialAd.load(context, context.getString(R.string.admob_interstellar_test_ad_id), adRequest,
+        InterstitialAd.load(context, context.getString(R.string.admob_interstellar_ad_id), adRequest,
                 new InterstitialAdLoadCallback() {
                     @Override
                     public void onAdLoaded(@NonNull InterstitialAd interstitialAd) {
@@ -94,7 +92,7 @@ public class DevicesAdapter extends FirestoreRecyclerAdapter<ParamsModel, Device
                         // an ad is loaded.
                         mInterstitialAd = interstitialAd;
 
-                        Toast.makeText(context, "onAdLoaded()", Toast.LENGTH_SHORT).show();
+                        Log.d(TAG, "onAdLoaded");
                         interstitialAd.setFullScreenContentCallback(
                                 new FullScreenContentCallback() {
                                     @Override
@@ -135,10 +133,8 @@ public class DevicesAdapter extends FirestoreRecyclerAdapter<ParamsModel, Device
                                 loadAdError.getDomain(),
                                 loadAdError.getCode(),
                                 loadAdError.getMessage());
-                        Toast.makeText(
-                                        context,
-                                        "onAdFailedToLoad() with error: " + error, Toast.LENGTH_SHORT)
-                                .show();
+
+                        Log.d(TAG, "onAdFailedToLoad() with error: " + error);
                     }
                 });
     }
@@ -148,7 +144,7 @@ public class DevicesAdapter extends FirestoreRecyclerAdapter<ParamsModel, Device
         if (mInterstitialAd != null && context != null) {
             mInterstitialAd.show((Activity) context);
         } else {
-            Toast.makeText(context, "Ad did not load", Toast.LENGTH_SHORT).show();
+            Log.d(TAG, "The interstitial ad wasn't ready yet.");
         }
     }
 }

@@ -15,8 +15,10 @@ import androidx.core.splashscreen.SplashScreen;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.LoadAdError;
 import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -50,11 +52,8 @@ public class MainActivity extends AppCompatActivity {
     private static final int UPDATE_CODE = 100;
     private AppUpdateManager appUpdateManager;
     private AppUpdateInfo appUpdateInfo;
-    private static String TEST_ADMOB_BANNER_ID = "ca-app-pub-3940256099942544/6300978111";
-    private static String ADMOB_BANNER_ID = "ca-app-pub-4193046598871025/3862225673";
 
     private AdRequest adRequest;
-    private AdView adView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,6 +87,20 @@ public class MainActivity extends AppCompatActivity {
         MobileAds.initialize(this);
         adRequest = new AdRequest.Builder().build();
         binding.bannerAd.loadAd(adRequest);
+        binding.bannerAd.setAdListener(new AdListener() {
+            @Override
+            public void onAdFailedToLoad(@NonNull LoadAdError loadAdError) {
+                super.onAdFailedToLoad(loadAdError);
+                binding.bannerAd.setVisibility(View.GONE);
+                Log.d("MainActivity", "onAdFailedToLoad: " + loadAdError.getMessage());
+            }
+
+            @Override
+            public void onAdLoaded() {
+                super.onAdLoaded();
+                binding.bannerAd.setVisibility(View.VISIBLE);
+            }
+        });
 
         appUpdateManager = AppUpdateManagerFactory.create(this);
 
