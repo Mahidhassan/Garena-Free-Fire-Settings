@@ -39,6 +39,7 @@ import com.jvmfrog.ffsettings.ui.fragment.AboutAppFragment;
 import com.jvmfrog.ffsettings.ui.fragment.ManufacturerFragment;
 import com.jvmfrog.ffsettings.ui.fragment.SettingsFragment;
 import com.jvmfrog.ffsettings.utils.FragmentUtils;
+import com.jvmfrog.ffsettings.utils.NavigationUtils;
 import com.jvmfrog.ffsettings.utils.SharedPreferencesUtils;
 
 import java.util.Locale;
@@ -63,7 +64,6 @@ public class MainActivity extends AppCompatActivity {
         SplashScreen splashScreen = SplashScreen.installSplashScreen(this);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        FragmentUtils.changeFragment(this, new ManufacturerFragment(), R.id.frame, null);
         bottomAppBar();
         firstOpenDialog();
         initConsent();
@@ -133,10 +133,22 @@ public class MainActivity extends AppCompatActivity {
         binding.bottomAppBar.setOnItemSelectedListener(item -> {
             switch (item.getItemId()) {
                 case R.id.home:
-                    FragmentUtils.changeFragmentWithAnimTwo(this, new ManufacturerFragment(), R.id.frame);
+                    NavigationUtils.navigateWithNavHost(
+                            this,
+                            R.id.nav_host_fragment,
+                            R.id.manufacturerFragment,
+                            null,
+                            R.anim.enter_from_left, R.anim.exit_to_right,
+                            R.anim.enter_from_right, R.anim.exit_to_left);
                     break;
                 case R.id.about_app:
-                    FragmentUtils.changeFragmentWithAnimOne(this, new AboutAppFragment(), R.id.frame);
+                    NavigationUtils.navigateWithNavHost(
+                            this,
+                            R.id.nav_host_fragment,
+                            R.id.aboutAppFragment,
+                            null,
+                            R.anim.enter_from_right, R.anim.exit_to_left,
+                            R.anim.enter_from_left, R.anim.exit_to_right);
                     break;
             }
             return true;
@@ -147,14 +159,16 @@ public class MainActivity extends AppCompatActivity {
             FragmentTransaction transaction = fragmentManager.beginTransaction();
             switch (item.getItemId()) {
                 case R.id.home:
-                    transaction.replace(R.id.frame, new ManufacturerFragment());
-                    transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
-                    transaction.commit();
+                    NavigationUtils.navigateWithNavHost(
+                            this,
+                            R.id.nav_host_fragment,
+                            R.id.manufacturerFragment);
                     break;
                 case R.id.about_app:
-                    transaction.replace(R.id.frame, new AboutAppFragment());
-                    transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
-                    transaction.commit();
+                    NavigationUtils.navigateWithNavHost(
+                            this,
+                            R.id.nav_host_fragment,
+                            R.id.aboutAppFragment);
                     break;
             }
         });

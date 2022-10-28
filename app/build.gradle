@@ -10,7 +10,7 @@ android {
         applicationId "com.jvmfrog.ffsettings"
         minSdk 23
         targetSdk 33
-        versionCode 16
+        versionCode 17
         versionName "v1.1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -36,11 +36,21 @@ android {
     buildFeatures {
         viewBinding true
     }
+
+    bundle {
+        storeArchive {
+            enable = true
+        }
+    }
 }
 
 dependencies {
+    def nav_version = "2.5.3"
+    implementation "androidx.navigation:navigation-fragment:$nav_version"
+    implementation "androidx.navigation:navigation-ui:$nav_version"
+
     implementation 'androidx.appcompat:appcompat:1.7.0-alpha01'
-    implementation 'com.google.android.material:material:1.8.0-alpha01'
+    implementation 'com.google.android.material:material:1.8.0-alpha02'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
 
     implementation platform('com.google.firebase:firebase-bom:30.3.1')
@@ -52,8 +62,8 @@ dependencies {
 
     implementation 'androidx.browser:browser:1.4.0'
     implementation 'androidx.core:core-splashscreen:1.0.0'
-    implementation 'com.google.android.play:app-update:2.0.0'
-    implementation 'com.google.android.play:review:2.0.0'
+    implementation 'com.google.android.play:app-update:2.0.1'
+    implementation 'com.google.android.play:review:2.0.1'
     implementation 'com.google.android.gms:play-services-ads:21.3.0'
     implementation 'com.google.android.ump:user-messaging-platform:2.0.0'
     implementation "com.android.billingclient:billing:5.0.0"

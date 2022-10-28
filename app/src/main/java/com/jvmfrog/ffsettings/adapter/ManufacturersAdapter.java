@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.jvmfrog.ffsettings.R;
 import com.jvmfrog.ffsettings.ui.fragment.DevicesFragment;
 import com.jvmfrog.ffsettings.utils.FragmentUtils;
+import com.jvmfrog.ffsettings.utils.NavigationUtils;
 import com.jvmfrog.ffsettings.utils.SharedPreferencesUtils;
 
 import java.util.ArrayList;
@@ -59,11 +60,10 @@ public class ManufacturersAdapter extends RecyclerView.Adapter<ManufacturersAdap
                 finalBundle.putString("device", fake_manufacturers[position]);
             }
 
-            FragmentUtils.changeFragmentWithBackStack(
+            NavigationUtils.navigateWithNavHost(
                     (FragmentActivity) view.getContext(),
-                    new DevicesFragment(),
-                    R.id.frame,
-                    "back",
+                    R.id.nav_host_fragment,
+                    R.id.action_manufacturerFragment_to_devicesFragment,
                     finalBundle);
         });
     }

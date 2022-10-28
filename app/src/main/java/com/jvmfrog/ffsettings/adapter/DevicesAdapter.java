@@ -30,6 +30,7 @@ import com.jvmfrog.ffsettings.R;
 import com.jvmfrog.ffsettings.model.ParamsModel;
 import com.jvmfrog.ffsettings.ui.fragment.DeviceSettingsFragment;
 import com.jvmfrog.ffsettings.utils.FragmentUtils;
+import com.jvmfrog.ffsettings.utils.NavigationUtils;
 
 import java.util.List;
 import java.util.Locale;
@@ -63,7 +64,11 @@ public class DevicesAdapter extends FirestoreRecyclerAdapter<ParamsModel, Device
             finalBundle.putFloat("dpi", model.getDpi());
             finalBundle.putFloat("fire_button", model.getFire_button());
             finalBundle.putString("settings_source_url", model.getSettings_source_url());
-            FragmentUtils.changeFragmentWithBackStack((FragmentActivity) v.getContext(), new DeviceSettingsFragment(), R.id.frame, "back", finalBundle);
+            NavigationUtils.navigateWithNavHost(
+                    (FragmentActivity) v.getContext(),
+                    R.id.nav_host_fragment,
+                    R.id.action_devicesFragment_to_deviceSettingsFragment,
+                    finalBundle);
         });
     }
 
