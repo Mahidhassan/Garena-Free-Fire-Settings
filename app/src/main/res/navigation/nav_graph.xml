@@ -28,12 +28,19 @@
         <action
             android:id="@+id/action_devicesFragment_to_deviceSettingsFragment"
             app:destination="@id/deviceSettingsFragment" />
+        <action
+            android:id="@+id/action_devicesFragment_to_manufacturerFragment"
+            app:destination="@id/manufacturerFragment" />
     </fragment>
     <fragment
         android:id="@+id/deviceSettingsFragment"
         android:name="com.jvmfrog.ffsettings.ui.fragment.DeviceSettingsFragment"
         android:label="fragment_device_settings"
-        tools:layout="@layout/fragment_device_settings" />
+        tools:layout="@layout/fragment_device_settings" >
+        <action
+            android:id="@+id/action_deviceSettingsFragment_to_devicesFragment"
+            app:destination="@id/devicesFragment" />
+    </fragment>
     <fragment
         android:id="@+id/aboutAppFragment"
         android:name="com.jvmfrog.ffsettings.ui.fragment.AboutAppFragment"

@@ -31,6 +31,7 @@ import com.jvmfrog.ffsettings.model.ParamsModel;
 import com.jvmfrog.ffsettings.ui.fragment.DeviceSettingsFragment;
 import com.jvmfrog.ffsettings.utils.FragmentUtils;
 import com.jvmfrog.ffsettings.utils.NavigationUtils;
+import com.jvmfrog.ffsettings.utils.SharedPreferencesUtils;
 
 import java.util.List;
 import java.util.Locale;
@@ -89,7 +90,7 @@ public class DevicesAdapter extends FirestoreRecyclerAdapter<ParamsModel, Device
 
     private void loadInterstitialAd(Context context) {
         AdRequest adRequest = new AdRequest.Builder().build();
-        InterstitialAd.load(context, context.getString(R.string.admob_interstellar_ad_id), adRequest,
+        InterstitialAd.load(context, context.getString(R.string.admob_interstellar_test_ad_id), adRequest,
                 new InterstitialAdLoadCallback() {
                     @Override
                     public void onAdLoaded(@NonNull InterstitialAd interstitialAd) {
@@ -146,7 +147,7 @@ public class DevicesAdapter extends FirestoreRecyclerAdapter<ParamsModel, Device
 
     private void showInterstitial(Context context) {
         // Show the ad if it"s ready. Otherwise toast and reload the ad.
-        if (mInterstitialAd != null && context != null) {
+        if (mInterstitialAd != null && context != null && !SharedPreferencesUtils.getBoolean(context, "isAdFree")) {
             mInterstitialAd.show((Activity) context);
         } else {
             Log.d(TAG, "The interstitial ad wasn't ready yet.");

@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.ContextThemeWrapper;
 import android.view.View;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -17,10 +16,8 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.LoadAdError;
 import com.google.android.gms.ads.MobileAds;
-import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.play.core.appupdate.AppUpdateInfo;
@@ -35,14 +32,8 @@ import com.google.android.ump.UserMessagingPlatform;
 import com.jvmfrog.ffsettings.MyApplication;
 import com.jvmfrog.ffsettings.R;
 import com.jvmfrog.ffsettings.databinding.ActivityMainBinding;
-import com.jvmfrog.ffsettings.ui.fragment.AboutAppFragment;
-import com.jvmfrog.ffsettings.ui.fragment.ManufacturerFragment;
-import com.jvmfrog.ffsettings.ui.fragment.SettingsFragment;
-import com.jvmfrog.ffsettings.utils.FragmentUtils;
 import com.jvmfrog.ffsettings.utils.NavigationUtils;
 import com.jvmfrog.ffsettings.utils.SharedPreferencesUtils;
-
-import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -50,9 +41,6 @@ public class MainActivity extends AppCompatActivity {
 
     private ConsentInformation consentInformation;
     private Boolean isFirstOpen;
-    private static final int UPDATE_CODE = 100;
-    private AppUpdateManager appUpdateManager;
-    private AppUpdateInfo appUpdateInfo;
 
     private AdRequest adRequest;
 
@@ -80,52 +68,27 @@ public class MainActivity extends AppCompatActivity {
             binding.bannerAd.setVisibility(View.VISIBLE);
         }
 
-        if (isFirstOpen) {
+        if (isFirstOpen&&!SharedPreferencesUtils.getBoolean(this, "isAdFree")) {
             ((MyApplication) application).showAdIfAvailable(this, () -> {});
         }
 
-        MobileAds.initialize(this);
-        adRequest = new AdRequest.Builder().build();
-        binding.bannerAd.loadAd(adRequest);
-        binding.bannerAd.setAdListener(new AdListener() {
-            @Override
-            public void onAdFailedToLoad(@NonNull LoadAdError loadAdError) {
-                super.onAdFailedToLoad(loadAdError);
-                binding.bannerAd.setVisibility(View.GONE);
-                Log.d("MainActivity", "onAdFailedToLoad: " + loadAdError.getMessage());
-            }
+        if (!SharedPreferencesUtils.getBoolean(this, "isAdFree")) {
+            MobileAds.initialize(this, initializationStatus -> {});
+            adRequest = new AdRequest.Builder().build();
+            binding.bannerAd.loadAd(adRequest);
+            binding.bannerAd.setAdListener(new AdListener() {
+                @Override
+                public void onAdLoaded() {
+                    super.onAdLoaded();
+                    binding.bannerAd.setVisibility(View.VISIBLE);
+                }
 
-            @Override
-            public void onAdLoaded() {
-                super.onAdLoaded();
-                binding.bannerAd.setVisibility(View.VISIBLE);
-            }
-        });
-
-        appUpdateManager = AppUpdateManagerFactory.create(this);
-
-        // Returns an intent object that you use to check for an update.
-        Task<AppUpdateInfo> appUpdateInfoTask = appUpdateManager.getAppUpdateInfo();
-
-        // Checks that the platform will allow the specified type of update.
-        appUpdateInfoTask.addOnSuccessListener(appUpdateInfo -> {
-            if (appUpdateInfo.updateAvailability() == UpdateAvailability.UPDATE_AVAILABLE
-                    // This example applies an immediate update. To apply a flexible update
-                    // instead, pass in AppUpdateType.FLEXIBLE
-                    && appUpdateInfo.isUpdateTypeAllowed(AppUpdateType.IMMEDIATE)) {
-                // Request the update.
-            }
-        });
-
-        try {
-            appUpdateManager.startUpdateFlowForResult(
-                    appUpdateInfo,
-                    AppUpdateType.IMMEDIATE,
-                    this,
-                    UPDATE_CODE);
-        } catch (IntentSender.SendIntentException e) {
-            e.printStackTrace();
-            //Toast.makeText(this, e.toString(), Toast.LENGTH_SHORT).show();
+                @Override
+                public void onAdFailedToLoad(@NonNull LoadAdError loadAdError) {
+                    super.onAdFailedToLoad(loadAdError);
+                    binding.bannerAd.setVisibility(View.GONE);
+                }
+            });
         }
     }
 
@@ -231,21 +194,5 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        appUpdateManager.getAppUpdateInfo().addOnSuccessListener(
-                appUpdateInfo -> {
-                    if (appUpdateInfo.updateAvailability() == UpdateAvailability.UPDATE_AVAILABLE) {
-                        // If an in-app update is already running, resume the update.
-                        try {
-                            appUpdateManager.startUpdateFlowForResult(
-                                    appUpdateInfo,
-                                    AppUpdateType.IMMEDIATE,
-                                    this,
-                                    UPDATE_CODE);
-                        } catch (IntentSender.SendIntentException e) {
-                            e.printStackTrace();
-                            Toast.makeText(this, e.toString(), Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                });
     }
 }
