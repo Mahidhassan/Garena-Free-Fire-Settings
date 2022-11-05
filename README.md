@@ -65,4 +65,4 @@ If you have any feature suggestions, please create an issue with detailed inform
 
 Settings for Free Fire App is released under the GNU General Public License v3.0
 (GPLv3), which can be found [here](LICENSE.md)
-> Internet connection required for first launch. 
+> Internet connection required for first launch.
