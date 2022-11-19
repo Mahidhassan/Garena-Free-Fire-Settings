@@ -7,7 +7,6 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <!-- For apps targeting Android 13 or higher & GMA SDK version 20.3.0 or lower -->
     <uses-permission android:name="com.google.android.gms.permission.AD_ID" />
-    <uses-permission android:name="com.android.vending.BILLING" />
 
     <application
         android:name=".MyApplication"
@@ -19,7 +18,7 @@
         android:localeConfig="@xml/locales_config"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.FFSettings"
+        android:theme="@style/AppTheme"
         tools:targetApi="33">
 
         <!--
@@ -58,10 +57,9 @@
             android:name=".ui.MainActivity"
             android:configChanges="uiMode"
             android:exported="true"
-            android:theme="@style/Theme.FFSettings.SplashScreen">
+            android:theme="@style/Theme.AppTheme.SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

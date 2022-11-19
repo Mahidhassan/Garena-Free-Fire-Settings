@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.FFSettings" parent="Theme.Material3.DayNight.NoActionBar">
+    <style name="AppTheme" parent="Theme.Material3.Dark.NoActionBar">
         <item name="colorPrimary">@color/md_theme_dark_primary</item>
         <item name="colorOnPrimary">@color/md_theme_dark_onPrimary</item>
         <item name="colorPrimaryContainer">@color/md_theme_dark_primaryContainer</item>
@@ -14,8 +14,8 @@
         <item name="colorTertiaryContainer">@color/md_theme_dark_tertiaryContainer</item>
         <item name="colorOnTertiaryContainer">@color/md_theme_dark_onTertiaryContainer</item>
         <item name="colorError">@color/md_theme_dark_error</item>
-        <item name="colorOnError">@color/md_theme_dark_onError</item>
         <item name="colorErrorContainer">@color/md_theme_dark_errorContainer</item>
+        <item name="colorOnError">@color/md_theme_dark_onError</item>
         <item name="colorOnErrorContainer">@color/md_theme_dark_onErrorContainer</item>
         <item name="android:colorBackground">@color/md_theme_dark_background</item>
         <item name="colorOnBackground">@color/md_theme_dark_onBackground</item>
@@ -24,20 +24,18 @@
         <item name="colorSurfaceVariant">@color/md_theme_dark_surfaceVariant</item>
         <item name="colorOnSurfaceVariant">@color/md_theme_dark_onSurfaceVariant</item>
         <item name="colorOutline">@color/md_theme_dark_outline</item>
-        <item name="colorSurfaceInverse">@color/md_theme_dark_inverseSurface</item>
         <item name="colorOnSurfaceInverse">@color/md_theme_dark_inverseOnSurface</item>
+        <item name="colorSurfaceInverse">@color/md_theme_dark_inverseSurface</item>
         <item name="colorPrimaryInverse">@color/md_theme_dark_inversePrimary</item>
 
-        <item name="android:statusBarColor">#424941</item>
-        <item name="android:navigationBarColor">#212B22</item>
-        <item name="materialAlertDialogTheme">@style/Theme.FFSettings.MaterialAlertDialog</item>
+        <item name="android:statusBarColor">@color/md_theme_dark_background</item>
     </style>
 
-    <style name="Theme.FFSettings.SplashScreen" parent="Theme.SplashScreen">
+    <style name="Theme.AppTheme.SplashScreen" parent="Theme.SplashScreen">
         <item name="windowSplashScreenBackground">@color/md_theme_dark_background</item>
         <item name="windowSplashScreenAnimatedIcon">@drawable/logo</item>
         <item name="windowSplashScreenAnimationDuration">1000</item>
-        <item name="postSplashScreenTheme">@style/Theme.FFSettings</item>
+        <item name="postSplashScreenTheme">@style/AppTheme</item>
     </style>
 
     <style name="Theme.FFSettings.MaterialAlertDialog" parent="ThemeOverlay.Material3.MaterialAlertDialog">

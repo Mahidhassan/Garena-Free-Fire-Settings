@@ -22,8 +22,12 @@ import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.ads.appopen.AppOpenAd;
 import com.google.android.gms.ads.initialization.InitializationStatus;
 import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
+import com.google.android.gms.ads.interstitial.InterstitialAd;
+import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback;
+import com.jvmfrog.ffsettings.utils.SharedPreferencesUtils;
 
 import java.util.Date;
+import java.util.Locale;
 
 /** Application class that initializes, loads and show ads when activities change states. */
 public class MyApplication extends Application

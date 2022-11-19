@@ -11,6 +11,7 @@ import android.widget.TextView;
 import androidx.appcompat.app.AlertDialog;
 
 import com.google.android.gms.ads.AdView;
+import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.materialswitch.MaterialSwitch;
 import com.jvmfrog.ffsettings.R;
@@ -43,11 +44,11 @@ public class ScreenshotEditionDialog {
 
         fakeAppNameSwitch.setOnCheckedChangeListener((buttonView, isChecked) -> {
             SharedPreferencesUtils.saveBoolean(activity, "isFakeAppName", isChecked);
-            TextView app_name = (TextView) activity.findViewById(R.id.app_name);
+            MaterialToolbar app_name = (MaterialToolbar) activity.findViewById(R.id.toolbar);
             if (isChecked) {
-                app_name.setText(R.string.fake_app_name);
+                app_name.setTitle(R.string.fake_app_name);
             } else {
-                app_name.setText(R.string.app_name);
+                app_name.setTitle(R.string.app_name);
             }
         });
 

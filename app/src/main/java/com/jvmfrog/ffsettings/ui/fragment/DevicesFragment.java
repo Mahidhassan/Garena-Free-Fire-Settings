@@ -12,7 +12,10 @@ import android.widget.Toast;
 
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.android.gms.ads.interstitial.InterstitialAd;
+import com.google.android.material.chip.Chip;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreSettings;
 import com.google.firebase.firestore.Query;
@@ -50,6 +53,7 @@ public class DevicesFragment extends Fragment {
         rootRef.setFirestoreSettings(settings);
 
         Query query = rootRef.collection(finalBundle.getString("device"))
+                //.whereEqualTo("serie", "A")
                 .orderBy("device_name", Query.Direction.DESCENDING);
 
         binding.shimmerLayout.startShimmer();

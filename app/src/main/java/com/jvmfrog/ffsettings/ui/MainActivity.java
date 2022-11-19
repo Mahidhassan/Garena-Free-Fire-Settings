@@ -56,40 +56,26 @@ public class MainActivity extends AppCompatActivity {
         firstOpenDialog();
         initConsent();
 
-        if (!SharedPreferencesUtils.getBoolean(this, "isFakeAppName")) {
-            binding.appName.setText(R.string.app_name);
-        } else {
-            binding.appName.setText(R.string.fake_app_name);
-        }
-
-        if (!SharedPreferencesUtils.getBoolean(this, "isAdBannerHidden")) {
-            binding.bannerAd.setVisibility(View.GONE);
-        } else {
-            binding.bannerAd.setVisibility(View.VISIBLE);
-        }
-
         if (isFirstOpen&&!SharedPreferencesUtils.getBoolean(this, "isAdFree")) {
             ((MyApplication) application).showAdIfAvailable(this, () -> {});
         }
 
-        if (!SharedPreferencesUtils.getBoolean(this, "isAdFree")) {
-            MobileAds.initialize(this, initializationStatus -> {});
-            adRequest = new AdRequest.Builder().build();
-            binding.bannerAd.loadAd(adRequest);
-            binding.bannerAd.setAdListener(new AdListener() {
-                @Override
-                public void onAdLoaded() {
-                    super.onAdLoaded();
-                    binding.bannerAd.setVisibility(View.VISIBLE);
-                }
+        MobileAds.initialize(this, initializationStatus -> {});
+        adRequest = new AdRequest.Builder().build();
+        binding.bannerAd.loadAd(adRequest);
+        binding.bannerAd.setAdListener(new AdListener() {
+            @Override
+            public void onAdLoaded() {
+                super.onAdLoaded();
+                binding.bannerAd.setVisibility(View.VISIBLE);
+            }
 
-                @Override
-                public void onAdFailedToLoad(@NonNull LoadAdError loadAdError) {
-                    super.onAdFailedToLoad(loadAdError);
-                    binding.bannerAd.setVisibility(View.GONE);
-                }
-            });
-        }
+            @Override
+            public void onAdFailedToLoad(@NonNull LoadAdError loadAdError) {
+                super.onAdFailedToLoad(loadAdError);
+                binding.bannerAd.setVisibility(View.GONE);
+            }
+        });
     }
 
     private void bottomAppBar() {

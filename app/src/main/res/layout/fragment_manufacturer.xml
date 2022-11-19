@@ -49,43 +49,6 @@
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/buySubscriptionBtn"
-            style="@style/Widget.Material3.CardView.Outlined"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:clickable="true"
-            android:focusable="true"
-            app:cardCornerRadius="16dp"
-            app:cardElevation="4dp"
-            app:cardUseCompatPadding="true">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:padding="4dp">
-
-                <ImageView
-                    android:layout_width="64dp"
-                    android:layout_height="64dp"
-                    android:src="@drawable/remove_ads"
-                    android:layout_gravity="center_vertical"
-                    android:padding="8dp"/>
-
-                <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/removeAdsPrice"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center|center_horizontal|center_vertical"
-                    android:padding="6dp"
-                    android:text="Remove Ads, \n9,99PLN"
-                    android:textSize="21sp"
-                    android:textStyle="bold"
-                    android:maxLines="2"/>
-            </LinearLayout>
-        </com.google.android.material.card.MaterialCardView>
-
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recview"
             android:layout_width="match_parent"
