@@ -10,9 +10,15 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import com.firebase.ui.firestore.FirestoreRecyclerOptions;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreSettings;
+import com.google.firebase.firestore.Query;
 import com.jvmfrog.ffsettings.R;
 import com.jvmfrog.ffsettings.adapter.ManufacturersAdapter;
 import com.jvmfrog.ffsettings.databinding.FragmentManufacturerBinding;
+import com.jvmfrog.ffsettings.model.ManufacturersModel;
+import com.jvmfrog.ffsettings.model.ParamsModel;
 import com.jvmfrog.ffsettings.ui.dialog.ChangeUsernameDialog;
 import com.jvmfrog.ffsettings.utils.CustomTabUtil;
 import com.jvmfrog.ffsettings.utils.SharedPreferencesUtils;
@@ -22,8 +28,8 @@ import java.util.ArrayList;
 public class ManufacturerFragment extends Fragment {
 
     private FragmentManufacturerBinding binding;
+    private ManufacturersAdapter adapter;
 
-    private ArrayList<String> arrayList;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,31 +46,41 @@ public class ManufacturerFragment extends Fragment {
             binding.welcomeAndUserName.setText(getString(R.string.welcome) + "," + "\n" + SharedPreferencesUtils.getString(getActivity(), "user_name") + "!");
         }
 
-        arrayList = new ArrayList<>();
+        FirebaseFirestore rootRef = FirebaseFirestore.getInstance();
+        FirebaseFirestoreSettings settings = new FirebaseFirestoreSettings.Builder()
+                .setPersistenceEnabled(true)
+                .build();
+        rootRef.setFirestoreSettings(settings);
 
-        arrayList.add("Samsung");
-        arrayList.add("iPhone");
-        arrayList.add("Xiaomi");
-        arrayList.add("Redmi");
-        arrayList.add("Oppo");
-        arrayList.add("Huawei");
-        arrayList.add("Poco");
-        arrayList.add("Honor");
-        arrayList.add("LG");
-        arrayList.add("ZTE");
-        arrayList.add("Vivo");
-        arrayList.add("Motorola");
-        arrayList.add("Realme");
-        arrayList.add("OnePlus");
+        Query query = rootRef.collection("manufacturers")
+                .orderBy("name", Query.Direction.ASCENDING);
+
+        FirestoreRecyclerOptions<ManufacturersModel> options =
+                new FirestoreRecyclerOptions.Builder<ManufacturersModel>()
+                        .setQuery(query, ManufacturersModel.class)
+                        .build();
 
         LinearLayoutManager layoutManager = new GridLayoutManager(getActivity(), 2);
         binding.recview.setLayoutManager(layoutManager);
-        ManufacturersAdapter adapter = new ManufacturersAdapter(arrayList);
+        adapter = new ManufacturersAdapter(options, requireActivity());
         binding.recview.setAdapter(adapter);
 
         binding.setUserNameBtn.setOnClickListener(view -> ChangeUsernameDialog.showDialog(getActivity()));
         binding.googleFormBtn.setOnClickListener(view -> new CustomTabUtil().OpenCustomTab(getActivity(), getString(R.string.google_form), R.color.md_theme_light_onSecondary));
 
         return binding.getRoot();
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        adapter.startListening();
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        if(adapter != null)
+            adapter.stopListening();
     }
 }

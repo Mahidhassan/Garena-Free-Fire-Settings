@@ -52,7 +52,7 @@ public class DevicesFragment extends Fragment {
                 .build();
         rootRef.setFirestoreSettings(settings);
 
-        Query query = rootRef.collection(finalBundle.getString("device"))
+        Query query = rootRef.collection(finalBundle.getString("collection"))
                 //.whereEqualTo("serie", "A")
                 .orderBy("device_name", Query.Direction.DESCENDING);
 
