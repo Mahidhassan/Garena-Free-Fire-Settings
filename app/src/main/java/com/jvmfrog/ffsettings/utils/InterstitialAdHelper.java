@@ -1,96 +1,33 @@
-package com.jvmfrog.ffsettings.adapter;
+package com.jvmfrog.ffsettings.utils;
 
 import android.app.Activity;
 import android.content.Context;
-import android.os.Bundle;
 import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.fragment.app.FragmentActivity;
-import androidx.recyclerview.widget.RecyclerView;
 
-import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
-import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.android.gms.ads.AdError;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.FullScreenContentCallback;
 import com.google.android.gms.ads.LoadAdError;
-import com.google.android.gms.ads.OnUserEarnedRewardListener;
 import com.google.android.gms.ads.interstitial.InterstitialAd;
 import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback;
-import com.google.android.gms.ads.rewarded.RewardItem;
-import com.google.android.gms.ads.rewarded.RewardedAd;
-import com.google.android.gms.ads.rewarded.RewardedAdLoadCallback;
 import com.jvmfrog.ffsettings.R;
-import com.jvmfrog.ffsettings.model.ParamsModel;
-import com.jvmfrog.ffsettings.ui.fragment.DeviceSettingsFragment;
-import com.jvmfrog.ffsettings.utils.FragmentUtils;
-import com.jvmfrog.ffsettings.utils.NavigationUtils;
-import com.jvmfrog.ffsettings.utils.SharedPreferencesUtils;
 
-import java.util.List;
 import java.util.Locale;
 
-public class DevicesAdapter extends FirestoreRecyclerAdapter<ParamsModel, DevicesAdapter.holder> {
-
+public class InterstitialAdHelper {
     private static final String TAG = "Interstitial Ad";
-    private InterstitialAd mInterstitialAd;
     private Context context;
+    private InterstitialAd mInterstitialAd;
 
-    public DevicesAdapter(@NonNull FirestoreRecyclerOptions<ParamsModel> options, Context context) {
-        super(options);
+    public InterstitialAdHelper(Context context) {
         this.context = context;
     }
 
-    @Override
-    protected void onBindViewHolder(@NonNull DevicesAdapter.holder holder, int position, @NonNull ParamsModel model) {
-        holder.device_name.setText(model.getDevice_name());
-
-        loadInterstitialAd(context);
-
-        holder.itemView.setOnClickListener(v -> {
-            showInterstitial(context);
-            Bundle finalBundle = new Bundle();
-            finalBundle.putFloat("review", model.getReview());
-            finalBundle.putFloat("collimator", model.getCollimator());
-            finalBundle.putFloat("x2_scope", model.getX2_scope());
-            finalBundle.putFloat("x4_scope", model.getX4_scope());
-            finalBundle.putFloat("sniper_scope", model.getSniper_scope());
-            finalBundle.putFloat("free_review", model.getFree_review());
-            finalBundle.putFloat("dpi", model.getDpi());
-            finalBundle.putFloat("fire_button", model.getFire_button());
-            finalBundle.putString("settings_source_url", model.getSettings_source_url());
-            NavigationUtils.navigateWithNavHost(
-                    (FragmentActivity) v.getContext(),
-                    R.id.nav_host_fragment,
-                    R.id.action_devicesFragment_to_deviceSettingsFragment,
-                    finalBundle);
-        });
-    }
-
-    @NonNull
-    @Override
-    public DevicesAdapter.holder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item, parent, false);
-        return new holder(view);
-    }
-
-    static class holder extends RecyclerView.ViewHolder {
-        TextView device_name;
-        public holder(@NonNull View itemView) {
-            super(itemView);
-            device_name = itemView.findViewById(R.id.categories);
-        }
-    }
-
-    private void loadInterstitialAd(Context context) {
+    public void loadInterstitialAd() {
         AdRequest adRequest = new AdRequest.Builder().build();
-        InterstitialAd.load(context, context.getString(R.string.admob_interstellar_test_ad_id), adRequest,
+        InterstitialAd.load(context, context.getString(R.string.admob_interstellar_ad_id), adRequest,
                 new InterstitialAdLoadCallback() {
                     @Override
                     public void onAdLoaded(@NonNull InterstitialAd interstitialAd) {
@@ -145,9 +82,9 @@ public class DevicesAdapter extends FirestoreRecyclerAdapter<ParamsModel, Device
                 });
     }
 
-    private void showInterstitial(Context context) {
+    public void showInterstitial() {
         // Show the ad if it"s ready. Otherwise toast and reload the ad.
-        if (mInterstitialAd != null && context != null && !SharedPreferencesUtils.getBoolean(context, "isAdFree")) {
+        if (mInterstitialAd != null && context != null) {
             mInterstitialAd.show((Activity) context);
         } else {
             Log.d(TAG, "The interstitial ad wasn't ready yet.");
