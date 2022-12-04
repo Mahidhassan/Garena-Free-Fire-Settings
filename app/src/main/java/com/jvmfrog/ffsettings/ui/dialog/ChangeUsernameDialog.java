@@ -22,7 +22,7 @@ public class ChangeUsernameDialog {
         builder.setIcon(R.drawable.ic_outline_account_circle_24);
         builder.setView(dialogView);
 
-        TextInputEditText usernameInput = (TextInputEditText) dialogView.findViewById(R.id.userNameInput);
+        TextInputEditText usernameInput = dialogView.findViewById(R.id.userNameInput);
         TextView username = (TextView) activity.findViewById(R.id.welcome_and_user_name);
 
         builder.setPositiveButton(R.string.save, (dialog, which) -> {

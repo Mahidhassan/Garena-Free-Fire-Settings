@@ -1,9 +1,6 @@
 package com.jvmfrog.ffsettings.ui.fragment;
 
-import android.app.Activity;
-import android.content.Context;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,12 +15,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
-import com.google.android.gms.ads.AdError;
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.FullScreenContentCallback;
-import com.google.android.gms.ads.LoadAdError;
-import com.google.android.gms.ads.interstitial.InterstitialAd;
-import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreSettings;
 import com.google.firebase.firestore.Query;
@@ -33,15 +24,10 @@ import com.jvmfrog.ffsettings.model.ParamsModel;
 import com.jvmfrog.ffsettings.utils.InterstitialAdHelper;
 import com.jvmfrog.ffsettings.utils.NavigationUtils;
 
-import java.util.Locale;
-
 public class DevicesFragment extends Fragment {
 
     private FragmentDevicesBinding binding;
     private FirestoreRecyclerAdapter<ParamsModel, DeviceViewHolder> adapter;
-
-    private static final String TAG = "Interstitial Ad";
-    private InterstitialAd mInterstitialAd;
 
     public DevicesFragment() {
         // Required empty public constructor

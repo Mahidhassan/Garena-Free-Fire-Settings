@@ -10,10 +10,26 @@ android {
         applicationId "com.jvmfrog.ffsettings"
         minSdk 23
         targetSdk 33
-        versionCode 17
-        versionName "v1.1.0"
+        versionCode 18
+        versionName "v1.2.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    signingConfigs {
+        release {
+            storeFile file('C:\\Users\\User\\AndroidStudioProjects\\Garena-Free-Fire-Settings\\ffsettings.jks')
+            storePassword KEYSTORE_PASSWORD
+            keyAlias KEY_ALIAS
+            keyPassword KEY_PASSWORD
+        }
+
+        pro {
+            storeFile file('C:\\Users\\User\\AndroidStudioProjects\\Garena-Free-Fire-Settings\\ffsettings.jks')
+            storePassword KEYSTORE_PASSWORD
+            keyAlias KEY_ALIAS
+            keyPassword KEY_PASSWORD
+        }
     }
 
     buildTypes {
@@ -21,6 +37,20 @@ android {
             minifyEnabled true
             shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+
+        debug {
+            applicationIdSuffix '.debug'
+            versionNameSuffix '-DEBUG'
+        }
+
+        pro {
+            applicationIdSuffix '.pro'
+            versionNameSuffix '-PRO'
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.pro
         }
     }
 
@@ -52,13 +82,13 @@ dependencies {
     implementation "androidx.navigation:navigation-ui:$nav_version"
 
     implementation 'androidx.appcompat:appcompat:1.7.0-alpha01'
-    implementation 'com.google.android.material:material:1.8.0-alpha02'
+    implementation 'com.google.android.material:material:1.8.0-alpha03'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
 
     implementation platform('com.google.firebase:firebase-bom:31.1.0')
     implementation 'com.google.firebase:firebase-analytics'
     implementation 'com.google.firebase:firebase-config'
-    implementation 'com.google.firebase:firebase-firestore:24.4.0'
+    implementation 'com.google.firebase:firebase-firestore:24.4.1'
     implementation 'com.firebaseui:firebase-ui-firestore:8.0.1'
     implementation 'com.google.firebase:firebase-messaging:23.1.0'
     implementation 'com.google.firebase:firebase-inappmessaging-display:20.2.0'
