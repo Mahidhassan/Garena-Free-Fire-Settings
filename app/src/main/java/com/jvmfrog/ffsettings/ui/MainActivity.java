@@ -29,53 +29,46 @@ import com.google.android.ump.ConsentDebugSettings;
 import com.google.android.ump.ConsentInformation;
 import com.google.android.ump.ConsentRequestParameters;
 import com.google.android.ump.UserMessagingPlatform;
+import com.jvmfrog.ffsettings.BuildConfig;
 import com.jvmfrog.ffsettings.MyApplication;
 import com.jvmfrog.ffsettings.R;
 import com.jvmfrog.ffsettings.databinding.ActivityMainBinding;
+import com.jvmfrog.ffsettings.utils.BannerAdHelper;
 import com.jvmfrog.ffsettings.utils.NavigationUtils;
 import com.jvmfrog.ffsettings.utils.SharedPreferencesUtils;
+import com.jvmfrog.ffsettings.utils.UMPHelper;
 
 public class MainActivity extends AppCompatActivity {
 
     private ActivityMainBinding binding;
-
-    private ConsentInformation consentInformation;
     private Boolean isFirstOpen;
-
-    private AdRequest adRequest;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         isFirstOpen = SharedPreferencesUtils.getBoolean(this, "isFirstOpen");
-        Application application = getApplication();
         SplashScreen splashScreen = SplashScreen.installSplashScreen(this);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         bottomAppBar();
-        firstOpenDialog();
-        initConsent();
 
-        if (isFirstOpen&&!SharedPreferencesUtils.getBoolean(this, "isAdFree")) {
-            ((MyApplication) application).showAdIfAvailable(this, () -> {});
-        }
-
-        MobileAds.initialize(this, initializationStatus -> {});
-        adRequest = new AdRequest.Builder().build();
-        binding.bannerAd.loadAd(adRequest);
-        binding.bannerAd.setAdListener(new AdListener() {
-            @Override
-            public void onAdLoaded() {
-                super.onAdLoaded();
-                binding.bannerAd.setVisibility(View.VISIBLE);
-            }
-
-            @Override
-            public void onAdFailedToLoad(@NonNull LoadAdError loadAdError) {
-                super.onAdFailedToLoad(loadAdError);
-                binding.bannerAd.setVisibility(View.GONE);
-            }
+        new UMPHelper(this).initConsent();
+        new MyApplication().showAdIfAvailable(this, () -> {
+            //
         });
+        new BannerAdHelper(this).init(binding.bannerAd);
+
+        if (!isFirstOpen) {
+            MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(new ContextThemeWrapper(this, R.style.Theme_FFSettings_MaterialAlertDialog));
+            builder.setIcon(R.drawable.ic_round_insert_emoticon_24);
+            builder.setTitle(R.string.welcome);
+            builder.setMessage(R.string.welcome_message);
+            builder.setPositiveButton("OK", (dialog, which) -> {
+                isFirstOpen = true;
+                SharedPreferencesUtils.saveBoolean(this, "isFirstOpen", true);
+            });
+            builder.show();
+        }
     }
 
     private void bottomAppBar() {
@@ -104,8 +97,6 @@ public class MainActivity extends AppCompatActivity {
         });
 
         binding.bottomAppBar.setOnItemReselectedListener(item -> {
-            FragmentManager fragmentManager = getSupportFragmentManager();
-            FragmentTransaction transaction = fragmentManager.beginTransaction();
             switch (item.getItemId()) {
                 case R.id.home:
                     NavigationUtils.navigateWithNavHost(
@@ -121,64 +112,5 @@ public class MainActivity extends AppCompatActivity {
                     break;
             }
         });
-    }
-
-    private void firstOpenDialog() {
-        if (!isFirstOpen) {
-            MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(new ContextThemeWrapper(this, R.style.Theme_FFSettings_MaterialAlertDialog));
-            builder.setIcon(R.drawable.ic_round_insert_emoticon_24);
-            builder.setTitle(R.string.welcome);
-            builder.setMessage(R.string.welcome_message);
-            builder.setPositiveButton("OK", (dialog, which) -> {
-                isFirstOpen = true;
-                SharedPreferencesUtils.saveBoolean(this, "isFirstOpen", true);
-            });
-            builder.show();
-        }
-    }
-
-    private void initConsent() {
-        // Set tag for underage of consent. false means users are not underage.
-        ConsentRequestParameters params = new ConsentRequestParameters.Builder()
-                .setAdMobAppId(getString(R.string.admob_app_id))
-                .setTagForUnderAgeOfConsent(false)
-                .build();
-
-        // Debug settings for Form
-        ConsentDebugSettings debugSettings = new ConsentDebugSettings.Builder(this)
-                .setDebugGeography(ConsentDebugSettings.DebugGeography.DEBUG_GEOGRAPHY_EEA)
-                .addTestDeviceHashedId("AF0F2B6E3BCDC6ACBFD315C64B00")
-                .build();
-
-        ConsentRequestParameters debugParams = new ConsentRequestParameters.Builder()
-                .setConsentDebugSettings(debugSettings)
-                .build();
-
-        consentInformation = UserMessagingPlatform.getConsentInformation(this);
-        consentInformation.requestConsentInfoUpdate(this, params, () -> {
-                    // The consent information state was updated.
-                    // You are now ready to check if a form is available.
-                    if (consentInformation.isConsentFormAvailable()) {
-                        UserMessagingPlatform.loadConsentForm(this, consentForm -> {
-                                    if (consentInformation.getConsentStatus() == ConsentInformation.ConsentStatus.UNKNOWN) {
-                                        consentForm.show(this, formError -> initConsent());
-                                    }
-                                    if (consentInformation.getConsentStatus() == ConsentInformation.ConsentStatus.REQUIRED) {
-                                        consentForm.show(this, formError -> initConsent());
-                                    }
-                                }, formError -> {
-                                    // Handle the error
-                                }
-                        );
-                    }
-                }, formError -> {/*Handle the error*/}
-        );
-    }
-
-    // Checks that the update is not stalled during 'onResume()'.
-    // However, you should execute this check at all entry points into the app.
-    @Override
-    protected void onResume() {
-        super.onResume();
     }
 }

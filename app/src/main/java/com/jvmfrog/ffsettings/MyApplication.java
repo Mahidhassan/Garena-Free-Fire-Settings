@@ -221,7 +221,7 @@ public class MyApplication extends Application
             }
 
             // If the app open ad is not available yet, invoke the callback then load the ad.
-            if (!isAdAvailable()) {
+            if (!isAdAvailable() && BuildConfig.BUILD_TYPE != "pro") {
                 Log.d(LOG_TAG, "The app open ad is not ready yet.");
                 onShowAdCompleteListener.onShowAdComplete();
                 loadAd(activity);

@@ -12,6 +12,7 @@ import com.google.android.gms.ads.FullScreenContentCallback;
 import com.google.android.gms.ads.LoadAdError;
 import com.google.android.gms.ads.interstitial.InterstitialAd;
 import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback;
+import com.jvmfrog.ffsettings.BuildConfig;
 import com.jvmfrog.ffsettings.R;
 
 import java.util.Locale;
@@ -84,7 +85,7 @@ public class InterstitialAdHelper {
 
     public void showInterstitial() {
         // Show the ad if it"s ready. Otherwise toast and reload the ad.
-        if (mInterstitialAd != null && context != null) {
+        if (mInterstitialAd != null && context != null && BuildConfig.BUILD_TYPE != "pro") {
             mInterstitialAd.show((Activity) context);
         } else {
             Log.d(TAG, "The interstitial ad wasn't ready yet.");
