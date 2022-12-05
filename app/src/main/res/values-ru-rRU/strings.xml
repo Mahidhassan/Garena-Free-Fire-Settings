@@ -10,8 +10,8 @@
     <string name="reset">Сбросить</string>
 
     <string name="welcome_message">
-     Thanks for installing our app.
-        \nHere you will find the sensitivity settings for your device, and if your phone model is not among the settings, you can request them.
+     Спасибо за установку нашего приложения.
+        \nЗдесь вы найдете настройки чувствительности для своего устройства, а если среди настроек нету модели вашего телефона вы запроста можете запросить их.
     </string>
 
     <string name="review">Обзор</string>

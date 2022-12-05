@@ -23,7 +23,6 @@ import com.jvmfrog.ffsettings.utils.SharedPreferencesUtils;
 public class AboutAppFragment extends Fragment {
 
     private FragmentAboutAppBinding binding;
-    int countToScreenshotEdition = 0;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -36,19 +35,12 @@ public class AboutAppFragment extends Fragment {
         binding = FragmentAboutAppBinding.inflate(inflater, container, false);
 
         binding.appVersionBtn.setText(getString(R.string.version) + ": " + BuildConfig.VERSION_NAME + "(" + BuildConfig.VERSION_CODE + ")");
-        binding.appVersionBtn.setOnClickListener(v -> {countToScreenshotEdition += 1;});
         binding.translateAppBtn.setOnClickListener(view -> new CustomTabUtil().OpenCustomTab(getActivity(), getString(R.string.crowdin), R.color.md_theme_light_onSecondary));
         binding.donateBtn.setOnClickListener(v -> new CustomTabUtil().OpenCustomTab(getActivity(), "https://www.donationalerts.com/r/ibremminer837", R.color.md_theme_light_onSecondary));
-        binding.appVersionBtn.setOnLongClickListener(v -> {
-            if (countToScreenshotEdition == 3) {
-                ScreenshotEditionDialog.showDialog(getActivity());
-            }
-            return false;
-        });
         binding.sourceCodeBtn.setOnClickListener(v -> new CustomTabUtil().OpenCustomTab(getActivity(), getString(R.string.source_code_url), R.color.md_theme_light_onSecondary));
         binding.ibragimBtn.setOnClickListener(v -> new CustomTabUtil().OpenCustomTab(getActivity(), getString(R.string.ibragim_url), R.color.md_theme_light_onSecondary));
         binding.mailBtn.setOnClickListener(v -> BugReportHelper.sendEmail(getActivity()));
-        binding.rateBtn.setOnClickListener(v -> OtherUtils.reviewAppInGooglePlay(getActivity()));
+        binding.rateBtn.setOnClickListener(v -> new OtherUtils(getActivity()).reviewAppInGooglePlay());
         binding.vkGroupBtn.setOnClickListener(v -> new CustomTabUtil().OpenCustomTab(getActivity(), getString(R.string.JVMFrog), R.color.md_theme_light_onSecondary));
         binding.telegramBtn.setOnClickListener(v -> new CustomTabUtil().OpenCustomTab(getActivity(), "https://t.me/freefiresettingsapp", R.color.md_theme_light_onSecondary));
         binding.otherAppsBtn.setOnClickListener(view1 -> {

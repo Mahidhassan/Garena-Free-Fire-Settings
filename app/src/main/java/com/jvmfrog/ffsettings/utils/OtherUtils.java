@@ -7,8 +7,13 @@ import android.content.Intent;
 import android.os.Build;
 
 public class OtherUtils {
+    private Context context;
 
-    public static void copyTextToClipboard(Context context, String text) {
+    public OtherUtils(Context context) {
+        this.context = context;
+    }
+
+    public void copyTextToClipboard(String text) {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.KITKAT) {
             ClipboardManager clipboardManager = (ClipboardManager) context.getSystemService(Context.CLIPBOARD_SERVICE);
             clipboardManager.setText(text);
@@ -19,7 +24,7 @@ public class OtherUtils {
         }
     }
 
-    public static void reviewAppInGooglePlay(Context context) {
+    public void reviewAppInGooglePlay() {
         Intent intent = new Intent(Intent.ACTION_VIEW);
         intent.setData(android.net.Uri.parse("market://details?id=" + context.getPackageName()));
         context.startActivity(intent);

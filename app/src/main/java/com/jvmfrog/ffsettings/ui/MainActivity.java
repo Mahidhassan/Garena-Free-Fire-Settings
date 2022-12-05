@@ -1,5 +1,7 @@
 package com.jvmfrog.ffsettings.ui;
 
+import static com.jvmfrog.ffsettings.R.*;
+
 import android.app.Application;
 import android.content.IntentSender;
 import android.os.Bundle;
@@ -33,7 +35,9 @@ import com.jvmfrog.ffsettings.BuildConfig;
 import com.jvmfrog.ffsettings.MyApplication;
 import com.jvmfrog.ffsettings.R;
 import com.jvmfrog.ffsettings.databinding.ActivityMainBinding;
+import com.jvmfrog.ffsettings.ui.dialog.AboutAdsDialog;
 import com.jvmfrog.ffsettings.utils.BannerAdHelper;
+import com.jvmfrog.ffsettings.utils.InterstitialAdHelper;
 import com.jvmfrog.ffsettings.utils.NavigationUtils;
 import com.jvmfrog.ffsettings.utils.SharedPreferencesUtils;
 import com.jvmfrog.ffsettings.utils.UMPHelper;
@@ -47,22 +51,24 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         isFirstOpen = SharedPreferencesUtils.getBoolean(this, "isFirstOpen");
+        Application application = getApplication();
         SplashScreen splashScreen = SplashScreen.installSplashScreen(this);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         bottomAppBar();
 
-        new UMPHelper(this).initConsent();
-        new MyApplication().showAdIfAvailable(this, () -> {
-            //
-        });
-        new BannerAdHelper(this).init(binding.bannerAd);
+        if (BuildConfig.BUILD_TYPE != "pro") {
+            new UMPHelper(this).initConsent();
+            ((MyApplication) application).showAdIfAvailable(this, () -> {new AboutAdsDialog(this).materialAlertDialogBuilder();});
+            new BannerAdHelper(this).init(binding.bannerAd);
+            new InterstitialAdHelper(this).loadInterstitialAd();
+        }
 
         if (!isFirstOpen) {
-            MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(new ContextThemeWrapper(this, R.style.Theme_FFSettings_MaterialAlertDialog));
-            builder.setIcon(R.drawable.ic_round_insert_emoticon_24);
-            builder.setTitle(R.string.welcome);
-            builder.setMessage(R.string.welcome_message);
+            MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(new ContextThemeWrapper(this, style.Theme_FFSettings_MaterialAlertDialog));
+            builder.setIcon(drawable.ic_round_insert_emoticon_24);
+            builder.setTitle(string.welcome);
+            builder.setMessage(string.welcome_message);
             builder.setPositiveButton("OK", (dialog, which) -> {
                 isFirstOpen = true;
                 SharedPreferencesUtils.saveBoolean(this, "isFirstOpen", true);
@@ -74,23 +80,23 @@ public class MainActivity extends AppCompatActivity {
     private void bottomAppBar() {
         binding.bottomAppBar.setOnItemSelectedListener(item -> {
             switch (item.getItemId()) {
-                case R.id.home:
+                case id.home:
                     NavigationUtils.navigateWithNavHost(
                             this,
-                            R.id.nav_host_fragment,
-                            R.id.manufacturerFragment,
+                            id.nav_host_fragment,
+                            id.manufacturerFragment,
                             null,
-                            R.anim.enter_from_left, R.anim.exit_to_right,
-                            R.anim.enter_from_right, R.anim.exit_to_left);
+                            anim.enter_from_left, anim.exit_to_right,
+                            anim.enter_from_right, anim.exit_to_left);
                     break;
-                case R.id.about_app:
+                case id.about_app:
                     NavigationUtils.navigateWithNavHost(
                             this,
-                            R.id.nav_host_fragment,
-                            R.id.aboutAppFragment,
+                            id.nav_host_fragment,
+                            id.aboutAppFragment,
                             null,
-                            R.anim.enter_from_right, R.anim.exit_to_left,
-                            R.anim.enter_from_left, R.anim.exit_to_right);
+                            anim.enter_from_right, anim.exit_to_left,
+                            anim.enter_from_left, anim.exit_to_right);
                     break;
             }
             return true;
@@ -98,17 +104,17 @@ public class MainActivity extends AppCompatActivity {
 
         binding.bottomAppBar.setOnItemReselectedListener(item -> {
             switch (item.getItemId()) {
-                case R.id.home:
+                case id.home:
                     NavigationUtils.navigateWithNavHost(
                             this,
-                            R.id.nav_host_fragment,
-                            R.id.manufacturerFragment);
+                            id.nav_host_fragment,
+                            id.manufacturerFragment);
                     break;
-                case R.id.about_app:
+                case id.about_app:
                     NavigationUtils.navigateWithNavHost(
                             this,
-                            R.id.nav_host_fragment,
-                            R.id.aboutAppFragment);
+                            id.nav_host_fragment,
+                            id.aboutAppFragment);
                     break;
             }
         });

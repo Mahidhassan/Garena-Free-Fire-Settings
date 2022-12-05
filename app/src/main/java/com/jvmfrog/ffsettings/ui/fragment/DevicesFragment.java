@@ -44,9 +44,6 @@ public class DevicesFragment extends Fragment {
                              Bundle savedInstanceState) {
         binding = FragmentDevicesBinding.inflate(inflater, container, false);
 
-        InterstitialAdHelper interstitialAdHelper = new InterstitialAdHelper(requireActivity());
-        interstitialAdHelper.loadInterstitialAd();
-
         Bundle finalBundle = new Bundle();
         finalBundle.putAll(getArguments());
 
@@ -88,7 +85,7 @@ public class DevicesFragment extends Fragment {
                 holder.device_name.setText(model.getDevice_name());
 
                 holder.itemView.setOnClickListener(v -> {
-                    interstitialAdHelper.showInterstitial();
+                    new InterstitialAdHelper(requireActivity()).showInterstitial();
                     Bundle finalBundle = new Bundle();
                     finalBundle.putFloat("review", model.getReview());
                     finalBundle.putFloat("collimator", model.getCollimator());

@@ -78,7 +78,7 @@ public class DeviceSettingsFragment extends Fragment {
         binding.copyButton.setOnClickListener(view -> {
 
             try {
-                OtherUtils.copyTextToClipboard(getActivity(),
+                new OtherUtils(getActivity()).copyTextToClipboard(
                         getString(R.string.dpi) + ":" + " " + dpi + "\n" +
                                 getString(R.string.review) + ":" + " " + (int) finalBundle.getFloat("review") + "\n" +
                                 getString(R.string.collimator) + ":" + " " + (int) finalBundle.getFloat("collimator") + "\n" +
