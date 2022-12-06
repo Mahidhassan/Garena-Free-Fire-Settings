@@ -15,10 +15,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreSettings;
 import com.google.firebase.firestore.Query;
 import com.jvmfrog.ffsettings.R;
+import com.jvmfrog.ffsettings.adapter.ManufacturerAdapter;
 import com.jvmfrog.ffsettings.databinding.FragmentManufacturerBinding;
 import com.jvmfrog.ffsettings.model.ManufacturersModel;
 import com.jvmfrog.ffsettings.ui.dialog.ChangeUsernameDialog;
@@ -31,7 +33,7 @@ import java.util.Locale;
 public class ManufacturerFragment extends Fragment {
 
     private FragmentManufacturerBinding binding;
-    private FirestoreRecyclerAdapter<ManufacturersModel, ManufacturersHolder> adapter;
+    private ManufacturerAdapter adapter;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -49,53 +51,36 @@ public class ManufacturerFragment extends Fragment {
             binding.welcomeAndUserName.setText(getString(R.string.welcome) + "," + "\n" + SharedPreferencesUtils.getString(getActivity(), "user_name") + "!");
         }
 
-        FirebaseFirestore rootRef = FirebaseFirestore.getInstance();
-        FirebaseFirestoreSettings settings = new FirebaseFirestoreSettings.Builder()
-                .setPersistenceEnabled(true)
-                .build();
-        rootRef.setFirestoreSettings(settings);
+        try {
+            FirebaseFirestore rootRef = FirebaseFirestore.getInstance();
+            FirebaseFirestore.setLoggingEnabled(true);
+            FirebaseFirestoreSettings settings = new FirebaseFirestoreSettings.Builder()
+                    .setPersistenceEnabled(true)
+                    .build();
+            rootRef.setFirestoreSettings(settings);
 
-        Query query = rootRef.collection("manufacturers")
-                .orderBy("name", Query.Direction.ASCENDING);
+            Query query = rootRef.collection("manufacturers")
+                    .orderBy("name", Query.Direction.ASCENDING);
 
-        FirestoreRecyclerOptions<ManufacturersModel> options =
-                new FirestoreRecyclerOptions.Builder<ManufacturersModel>()
-                        .setQuery(query, ManufacturersModel.class)
-                        .build();
+            FirestoreRecyclerOptions<ManufacturersModel> options =
+                    new FirestoreRecyclerOptions.Builder<ManufacturersModel>()
+                            .setQuery(query, ManufacturersModel.class)
+                            .build();
 
-        adapter = new FirestoreRecyclerAdapter<ManufacturersModel, ManufacturersHolder>(options) {
-            @Override
-            protected void onBindViewHolder(@NonNull ManufacturersHolder holder, int position, @NonNull ManufacturersModel model) {
-                holder.manufacturerName.setText(model.getName());
+            adapter = new ManufacturerAdapter(options);
 
-                if (model.getShowInDashboard()) {
-                    holder.manufacturerName.setText(model.getName());
-                } else {
-                    holder.itemView.setVisibility(View.GONE);
-                }
 
-                holder.itemView.setOnClickListener(v -> {
-                    Bundle finalBundle = new Bundle();
-                    finalBundle.putString("collection", model.getCollection().toLowerCase(Locale.ROOT));
-                    NavigationUtils.navigateWithNavHost(
-                            (FragmentActivity) v.getContext(),
-                            R.id.nav_host_fragment,
-                            R.id.action_manufacturerFragment_to_devicesFragment,
-                            finalBundle);
-                });
-            }
-
-            @NonNull
-            @Override
-            public ManufacturersHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-                View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item, parent, false);
-                return new ManufacturersHolder(view);
-            }
-        };
-
-        LinearLayoutManager layoutManager = new GridLayoutManager(getActivity(), 2);
-        binding.recview.setLayoutManager(layoutManager);
-        binding.recview.setAdapter(adapter);
+            GridLayoutManager layoutManager = new GridLayoutManager(getActivity(), 2);
+            binding.recview.setLayoutManager(layoutManager);
+            binding.recview.setAdapter(adapter);
+        } catch (Exception e) {
+            e.printStackTrace();
+            new MaterialAlertDialogBuilder(getActivity())
+                    .setTitle("Остановиста БеБи")
+                    .setMessage("На, смотри что ты наделал балбес" + "\n" + e.getMessage())
+                    .setPositiveButton("Посмотрел", null)
+                    .show();
+        }
 
         binding.setUserNameBtn.setOnClickListener(view -> ChangeUsernameDialog.showDialog(getActivity()));
         binding.googleFormBtn.setOnClickListener(view -> new CustomTabUtil().OpenCustomTab(getActivity(), getString(R.string.google_form), R.color.md_theme_light_onSecondary));
@@ -103,7 +88,7 @@ public class ManufacturerFragment extends Fragment {
         return binding.getRoot();
     }
 
-    private class ManufacturersHolder extends RecyclerView.ViewHolder {
+    private static class ManufacturersHolder extends RecyclerView.ViewHolder {
         TextView manufacturerName;
         public ManufacturersHolder(@NonNull View itemView) {
             super(itemView);
