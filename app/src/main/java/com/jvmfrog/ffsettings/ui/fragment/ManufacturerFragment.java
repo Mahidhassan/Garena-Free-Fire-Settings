@@ -51,36 +51,27 @@ public class ManufacturerFragment extends Fragment {
             binding.welcomeAndUserName.setText(getString(R.string.welcome) + "," + "\n" + SharedPreferencesUtils.getString(getActivity(), "user_name") + "!");
         }
 
-        try {
-            FirebaseFirestore rootRef = FirebaseFirestore.getInstance();
-            FirebaseFirestore.setLoggingEnabled(true);
-            FirebaseFirestoreSettings settings = new FirebaseFirestoreSettings.Builder()
-                    .setPersistenceEnabled(true)
-                    .build();
-            rootRef.setFirestoreSettings(settings);
 
-            Query query = rootRef.collection("manufacturers")
-                    .orderBy("name", Query.Direction.ASCENDING);
+        FirebaseFirestore rootRef = FirebaseFirestore.getInstance();
+        FirebaseFirestore.setLoggingEnabled(true);
+        FirebaseFirestoreSettings settings = new FirebaseFirestoreSettings.Builder()
+                .setPersistenceEnabled(true)
+                .build();
+        rootRef.setFirestoreSettings(settings);
 
-            FirestoreRecyclerOptions<ManufacturersModel> options =
-                    new FirestoreRecyclerOptions.Builder<ManufacturersModel>()
-                            .setQuery(query, ManufacturersModel.class)
-                            .build();
+        Query query = rootRef.collection("manufacturers")
+                .orderBy("name", Query.Direction.ASCENDING);
 
-            adapter = new ManufacturerAdapter(options);
+        FirestoreRecyclerOptions<ManufacturersModel> options =
+                new FirestoreRecyclerOptions.Builder<ManufacturersModel>()
+                        .setQuery(query, ManufacturersModel.class)
+                        .build();
 
+        adapter = new ManufacturerAdapter(options);
 
-            GridLayoutManager layoutManager = new GridLayoutManager(getActivity(), 2);
-            binding.recview.setLayoutManager(layoutManager);
-            binding.recview.setAdapter(adapter);
-        } catch (Exception e) {
-            e.printStackTrace();
-            new MaterialAlertDialogBuilder(getActivity())
-                    .setTitle("Остановиста БеБи")
-                    .setMessage("На, смотри что ты наделал балбес" + "\n" + e.getMessage())
-                    .setPositiveButton("Посмотрел", null)
-                    .show();
-        }
+        LinearLayoutManager layoutManager = new GridLayoutManager(requireActivity(), 2);
+        binding.recview.setLayoutManager(layoutManager);
+        binding.recview.setAdapter(adapter);
 
         binding.setUserNameBtn.setOnClickListener(view -> ChangeUsernameDialog.showDialog(getActivity()));
         binding.googleFormBtn.setOnClickListener(view -> new CustomTabUtil().OpenCustomTab(getActivity(), getString(R.string.google_form), R.color.md_theme_light_onSecondary));
@@ -99,6 +90,8 @@ public class ManufacturerFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
+        binding.recview.getRecycledViewPool().clear();
+        adapter.notifyDataSetChanged();
         adapter.startListening();
     }
 

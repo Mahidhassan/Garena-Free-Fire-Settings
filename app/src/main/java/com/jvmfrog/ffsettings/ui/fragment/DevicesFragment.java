@@ -19,6 +19,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreSettings;
 import com.google.firebase.firestore.Query;
 import com.jvmfrog.ffsettings.R;
+import com.jvmfrog.ffsettings.adapter.DevicesAdapter;
 import com.jvmfrog.ffsettings.databinding.FragmentDevicesBinding;
 import com.jvmfrog.ffsettings.model.ParamsModel;
 import com.jvmfrog.ffsettings.utils.InterstitialAdHelper;
@@ -27,7 +28,7 @@ import com.jvmfrog.ffsettings.utils.NavigationUtils;
 public class DevicesFragment extends Fragment {
 
     private FragmentDevicesBinding binding;
-    private FirestoreRecyclerAdapter<ParamsModel, DeviceViewHolder> adapter;
+    private DevicesAdapter adapter;
 
     public DevicesFragment() {
         // Required empty public constructor
@@ -79,57 +80,20 @@ public class DevicesFragment extends Fragment {
                         .setQuery(query, ParamsModel.class)
                         .build();
 
-        adapter = new FirestoreRecyclerAdapter<ParamsModel, DeviceViewHolder>(options) {
-            @Override
-            protected void onBindViewHolder(@NonNull DeviceViewHolder holder, int position, @NonNull ParamsModel model) {
-                holder.device_name.setText(model.getDevice_name());
+        adapter = new DevicesAdapter(options, requireActivity());
 
-                holder.itemView.setOnClickListener(v -> {
-                    new InterstitialAdHelper(requireActivity()).showInterstitial();
-                    Bundle finalBundle = new Bundle();
-                    finalBundle.putFloat("review", model.getReview());
-                    finalBundle.putFloat("collimator", model.getCollimator());
-                    finalBundle.putFloat("x2_scope", model.getX2_scope());
-                    finalBundle.putFloat("x4_scope", model.getX4_scope());
-                    finalBundle.putFloat("sniper_scope", model.getSniper_scope());
-                    finalBundle.putFloat("free_review", model.getFree_review());
-                    finalBundle.putFloat("dpi", model.getDpi());
-                    finalBundle.putFloat("fire_button", model.getFire_button());
-                    finalBundle.putString("settings_source_url", model.getSettings_source_url());
-                    NavigationUtils.navigateWithNavHost(
-                            (FragmentActivity) v.getContext(),
-                            R.id.nav_host_fragment,
-                            R.id.action_devicesFragment_to_deviceSettingsFragment,
-                            finalBundle);
-                });
-            }
-
-            @NonNull
-            @Override
-            public DeviceViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-                View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item, parent, false);
-                return new DeviceViewHolder(view);
-            }
-        };
-
-        LinearLayoutManager layoutManager = new GridLayoutManager(getActivity(), 1);
+        LinearLayoutManager layoutManager = new GridLayoutManager(requireActivity(), 1);
         binding.recview.setLayoutManager(layoutManager);
         binding.recview.setAdapter(adapter);
 
         return binding.getRoot();
     }
 
-    private class DeviceViewHolder extends RecyclerView.ViewHolder {
-        TextView device_name;
-        public DeviceViewHolder(@NonNull View itemView) {
-            super(itemView);
-            device_name = itemView.findViewById(R.id.categories);
-        }
-    }
-
     @Override
     public void onStart() {
         super.onStart();
+        binding.recview.getRecycledViewPool().clear();
+        adapter.notifyDataSetChanged();
         adapter.startListening();
     }
 
