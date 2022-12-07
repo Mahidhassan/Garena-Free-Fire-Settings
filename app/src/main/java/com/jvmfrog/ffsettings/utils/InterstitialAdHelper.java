@@ -28,7 +28,10 @@ public class InterstitialAdHelper {
 
     public void loadInterstitialAd() {
         AdRequest adRequest = new AdRequest.Builder().build();
-        InterstitialAd.load(context, context.getString(R.string.admob_interstellar_ad_id), adRequest,
+        InterstitialAd.load(
+                context,
+                BuildConfig.BUILD_TYPE == "debug" ? "ca-app-pub-3940256099942544/1033173712" : "ca-app-pub-4193046598871025/7823313141",
+                adRequest,
                 new InterstitialAdLoadCallback() {
                     @Override
                     public void onAdLoaded(@NonNull InterstitialAd interstitialAd) {

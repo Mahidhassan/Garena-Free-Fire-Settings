@@ -144,7 +144,7 @@ public class MyApplication extends Application
             AdRequest request = new AdRequest.Builder().build();
             AppOpenAd.load(
                     context,
-                    AD_UNIT_ID,
+                    BuildConfig.BUILD_TYPE == "debug" ? "ca-app-pub-3940256099942544/3419835294" : "ca-app-pub-4193046598871025/7460189368",
                     request,
                     AppOpenAd.APP_OPEN_AD_ORIENTATION_PORTRAIT,
                     new AppOpenAd.AppOpenAdLoadCallback() {

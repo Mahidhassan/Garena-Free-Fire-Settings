@@ -25,12 +25,6 @@ import java.util.Locale;
 
 public class ManufacturerAdapter extends FirestoreRecyclerAdapter<ManufacturersModel, ManufacturerAdapter.ManufacturersHolder> {
 
-    /**
-     * Create a new RecyclerView adapter that listens to a Firestore Query.  See {@link
-     * FirestoreRecyclerOptions} for configuration options.
-     *
-     * @param options
-     */
     public ManufacturerAdapter(@NonNull FirestoreRecyclerOptions<ManufacturersModel> options) {
         super(options);
     }
