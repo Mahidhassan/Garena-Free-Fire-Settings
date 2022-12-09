@@ -80,8 +80,7 @@ public class DevicesFragment extends Fragment {
                         .setQuery(query, ParamsModel.class)
                         .build();
 
-        adapter = new DevicesAdapter(options, requireActivity());
-
+        adapter = new DevicesAdapter(options, getActivity());
         LinearLayoutManager layoutManager = new GridLayoutManager(requireActivity(), 1);
         binding.recview.setLayoutManager(layoutManager);
         binding.recview.setAdapter(adapter);

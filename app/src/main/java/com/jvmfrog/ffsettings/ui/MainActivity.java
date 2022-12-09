@@ -45,6 +45,7 @@ import com.jvmfrog.ffsettings.utils.UMPHelper;
 public class MainActivity extends AppCompatActivity {
 
     private ActivityMainBinding binding;
+    public InterstitialAdHelper interstitialAdHelper;
     private Boolean isFirstOpen;
 
     @Override
@@ -61,7 +62,8 @@ public class MainActivity extends AppCompatActivity {
             new UMPHelper(this).initConsent();
             ((MyApplication) application).showAdIfAvailable(this, () -> {new AboutAdsDialog(this).materialAlertDialogBuilder();});
             new BannerAdHelper(this).init(binding.bannerAd);
-            new InterstitialAdHelper(this).loadInterstitialAd();
+            interstitialAdHelper = new InterstitialAdHelper(this);
+            interstitialAdHelper.loadInterstitialAd();
         }
 
         if (!isFirstOpen) {

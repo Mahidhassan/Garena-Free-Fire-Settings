@@ -19,7 +19,6 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.jvmfrog.ffsettings.R;
 import com.jvmfrog.ffsettings.model.ParamsModel;
-import com.jvmfrog.ffsettings.ui.fragment.DevicesFragment;
 import com.jvmfrog.ffsettings.utils.InterstitialAdHelper;
 import com.jvmfrog.ffsettings.utils.NavigationUtils;
 
