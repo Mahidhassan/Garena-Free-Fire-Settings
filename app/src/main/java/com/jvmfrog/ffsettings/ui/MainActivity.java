@@ -45,8 +45,8 @@ import com.jvmfrog.ffsettings.utils.UMPHelper;
 public class MainActivity extends AppCompatActivity {
 
     private ActivityMainBinding binding;
-    public InterstitialAdHelper interstitialAdHelper;
     private Boolean isFirstOpen;
+    private InterstitialAdHelper interstitialAdHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -120,5 +120,11 @@ public class MainActivity extends AppCompatActivity {
                     break;
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        interstitialAdHelper.showInterstitial();
     }
 }

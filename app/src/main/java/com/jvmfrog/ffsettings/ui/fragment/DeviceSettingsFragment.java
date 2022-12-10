@@ -14,6 +14,7 @@ import android.widget.Toast;
 import com.jvmfrog.ffsettings.MyApplication;
 import com.jvmfrog.ffsettings.R;
 import com.jvmfrog.ffsettings.databinding.FragmentDeviceSettingsBinding;
+import com.jvmfrog.ffsettings.utils.InterstitialAdHelper;
 import com.jvmfrog.ffsettings.utils.OtherUtils;
 import com.jvmfrog.ffsettings.utils.SharedPreferencesUtils;
 

@@ -1,5 +1,6 @@
 package com.jvmfrog.ffsettings.ui.fragment;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,6 +23,7 @@ import com.jvmfrog.ffsettings.R;
 import com.jvmfrog.ffsettings.adapter.DevicesAdapter;
 import com.jvmfrog.ffsettings.databinding.FragmentDevicesBinding;
 import com.jvmfrog.ffsettings.model.ParamsModel;
+import com.jvmfrog.ffsettings.ui.MainActivity;
 import com.jvmfrog.ffsettings.utils.InterstitialAdHelper;
 import com.jvmfrog.ffsettings.utils.NavigationUtils;
 
@@ -80,8 +82,8 @@ public class DevicesFragment extends Fragment {
                         .setQuery(query, ParamsModel.class)
                         .build();
 
-        adapter = new DevicesAdapter(options, getActivity());
-        LinearLayoutManager layoutManager = new GridLayoutManager(requireActivity(), 1);
+        adapter = new DevicesAdapter(options);
+        LinearLayoutManager layoutManager = new GridLayoutManager(getActivity(), 1);
         binding.recview.setLayoutManager(layoutManager);
         binding.recview.setAdapter(adapter);
 
