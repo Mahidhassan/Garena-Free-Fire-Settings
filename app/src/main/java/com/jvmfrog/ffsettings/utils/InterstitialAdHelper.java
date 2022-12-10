@@ -19,50 +19,41 @@ import java.util.Locale;
 
 public class InterstitialAdHelper {
     private static final String TAG = "Interstitial Ad";
-    private Context context;
+    private Context mContext;
     private InterstitialAd mInterstitialAd;
+    private int SHOW_AD_BEFORE_N_CLICK = 0;
 
     public InterstitialAdHelper(Context context) {
-        this.context = context;
+        mContext = context;
     }
 
     public void loadInterstitialAd() {
         AdRequest adRequest = new AdRequest.Builder().build();
         InterstitialAd.load(
-                context,
+                mContext,
                 BuildConfig.BUILD_TYPE == "debug" ? "ca-app-pub-3940256099942544/1033173712" : "ca-app-pub-4193046598871025/7823313141",
                 adRequest,
                 new InterstitialAdLoadCallback() {
                     @Override
                     public void onAdLoaded(@NonNull InterstitialAd interstitialAd) {
-                        // The mInterstitialAd reference will be null until
-                        // an ad is loaded.
                         mInterstitialAd = interstitialAd;
-
                         Log.d(TAG, "onAdLoaded");
                         interstitialAd.setFullScreenContentCallback(
                                 new FullScreenContentCallback() {
                                     @Override
                                     public void onAdDismissedFullScreenContent() {
-                                        // Called when fullscreen content is dismissed.
-                                        // Make sure to set your reference to null so you don't
-                                        // show it a second time.
                                         mInterstitialAd = null;
                                         Log.d(TAG, "The ad was dismissed.");
                                     }
 
                                     @Override
                                     public void onAdFailedToShowFullScreenContent(@NonNull AdError adError) {
-                                        // Called when fullscreen content failed to show.
-                                        // Make sure to set your reference to null so you don't
-                                        // show it a second time.
                                         mInterstitialAd = null;
                                         Log.d(TAG, "The ad failed to show.");
                                     }
 
                                     @Override
                                     public void onAdShowedFullScreenContent() {
-                                        // Called when fullscreen content is shown.
                                         Log.d(TAG, "The ad was shown.");
                                     }
                                 });
@@ -70,7 +61,6 @@ public class InterstitialAdHelper {
 
                     @Override
                     public void onAdFailedToLoad(@NonNull LoadAdError loadAdError) {
-                        // Handle the error
                         Log.i(TAG, loadAdError.getMessage());
                         mInterstitialAd = null;
 
@@ -87,9 +77,10 @@ public class InterstitialAdHelper {
     }
 
     public void showInterstitial() {
-        // Show the ad if it"s ready. Otherwise toast and reload the ad.
-        if (mInterstitialAd != null && context != null && BuildConfig.BUILD_TYPE != "pro") {
-            mInterstitialAd.show((Activity) context);
+        SHOW_AD_BEFORE_N_CLICK++;
+        if (mInterstitialAd != null && mContext != null && BuildConfig.BUILD_TYPE != "pro" && SHOW_AD_BEFORE_N_CLICK == 3) {
+            mInterstitialAd.show((Activity) mContext);
+            SHOW_AD_BEFORE_N_CLICK = 0;
         } else {
             Log.d(TAG, "The interstitial ad wasn't ready yet.");
         }

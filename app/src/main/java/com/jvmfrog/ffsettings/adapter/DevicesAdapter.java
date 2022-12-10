@@ -1,5 +1,6 @@
 package com.jvmfrog.ffsettings.adapter;
 
+import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -23,11 +24,9 @@ import com.jvmfrog.ffsettings.utils.InterstitialAdHelper;
 import com.jvmfrog.ffsettings.utils.NavigationUtils;
 
 public class DevicesAdapter extends FirestoreRecyclerAdapter<ParamsModel, DevicesAdapter.DeviceViewHolder> {
-    private Context context;
 
-    public DevicesAdapter(@NonNull FirestoreRecyclerOptions<ParamsModel> options, Context context) {
+    public DevicesAdapter(@NonNull FirestoreRecyclerOptions<ParamsModel> options) {
         super(options);
-        context = context;
     }
 
     @Override
@@ -35,7 +34,6 @@ public class DevicesAdapter extends FirestoreRecyclerAdapter<ParamsModel, Device
         holder.device_name.setText(model.getDevice_name());
 
         holder.itemView.setOnClickListener(v -> {
-            new InterstitialAdHelper(context).showInterstitial();
             Bundle finalBundle = new Bundle();
             finalBundle.putFloat("review", model.getReview());
             finalBundle.putFloat("collimator", model.getCollimator());
