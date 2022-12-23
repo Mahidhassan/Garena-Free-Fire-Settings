@@ -1,6 +1,5 @@
 package com.jvmfrog.ffsettings.adapter;
 
-import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -25,15 +24,23 @@ import com.jvmfrog.ffsettings.utils.NavigationUtils;
 
 public class DevicesAdapter extends FirestoreRecyclerAdapter<ParamsModel, DevicesAdapter.DeviceViewHolder> {
 
-    public DevicesAdapter(@NonNull FirestoreRecyclerOptions<ParamsModel> options) {
+    private Context context;
+    private InterstitialAdHelper interstitialAdHelper;
+    private int show_ad_by_x_click = 0;
+
+    public DevicesAdapter(@NonNull FirestoreRecyclerOptions<ParamsModel> options, Context context) {
         super(options);
+        this.context = context;
     }
 
     @Override
     protected void onBindViewHolder(@NonNull DevicesAdapter.DeviceViewHolder holder, int position, @NonNull ParamsModel model) {
         holder.device_name.setText(model.getDevice_name());
+        interstitialAdHelper = new InterstitialAdHelper(context);
+        interstitialAdHelper.loadInterstitialAd();
 
         holder.itemView.setOnClickListener(v -> {
+            interstitialAdHelper.showInterstitial();
             Bundle finalBundle = new Bundle();
             finalBundle.putFloat("review", model.getReview());
             finalBundle.putFloat("collimator", model.getCollimator());
@@ -65,6 +72,13 @@ public class DevicesAdapter extends FirestoreRecyclerAdapter<ParamsModel, Device
             super(itemView);
             device_name = itemView.findViewById(R.id.categories);
         }
+    }
+
+    private void showAds() {
+        show_ad_by_x_click+=1;
+        if (show_ad_by_x_click == 2)
+        interstitialAdHelper.showInterstitial();
+        show_ad_by_x_click = 0;
     }
 
     @NonNull

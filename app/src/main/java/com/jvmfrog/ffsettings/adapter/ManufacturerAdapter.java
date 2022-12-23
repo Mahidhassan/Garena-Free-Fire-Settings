@@ -18,7 +18,6 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.jvmfrog.ffsettings.R;
 import com.jvmfrog.ffsettings.model.ManufacturersModel;
-import com.jvmfrog.ffsettings.ui.fragment.ManufacturerFragment;
 import com.jvmfrog.ffsettings.utils.NavigationUtils;
 
 import java.util.Locale;

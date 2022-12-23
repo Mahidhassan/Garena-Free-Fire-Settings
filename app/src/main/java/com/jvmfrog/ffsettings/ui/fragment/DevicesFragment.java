@@ -31,6 +31,7 @@ public class DevicesFragment extends Fragment {
 
     private FragmentDevicesBinding binding;
     private DevicesAdapter adapter;
+    private InterstitialAdHelper interstitialAdHelper;
 
     public DevicesFragment() {
         // Required empty public constructor
@@ -50,6 +51,9 @@ public class DevicesFragment extends Fragment {
         Bundle finalBundle = new Bundle();
         finalBundle.putAll(getArguments());
 
+        interstitialAdHelper = new InterstitialAdHelper(getActivity());
+        interstitialAdHelper.loadInterstitialAd();
+
         FirebaseFirestore rootRef = FirebaseFirestore.getInstance();
         FirebaseFirestoreSettings settings = new FirebaseFirestoreSettings.Builder()
                 .setPersistenceEnabled(true)
@@ -57,7 +61,6 @@ public class DevicesFragment extends Fragment {
         rootRef.setFirestoreSettings(settings);
 
         Query query = rootRef.collection(finalBundle.getString("collection"))
-                //.whereEqualTo("serie", "A")
                 .orderBy("device_name", Query.Direction.DESCENDING);
 
         binding.shimmerLayout.startShimmer();
@@ -80,28 +83,14 @@ public class DevicesFragment extends Fragment {
         FirestoreRecyclerOptions<ParamsModel> options =
                 new FirestoreRecyclerOptions.Builder<ParamsModel>()
                         .setQuery(query, ParamsModel.class)
+                        .setLifecycleOwner(this)
                         .build();
 
-        adapter = new DevicesAdapter(options);
+        adapter = new DevicesAdapter(options, getActivity());
         LinearLayoutManager layoutManager = new GridLayoutManager(getActivity(), 1);
         binding.recview.setLayoutManager(layoutManager);
         binding.recview.setAdapter(adapter);
 
         return binding.getRoot();
-    }
-
-    @Override
-    public void onStart() {
-        super.onStart();
-        binding.recview.getRecycledViewPool().clear();
-        adapter.notifyDataSetChanged();
-        adapter.startListening();
-    }
-
-    @Override
-    public void onStop() {
-        super.onStop();
-        if(adapter != null)
-            adapter.stopListening();
     }
 }

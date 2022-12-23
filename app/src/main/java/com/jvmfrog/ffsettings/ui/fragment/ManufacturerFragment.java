@@ -51,7 +51,6 @@ public class ManufacturerFragment extends Fragment {
             binding.welcomeAndUserName.setText(getString(R.string.welcome) + "," + "\n" + SharedPreferencesUtils.getString(getActivity(), "user_name") + "!");
         }
 
-
         FirebaseFirestore rootRef = FirebaseFirestore.getInstance();
         FirebaseFirestore.setLoggingEnabled(true);
         FirebaseFirestoreSettings settings = new FirebaseFirestoreSettings.Builder()
@@ -65,11 +64,12 @@ public class ManufacturerFragment extends Fragment {
         FirestoreRecyclerOptions<ManufacturersModel> options =
                 new FirestoreRecyclerOptions.Builder<ManufacturersModel>()
                         .setQuery(query, ManufacturersModel.class)
+                        .setLifecycleOwner(this)
                         .build();
 
         adapter = new ManufacturerAdapter(options);
 
-        LinearLayoutManager layoutManager = new GridLayoutManager(requireActivity(), 2);
+        LinearLayoutManager layoutManager = new GridLayoutManager(getActivity(), 2);
         binding.recview.setLayoutManager(layoutManager);
         binding.recview.setAdapter(adapter);
 
@@ -77,28 +77,5 @@ public class ManufacturerFragment extends Fragment {
         binding.googleFormBtn.setOnClickListener(view -> new CustomTabUtil().OpenCustomTab(getActivity(), getString(R.string.google_form), R.color.md_theme_light_onSecondary));
 
         return binding.getRoot();
-    }
-
-    private static class ManufacturersHolder extends RecyclerView.ViewHolder {
-        TextView manufacturerName;
-        public ManufacturersHolder(@NonNull View itemView) {
-            super(itemView);
-            manufacturerName = itemView.findViewById(R.id.categories);
-        }
-    }
-
-    @Override
-    public void onStart() {
-        super.onStart();
-        binding.recview.getRecycledViewPool().clear();
-        adapter.notifyDataSetChanged();
-        adapter.startListening();
-    }
-
-    @Override
-    public void onStop() {
-        super.onStop();
-        if(adapter != null)
-            adapter.stopListening();
     }
 }
