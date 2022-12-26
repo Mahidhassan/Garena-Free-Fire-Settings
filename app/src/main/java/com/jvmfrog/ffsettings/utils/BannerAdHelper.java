@@ -13,7 +13,7 @@ import com.google.android.gms.ads.MobileAds;
 import com.jvmfrog.ffsettings.BuildConfig;
 
 public class BannerAdHelper {
-    private Context context;
+    private final Context context;
     private AdRequest adRequest;
 
     public BannerAdHelper(Context context) {
@@ -21,7 +21,7 @@ public class BannerAdHelper {
     }
 
     public void init(AdView adView) {
-        if (BuildConfig.BUILD_TYPE != "pro") {
+        if (!BuildConfig.BUILD_TYPE.equals("pro")) {
             MobileAds.initialize(context, initializationStatus -> {});
             adRequest = new AdRequest.Builder().build();
             adView.loadAd(adRequest);

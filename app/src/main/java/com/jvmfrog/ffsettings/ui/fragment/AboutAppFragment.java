@@ -4,21 +4,19 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.jvmfrog.ffsettings.BuildConfig;
 import com.jvmfrog.ffsettings.R;
 import com.jvmfrog.ffsettings.databinding.FragmentAboutAppBinding;
-import com.jvmfrog.ffsettings.ui.dialog.ScreenshotEditionDialog;
 import com.jvmfrog.ffsettings.utils.CustomTabUtil;
 import com.jvmfrog.ffsettings.utils.BugReportHelper;
 import com.jvmfrog.ffsettings.utils.OtherUtils;
-import com.jvmfrog.ffsettings.utils.SharedPreferencesUtils;
 
 public class AboutAppFragment extends Fragment {
 
@@ -30,7 +28,7 @@ public class AboutAppFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         binding = FragmentAboutAppBinding.inflate(inflater, container, false);
 

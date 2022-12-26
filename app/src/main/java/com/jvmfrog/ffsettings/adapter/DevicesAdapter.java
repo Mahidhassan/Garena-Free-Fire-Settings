@@ -11,46 +11,43 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.firebase.ui.common.ChangeEventType;
-import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
-import com.firebase.ui.firestore.FirestoreRecyclerOptions;
-import com.firebase.ui.firestore.ObservableSnapshotArray;
-import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.jvmfrog.ffsettings.R;
-import com.jvmfrog.ffsettings.model.ParamsModel;
+import com.jvmfrog.ffsettings.model.SensitivityModel;
 import com.jvmfrog.ffsettings.utils.InterstitialAdHelper;
 import com.jvmfrog.ffsettings.utils.NavigationUtils;
 
-public class DevicesAdapter extends FirestoreRecyclerAdapter<ParamsModel, DevicesAdapter.DeviceViewHolder> {
+import java.util.List;
 
-    private Context context;
+public class DevicesAdapter extends RecyclerView.Adapter<DevicesAdapter.DeviceViewHolder> {
+
+    private final Context context;
     private InterstitialAdHelper interstitialAdHelper;
     private int show_ad_by_x_click = 0;
+    private final List<SensitivityModel> models;
 
-    public DevicesAdapter(@NonNull FirestoreRecyclerOptions<ParamsModel> options, Context context) {
-        super(options);
+    public DevicesAdapter(Context context, List<SensitivityModel> models) {
         this.context = context;
+        this.models = models;
     }
 
     @Override
-    protected void onBindViewHolder(@NonNull DevicesAdapter.DeviceViewHolder holder, int position, @NonNull ParamsModel model) {
-        holder.device_name.setText(model.getDevice_name());
+    public void onBindViewHolder(@NonNull DevicesAdapter.DeviceViewHolder holder, int position) {
+        holder.device_name.setText(models.get(position).getDeviceName());
         interstitialAdHelper = new InterstitialAdHelper(context);
         interstitialAdHelper.loadInterstitialAd();
 
         holder.itemView.setOnClickListener(v -> {
             interstitialAdHelper.showInterstitial();
             Bundle finalBundle = new Bundle();
-            finalBundle.putFloat("review", model.getReview());
-            finalBundle.putFloat("collimator", model.getCollimator());
-            finalBundle.putFloat("x2_scope", model.getX2_scope());
-            finalBundle.putFloat("x4_scope", model.getX4_scope());
-            finalBundle.putFloat("sniper_scope", model.getSniper_scope());
-            finalBundle.putFloat("free_review", model.getFree_review());
-            finalBundle.putFloat("dpi", model.getDpi());
-            finalBundle.putFloat("fire_button", model.getFire_button());
-            finalBundle.putString("settings_source_url", model.getSettings_source_url());
+            finalBundle.putFloat("review", models.get(position).getReview());
+            finalBundle.putFloat("collimator", models.get(position).getCollimator());
+            finalBundle.putFloat("x2_scope", models.get(position).getX2_scope());
+            finalBundle.putFloat("x4_scope", models.get(position).getX4_scope());
+            finalBundle.putFloat("sniper_scope", models.get(position).getSniper_scope());
+            finalBundle.putFloat("free_review", models.get(position).getFree_review());
+            finalBundle.putFloat("dpi", models.get(position).getDpi());
+            finalBundle.putFloat("fire_button", models.get(position).getFire_button());
+            finalBundle.putString("settings_source_url", models.get(position).getSettings_source_url());
             NavigationUtils.navigateWithNavHost(
                     (FragmentActivity) v.getContext(),
                     R.id.nav_host_fragment,
@@ -61,9 +58,14 @@ public class DevicesAdapter extends FirestoreRecyclerAdapter<ParamsModel, Device
 
     @NonNull
     @Override
-    public DevicesAdapter.DeviceViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public DeviceViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item, parent, false);
         return new DeviceViewHolder(view);
+    }
+
+    @Override
+    public int getItemCount() {
+        return models.size();
     }
 
     public static class DeviceViewHolder extends RecyclerView.ViewHolder {
@@ -72,59 +74,5 @@ public class DevicesAdapter extends FirestoreRecyclerAdapter<ParamsModel, Device
             super(itemView);
             device_name = itemView.findViewById(R.id.categories);
         }
-    }
-
-    private void showAds() {
-        show_ad_by_x_click+=1;
-        if (show_ad_by_x_click == 2)
-        interstitialAdHelper.showInterstitial();
-        show_ad_by_x_click = 0;
-    }
-
-    @NonNull
-    @Override
-    public ParamsModel getItem(int position) {
-        return super.getItem(position);
-    }
-
-    @Override
-    public int getItemCount() {
-        return super.getItemCount();
-    }
-
-    @Override
-    public void updateOptions(@NonNull FirestoreRecyclerOptions<ParamsModel> options) {
-        super.updateOptions(options);
-    }
-
-    @Override
-    public void onError(@NonNull FirebaseFirestoreException e) {
-        super.onError(e);
-    }
-
-    @Override
-    public void onChildChanged(@NonNull ChangeEventType type, @NonNull DocumentSnapshot snapshot, int newIndex, int oldIndex) {
-        super.onChildChanged(type, snapshot, newIndex, oldIndex);
-    }
-
-    @Override
-    public void onDataChanged() {
-        super.onDataChanged();
-    }
-
-    @Override
-    public void startListening() {
-        super.startListening();
-    }
-
-    @Override
-    public void stopListening() {
-        super.stopListening();
-    }
-
-    @NonNull
-    @Override
-    public ObservableSnapshotArray<ParamsModel> getSnapshots() {
-        return super.getSnapshots();
     }
 }

@@ -1,18 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="8dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.fragment.ManufacturerFragment">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:padding="8dp">
-
-        <com.google.android.material.card.MaterialCardView
+    <com.google.android.material.card.MaterialCardView
             android:id="@+id/setUserNameBtn"
             style="@style/Widget.Material3.CardView.Outlined"
             android:layout_width="match_parent"
@@ -34,7 +31,8 @@
                     android:layout_height="64dp"
                     android:src="@drawable/person"
                     android:layout_gravity="center_vertical"
-                    android:padding="8dp"/>
+                    android:padding="8dp"
+                    android:contentDescription="@string/welcome"/>
 
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/welcome_and_user_name"
@@ -42,46 +40,69 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center|center_horizontal|center_vertical"
                     android:padding="6dp"
-                    android:text="Welcome, \nUser name!"
+                    android:text="@string/welcome"
                     android:textSize="21sp"
                     android:textStyle="bold"
                     android:maxLines="2"/>
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recview"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+    <com.facebook.shimmer.ShimmerFrameLayout
+        android:id="@+id/shimmer_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-        <LinearLayout
+        <GridLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingHorizontal="14dp"
+            android:columnCount="2"
+            android:rowCount="2"
             android:orientation="vertical">
+            <include layout="@layout/shimmer_placeholder_layout"/>
+            <include layout="@layout/shimmer_placeholder_layout"/>
+            <include layout="@layout/shimmer_placeholder_layout"/>
+            <include layout="@layout/shimmer_placeholder_layout"/>
+            <include layout="@layout/shimmer_placeholder_layout"/>
+            <include layout="@layout/shimmer_placeholder_layout"/>
+            <include layout="@layout/shimmer_placeholder_layout"/>
+            <include layout="@layout/shimmer_placeholder_layout"/>
+            <include layout="@layout/shimmer_placeholder_layout"/>
+            <include layout="@layout/shimmer_placeholder_layout"/>
+            <include layout="@layout/shimmer_placeholder_layout"/>
+        </GridLayout>
+    </com.facebook.shimmer.ShimmerFrameLayout>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
-            <com.google.android.material.textview.MaterialTextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:contentDescription="@string/dont_have_your_phone_model"
-                android:text="@string/dont_have_your_phone_model"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                style="@style/Widget.MaterialComponents.TextView"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="14dp"
+        android:orientation="vertical">
 
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/googleFormBtn"
-                style="@style/Widget.MaterialComponents.TextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:clickable="true"
-                android:focusable="true"
-                android:contentDescription="@string/then_click_here"
-                android:singleLine="true"
-                android:text="@string/then_click_here"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                android:textColor="#FF559DEF"/>
-        </LinearLayout>
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/dont_have_your_phone_model"
+            android:text="@string/dont_have_your_phone_model"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            style="@style/Widget.MaterialComponents.TextView"/>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/googleFormBtn"
+            style="@style/Widget.MaterialComponents.TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:focusable="true"
+            android:contentDescription="@string/then_click_here"
+            android:singleLine="true"
+            android:text="@string/then_click_here"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="#FF559DEF"/>
     </LinearLayout>
-</FrameLayout>
+</LinearLayout>

@@ -203,14 +203,15 @@
                     style="@style/Widget.MaterialComponents.TextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:autoLink="web"
                     android:contentDescription="@string/fire_button"
+                    android:linksClickable="true"
                     android:paddingStart="4dp"
                     android:singleLine="true"
                     android:text="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
                     android:textSize="18sp"
                     android:textStyle="bold"
-                    android:autoLink="web"
-                    android:linksClickable="true"/>
+                    tools:ignore="RedundantDescriptionCheck" />
             </LinearLayout>
 
             <com.google.android.material.card.MaterialCardView

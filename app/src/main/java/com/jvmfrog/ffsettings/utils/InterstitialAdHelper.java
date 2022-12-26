@@ -18,7 +18,7 @@ import java.util.Locale;
 
 public class InterstitialAdHelper {
     private static final String TAG = "Interstitial Ad";
-    private Context mContext;
+    private final Context mContext;
     private InterstitialAd mInterstitialAd;
 
     public InterstitialAdHelper(Context context) {

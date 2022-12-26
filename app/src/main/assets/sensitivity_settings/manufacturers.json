@@ -1,0 +1,16 @@
+{
+  "manufacturers": [
+    {
+      "showInProductionApp": true,
+      "isAvailable": false,
+      "name": "Samsung",
+      "model": "samsung"
+    },
+    {
+      "showInProductionApp": true,
+      "isAvailable": false,
+      "name": "iPhone",
+      "model": "iphone"
+    }
+  ]
+}

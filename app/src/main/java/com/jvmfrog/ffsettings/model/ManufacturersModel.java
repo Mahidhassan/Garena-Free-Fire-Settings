@@ -4,15 +4,15 @@ import androidx.annotation.Keep;
 
 @Keep
 public class ManufacturersModel {
-    String name, collection;
-    Boolean showInDashboard, isAvailable;
+    String name, model;
+    Boolean showInProductionApp, isAvailable;
 
     public ManufacturersModel() {};
 
-    public ManufacturersModel(String name, String collection, Boolean showInDashboard, Boolean isAvailable) {
+    public ManufacturersModel(String name, String model, Boolean showInProductionApp, Boolean isAvailable) {
         this.name = name;
-        this.collection = collection;
-        this.showInDashboard = showInDashboard;
+        this.model = model;
+        this.showInProductionApp = showInProductionApp;
         this.isAvailable = isAvailable;
     }
 
@@ -24,27 +24,27 @@ public class ManufacturersModel {
         this.name = name;
     }
 
-    public String getCollection() {
-        return collection;
+    public String getModel() {
+        return model;
     }
 
-    public void setCollection(String collection) {
-        this.collection = collection;
+    public void setModel(String model) {
+        this.model = model;
     }
 
-    public Boolean getShowInDashboard() {
-        return showInDashboard;
+    public Boolean getShowInProductionApp() {
+        return showInProductionApp;
     }
 
-    public void setShowInDashboard(Boolean showInDashboard) {
-        this.showInDashboard = showInDashboard;
+    public void setShowInProductionApp(Boolean showInProductionApp) {
+        this.showInProductionApp = showInProductionApp;
     }
 
-    public Boolean getIsAvailable() {
+    public Boolean getAvailable() {
         return isAvailable;
     }
 
-    public void setIsAvailable(Boolean isAvailable) {
-        isAvailable = isAvailable;
+    public void setAvailable(Boolean available) {
+        isAvailable = available;
     }
 }

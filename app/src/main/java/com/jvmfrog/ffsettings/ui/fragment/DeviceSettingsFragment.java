@@ -1,22 +1,18 @@
 package com.jvmfrog.ffsettings.ui.fragment;
 
 import android.annotation.SuppressLint;
-import android.app.Application;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import com.jvmfrog.ffsettings.MyApplication;
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+
 import com.jvmfrog.ffsettings.R;
 import com.jvmfrog.ffsettings.databinding.FragmentDeviceSettingsBinding;
-import com.jvmfrog.ffsettings.utils.InterstitialAdHelper;
 import com.jvmfrog.ffsettings.utils.OtherUtils;
-import com.jvmfrog.ffsettings.utils.SharedPreferencesUtils;
 
 public class DeviceSettingsFragment extends Fragment {
 
@@ -59,7 +55,7 @@ public class DeviceSettingsFragment extends Fragment {
         binding.textViewFireButton.setText(getString(R.string.fire_button) + ":" + " " + (int) finalBundle.getFloat("fire_button"));
         binding.sliderFireButton.setValue(finalBundle.getFloat("fire_button"));
 
-        if (finalBundle.getString("settings_source_url") == null || finalBundle.getString("settings_source_url").equals("")) {
+        if (finalBundle.getString("settings_source_url") == null || finalBundle.getString("settings_source_url").equals("null") || finalBundle.getString("settings_source_url").equals("")) {
             binding.textViewSettingsSourceUrl.setVisibility(View.GONE);
             binding.textViewSource.setVisibility(View.GONE);
         } else {
