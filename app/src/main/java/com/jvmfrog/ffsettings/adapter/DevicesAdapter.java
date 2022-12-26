@@ -32,7 +32,7 @@ public class DevicesAdapter extends RecyclerView.Adapter<DevicesAdapter.DeviceVi
 
     @Override
     public void onBindViewHolder(@NonNull DevicesAdapter.DeviceViewHolder holder, int position) {
-        holder.device_name.setText(models.get(position).getDeviceName());
+        holder.device_name.setText(models.get(position).getManufacturer() + " " + models.get(position).getDeviceName());
         interstitialAdHelper = new InterstitialAdHelper(context);
         interstitialAdHelper.loadInterstitialAd();
 
@@ -41,13 +41,13 @@ public class DevicesAdapter extends RecyclerView.Adapter<DevicesAdapter.DeviceVi
             Bundle finalBundle = new Bundle();
             finalBundle.putFloat("review", models.get(position).getReview());
             finalBundle.putFloat("collimator", models.get(position).getCollimator());
-            finalBundle.putFloat("x2_scope", models.get(position).getX2_scope());
-            finalBundle.putFloat("x4_scope", models.get(position).getX4_scope());
-            finalBundle.putFloat("sniper_scope", models.get(position).getSniper_scope());
-            finalBundle.putFloat("free_review", models.get(position).getFree_review());
+            finalBundle.putFloat("x2_scope", models.get(position).getX2Scope());
+            finalBundle.putFloat("x4_scope", models.get(position).getX4Scope());
+            finalBundle.putFloat("sniper_scope", models.get(position).getSniperScope());
+            finalBundle.putFloat("free_review", models.get(position).getFreeReview());
             finalBundle.putFloat("dpi", models.get(position).getDpi());
-            finalBundle.putFloat("fire_button", models.get(position).getFire_button());
-            finalBundle.putString("settings_source_url", models.get(position).getSettings_source_url());
+            finalBundle.putFloat("fire_button", models.get(position).getFireButton());
+            finalBundle.putString("settings_source_url", models.get(position).getSettingsSourceUrl());
             NavigationUtils.navigateWithNavHost(
                     (FragmentActivity) v.getContext(),
                     R.id.nav_host_fragment,

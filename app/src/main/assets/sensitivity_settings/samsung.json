@@ -2,6 +2,7 @@
   "manufacturer": "Samsung",
   "models": [
     {
+      "manufacturer": "Samsung",
       "name": "S22 Ultra",
       "settings_source_url": null,
       "dpi": 0,
@@ -16,6 +17,7 @@
         }
     },
     {
+      "manufacturer": "Samsung",
       "name": "S22 Plus",
       "settings_source_url": null,
       "dpi": 0,
@@ -30,6 +32,7 @@
       }
     },
     {
+      "manufacturer": "Samsung",
       "name": "S22",
       "settings_source_url": null,
       "dpi": 0,

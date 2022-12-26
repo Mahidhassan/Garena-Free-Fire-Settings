@@ -24,11 +24,12 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 
 public class SensitivitiesHelper {
-    public static String GITHUB_SENSITIVITIES_FILES_PATH = "https://github.com/IbremMiner837/Garena-Free-Fire-Settings/tree/master/app/assets/sensitivity_settings/";
+    public static String GITHUB_SENSITIVITIES_FILES_PATH = "https://raw.githubusercontent.com/IbremMiner837/Garena-Free-Fire-Settings/master/app/src/main/assets/sensitivity_settings/";
 
     public void getSensitivitiesFromURL(Context context, RecyclerView recyclerView, String manufacturer, ShimmerFrameLayout shimmerFrameLayout) {
         RequestQueue queue = Volley.newRequestQueue(context);
@@ -39,6 +40,7 @@ public class SensitivitiesHelper {
                 for (int i = 0; i < jsonArray.length(); i++) {
                     JSONObject jsonObject = jsonArray.getJSONObject(i);
                     String deviceName = jsonObject.getString("name");
+                    String manufacturerName = jsonObject.getString("manufacturer");
                     String settingsSourceURL = jsonObject.getString("settings_source_url");
                     int dpi = jsonObject.getInt("dpi");
                     int fire_button = jsonObject.getInt("fire_button");
@@ -48,7 +50,7 @@ public class SensitivitiesHelper {
                     int x4_scope = jsonObject.getJSONObject("sensitivities").getInt("x4_scope");
                     int sniper_scope = jsonObject.getJSONObject("sensitivities").getInt("sniper_scope");
                     int free_review = jsonObject.getJSONObject("sensitivities").getInt("free_review");
-                    list.add(new SensitivityModel(deviceName, settingsSourceURL, dpi, fire_button,
+                    list.add(new SensitivityModel(deviceName, manufacturerName, settingsSourceURL, dpi, fire_button,
                             review, collimator, x2_scope, x4_scope, sniper_scope,free_review
                     ));
                 }
@@ -80,6 +82,7 @@ public class SensitivitiesHelper {
             for (int i = 0; i < jsonArray.length(); i++) {
                 JSONObject jsonObject = jsonArray.getJSONObject(i);
                 String deviceName = jsonObject.getString("name");
+                String manufacturerName = jsonObject.getString("manufacturer");
                 String settingsSourceURL = jsonObject.getString("settings_source_url");
                 int dpi = jsonObject.getInt("dpi");
                 int fire_button = jsonObject.getInt("fire_button");
@@ -89,7 +92,7 @@ public class SensitivitiesHelper {
                 int x4_scope = jsonObject.getJSONObject("sensitivities").getInt("x4_scope");
                 int sniper_scope = jsonObject.getJSONObject("sensitivities").getInt("sniper_scope");
                 int free_review = jsonObject.getJSONObject("sensitivities").getInt("free_review");
-                list.add(new SensitivityModel(deviceName, settingsSourceURL, dpi, fire_button,
+                list.add(new SensitivityModel(deviceName, manufacturerName, settingsSourceURL, dpi, fire_button,
                         review, collimator, x2_scope, x4_scope, sniper_scope,free_review
                 ));
             }
@@ -111,7 +114,7 @@ public class SensitivitiesHelper {
         try {
             String jsonString = null;
             inputStream = context.getAssets().open("sensitivity_settings/" + manufacturer + ".json");
-            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream, "UTF-8"));
+            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream, StandardCharsets.UTF_8));
             while ((jsonString = bufferedReader.readLine()) != null) {
                 builder.append(jsonString);
             }

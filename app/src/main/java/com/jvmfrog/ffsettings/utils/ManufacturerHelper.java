@@ -24,11 +24,12 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 
 public class ManufacturerHelper {
-    public static String GITHUB_MANUFACTURERS_FILES_PATH = "https://github.com/IbremMiner837/Garena-Free-Fire-Settings/tree/master/app/assets/sensitivity_settings/manufacturers.json";
+    public static String GITHUB_MANUFACTURERS_FILES_PATH = "https://raw.githubusercontent.com/IbremMiner837/Garena-Free-Fire-Settings/master/app/src/main/assets/sensitivity_settings/manufacturers.json";
 
     public void getManufacturersFromURL(Context context, RecyclerView recyclerView, ShimmerFrameLayout shimmerFrameLayout) {
         RequestQueue queue = Volley.newRequestQueue(context);
@@ -44,7 +45,7 @@ public class ManufacturerHelper {
                     Boolean isAvailable = jsonObject.getBoolean("isAvailable");
                     list.add(new ManufacturersModel(name, model, showInProductionApp, isAvailable));
                 }
-                recyclerView.setLayoutManager(new LinearLayoutManager(context));
+                recyclerView.setLayoutManager(new GridLayoutManager(context, 2));
                 recyclerView.setAdapter(new ManufacturerAdapter(list));
             } catch (JSONException e) {
                 e.printStackTrace();
@@ -90,7 +91,7 @@ public class ManufacturerHelper {
         try {
             String jsonString = null;
             inputStream = context.getAssets().open("sensitivity_settings/manufacturers.json");
-            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream, "UTF-8"));
+            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream, StandardCharsets.UTF_8));
             while ((jsonString = bufferedReader.readLine()) != null) {
                 builder.append(jsonString);
             }
