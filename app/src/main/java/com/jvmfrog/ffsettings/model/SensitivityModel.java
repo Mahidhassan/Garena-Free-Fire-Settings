@@ -4,12 +4,12 @@ import androidx.annotation.Keep;
 
 @Keep
 public class SensitivityModel {
-    public String deviceName, manufacturer, settingsSourceUrl;
+    public String deviceName, manufacturerName, settingsSourceUrl;
     public int dpi, fireButton, review, collimator, x2Scope, x4Scope, sniperScope, freeReview;
 
-    public SensitivityModel(String deviceName, String manufacturer, String settingsSourceUrl, int dpi, int fireButton, int review, int collimator, int x2Scope, int x4Scope, int sniperScope, int freeReview) {
+    public SensitivityModel(String deviceName, String manufacturerName, String settingsSourceUrl, int dpi, int fireButton, int review, int collimator, int x2Scope, int x4Scope, int sniperScope, int freeReview) {
         this.deviceName = deviceName;
-        this.manufacturer = manufacturer;
+        this.manufacturerName = manufacturerName;
         this.settingsSourceUrl = settingsSourceUrl;
         this.dpi = dpi;
         this.fireButton = fireButton;
@@ -29,12 +29,12 @@ public class SensitivityModel {
         this.deviceName = deviceName;
     }
 
-    public String getManufacturer() {
-        return manufacturer;
+    public String getManufacturerName() {
+        return manufacturerName;
     }
 
-    public void setManufacturer(String manufacturer) {
-        this.manufacturer = manufacturer;
+    public void setManufacturerName(String manufacturerName) {
+        this.manufacturerName = manufacturerName;
     }
 
     public String getSettingsSourceUrl() {

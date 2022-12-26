@@ -32,7 +32,7 @@ public class DevicesAdapter extends RecyclerView.Adapter<DevicesAdapter.DeviceVi
 
     @Override
     public void onBindViewHolder(@NonNull DevicesAdapter.DeviceViewHolder holder, int position) {
-        holder.device_name.setText(models.get(position).getManufacturer() + " " + models.get(position).getDeviceName());
+        holder.device_name.setText(models.get(position).getManufacturerName() + " " + models.get(position).getDeviceName());
         interstitialAdHelper = new InterstitialAdHelper(context);
         interstitialAdHelper.loadInterstitialAd();
 
