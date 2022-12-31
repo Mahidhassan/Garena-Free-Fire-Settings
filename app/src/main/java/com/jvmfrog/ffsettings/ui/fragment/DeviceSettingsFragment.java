@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.jvmfrog.ffsettings.R;
@@ -29,6 +30,12 @@ public class DeviceSettingsFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         binding = FragmentDeviceSettingsBinding.inflate(inflater, container, false);
+        return binding.getRoot();
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
 
         Bundle finalBundle = new Bundle();
         finalBundle.putAll(getArguments());
@@ -72,7 +79,7 @@ public class DeviceSettingsFragment extends Fragment {
         binding.textViewFireButton.setContentDescription(getString(R.string.fire_button) + ":" + " " + (int) finalBundle.getFloat("fire_button"));
         binding.textViewSettingsSourceUrl.setContentDescription(finalBundle.getString("settings_source_url"));
 
-        binding.copyButton.setOnClickListener(view -> {
+        binding.copyButton.setOnClickListener(view1 -> {
 
             try {
                 new OtherUtils(getActivity()).copyTextToClipboard(
@@ -85,13 +92,18 @@ public class DeviceSettingsFragment extends Fragment {
                                 getString(R.string.free_review) + ":" + " " + (int) finalBundle.getFloat("free_review") + "\n" +
                                 getString(R.string.fire_button) + ":" + " " + (int) finalBundle.getFloat("fire_button") + "\n" +
                                 getString(R.string.source) + " " + finalBundle.getString("settings_source_url")
-                        );
+                );
                 Toast.makeText(getActivity(), "Скопировано", Toast.LENGTH_SHORT).show();
             } catch (Exception e) {
                 e.printStackTrace();
                 Toast.makeText(getActivity(), "Ошибка: " + e, Toast.LENGTH_SHORT).show();
             }
         });
-        return binding.getRoot();
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        binding = null;
     }
 }

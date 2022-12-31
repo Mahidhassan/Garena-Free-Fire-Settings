@@ -4,6 +4,7 @@ import android.content.Context;
 import android.util.Log;
 import android.view.View;
 
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -31,7 +32,7 @@ import java.util.List;
 public class ManufacturerHelper {
     public static String GITHUB_MANUFACTURERS_FILES_PATH = "https://raw.githubusercontent.com/IbremMiner837/Garena-Free-Fire-Settings/master/app/src/main/assets/sensitivity_settings/manufacturers.json";
 
-    public void getManufacturersFromURL(Context context, RecyclerView recyclerView, ShimmerFrameLayout shimmerFrameLayout) {
+    public void getManufacturersFromURL(Context context, Fragment fragment, RecyclerView recyclerView, ShimmerFrameLayout shimmerFrameLayout) {
         RequestQueue queue = Volley.newRequestQueue(context);
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, GITHUB_MANUFACTURERS_FILES_PATH, null, response -> {
             try {
@@ -46,7 +47,7 @@ public class ManufacturerHelper {
                     list.add(new ManufacturersModel(name, model, showInProductionApp, isAvailable));
                 }
                 recyclerView.setLayoutManager(new GridLayoutManager(context, 2));
-                recyclerView.setAdapter(new ManufacturerAdapter(list));
+                recyclerView.setAdapter(new ManufacturerAdapter(fragment, list));
             } catch (JSONException e) {
                 e.printStackTrace();
             }
@@ -61,7 +62,7 @@ public class ManufacturerHelper {
         queue.add(jsonObjectRequest);
     };
 
-    public void getManufacturersFromAssets(Context context, RecyclerView recyclerView, ShimmerFrameLayout shimmerFrameLayout) {
+    public void getManufacturersFromAssets(Context context, Fragment fragment, RecyclerView recyclerView, ShimmerFrameLayout shimmerFrameLayout) {
         shimmerFrameLayout.stopShimmer();
         shimmerFrameLayout.setVisibility(View.GONE);
         recyclerView.setVisibility(View.VISIBLE);
@@ -79,7 +80,7 @@ public class ManufacturerHelper {
                 list.add(new ManufacturersModel(name, model, showInProductionApp, isAvailable));
             }
             recyclerView.setLayoutManager(new GridLayoutManager(context, 2));
-            recyclerView.setAdapter(new ManufacturerAdapter(list));
+            recyclerView.setAdapter(new ManufacturerAdapter(fragment, list));
         } catch (JSONException | IOException e) {
             e.printStackTrace();
         }

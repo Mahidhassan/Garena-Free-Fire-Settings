@@ -6,7 +6,15 @@ import android.view.ContextThemeWrapper;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.splashscreen.SplashScreen;
+import androidx.fragment.app.FragmentActivity;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+import androidx.navigation.fragment.NavHostFragment;
+import androidx.navigation.ui.AppBarConfiguration;
+import androidx.navigation.ui.AppBarConfigurationKt;
+import androidx.navigation.ui.NavigationUI;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.jvmfrog.ffsettings.BuildConfig;
 import com.jvmfrog.ffsettings.MyApplication;
@@ -21,7 +29,7 @@ import com.jvmfrog.ffsettings.utils.UMPHelper;
 public class MainActivity extends AppCompatActivity {
 
     private ActivityMainBinding binding;
-    private InterstitialAdHelper interstitialAdHelper;
+    public InterstitialAdHelper interstitialAdHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +38,6 @@ public class MainActivity extends AppCompatActivity {
         SplashScreen splashScreen = SplashScreen.installSplashScreen(this);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        bottomAppBar();
 
         if (!BuildConfig.BUILD_TYPE.equals("pro")) {
             new UMPHelper(this).initConsent();
@@ -50,48 +57,10 @@ public class MainActivity extends AppCompatActivity {
             });
             builder.show();
         }
-    }
 
-    private void bottomAppBar() {
-        binding.bottomAppBar.setOnItemSelectedListener(item -> {
-            switch (item.getItemId()) {
-                case R.id.home:
-                    NavigationUtils.navigateWithNavHost(
-                            this,
-                            R.id.nav_host_fragment,
-                            R.id.manufacturerFragment,
-                            null,
-                            R.anim.enter_from_left, R.anim.exit_to_right,
-                            R.anim.enter_from_right, R.anim.exit_to_left);
-                    break;
-                case R.id.about_app:
-                    NavigationUtils.navigateWithNavHost(
-                            this,
-                            R.id.nav_host_fragment,
-                            R.id.aboutAppFragment,
-                            null,
-                            R.anim.enter_from_right, R.anim.exit_to_left,
-                            R.anim.enter_from_left, R.anim.exit_to_right);
-                    break;
-            }
-            return true;
-        });
-
-        binding.bottomAppBar.setOnItemReselectedListener(item -> {
-            switch (item.getItemId()) {
-                case R.id.home:
-                    NavigationUtils.navigateWithNavHost(
-                            this,
-                            R.id.nav_host_fragment,
-                            R.id.manufacturerFragment);
-                    break;
-                case R.id.about_app:
-                    NavigationUtils.navigateWithNavHost(
-                            this,
-                            R.id.nav_host_fragment,
-                            R.id.aboutAppFragment);
-                    break;
-            }
-        });
+        NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment_content_main);
+        NavController navController = navHostFragment.getNavController();
+        BottomNavigationView bottomNav = findViewById(R.id.bottomAppBar);
+        NavigationUI.setupWithNavController(bottomNav, navController);
     }
 }

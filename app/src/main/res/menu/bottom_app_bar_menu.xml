@@ -3,14 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/home"
+        android:id="@+id/manufacturerFragment"
         android:icon="@drawable/ic_round_home_24"
         android:title="@string/home"
         android:tint="?attr/colorControlNormal"
         app:showAsAction="ifRoom" />
 
     <item
-        android:id="@+id/about_app"
+        android:id="@+id/aboutAppFragment"
         android:icon="@drawable/ic_round_info_24"
         android:title="@string/about_app"
         android:tint="?attr/colorControlNormal"

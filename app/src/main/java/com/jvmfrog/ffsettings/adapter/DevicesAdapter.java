@@ -8,7 +8,9 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
+import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.jvmfrog.ffsettings.R;
@@ -21,12 +23,13 @@ import java.util.List;
 public class DevicesAdapter extends RecyclerView.Adapter<DevicesAdapter.DeviceViewHolder> {
 
     private final Context context;
+    private final Fragment fragment;
     private InterstitialAdHelper interstitialAdHelper;
-    private int show_ad_by_x_click = 0;
     private final List<SensitivityModel> models;
 
-    public DevicesAdapter(Context context, List<SensitivityModel> models) {
+    public DevicesAdapter(Context context, Fragment fragment, List<SensitivityModel> models) {
         this.context = context;
+        this.fragment = fragment;
         this.models = models;
     }
 
@@ -48,11 +51,9 @@ public class DevicesAdapter extends RecyclerView.Adapter<DevicesAdapter.DeviceVi
             finalBundle.putFloat("dpi", models.get(position).getDpi());
             finalBundle.putFloat("fire_button", models.get(position).getFireButton());
             finalBundle.putString("settings_source_url", models.get(position).getSettingsSourceUrl());
-            NavigationUtils.navigateWithNavHost(
-                    (FragmentActivity) v.getContext(),
-                    R.id.nav_host_fragment,
-                    R.id.action_devicesFragment_to_deviceSettingsFragment,
-                    finalBundle);
+            NavHostFragment.findNavController(fragment)
+                    .navigate(R.id.action_devicesFragment_to_deviceSettingsFragment,
+                            finalBundle);
         });
     }
 

@@ -8,7 +8,9 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
+import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.jvmfrog.ffsettings.R;
@@ -20,9 +22,11 @@ import java.util.Locale;
 
 public class ManufacturerAdapter extends RecyclerView.Adapter<ManufacturerAdapter.ManufacturersHolder> {
 
+    private final Fragment fragment;
     private final List<ManufacturersModel> models;
 
-    public ManufacturerAdapter(List<ManufacturersModel> models) {
+    public ManufacturerAdapter(Fragment fragment, List<ManufacturersModel> models) {
+        this.fragment = fragment;
         this.models = models;
     }
 
@@ -37,10 +41,8 @@ public class ManufacturerAdapter extends RecyclerView.Adapter<ManufacturerAdapte
         holder.itemView.setOnClickListener(v -> {
             Bundle finalBundle = new Bundle();
             finalBundle.putString("model", models.get(position).getModel().toLowerCase(Locale.ROOT));
-            NavigationUtils.navigateWithNavHost(
-                    (FragmentActivity) v.getContext(),
-                    R.id.nav_host_fragment,
-                    R.id.action_manufacturerFragment_to_devicesFragment,
+            NavHostFragment.findNavController(fragment)
+                    .navigate(R.id.action_manufacturerFragment_to_devicesFragment,
                     finalBundle);
         });
     }

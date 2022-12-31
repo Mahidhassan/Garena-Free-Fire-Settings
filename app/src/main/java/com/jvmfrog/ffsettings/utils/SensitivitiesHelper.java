@@ -4,6 +4,7 @@ import android.content.Context;
 import android.util.Log;
 import android.view.View;
 
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -31,7 +32,7 @@ import java.util.List;
 public class SensitivitiesHelper {
     public static String GITHUB_SENSITIVITIES_FILES_PATH = "https://raw.githubusercontent.com/IbremMiner837/Garena-Free-Fire-Settings/master/app/src/main/assets/sensitivity_settings/";
 
-    public void getSensitivitiesFromURL(Context context, RecyclerView recyclerView, String manufacturer, ShimmerFrameLayout shimmerFrameLayout) {
+    public void getSensitivitiesFromURL(Context context, Fragment fragment, RecyclerView recyclerView, String manufacturer, ShimmerFrameLayout shimmerFrameLayout) {
         RequestQueue queue = Volley.newRequestQueue(context);
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, GITHUB_SENSITIVITIES_FILES_PATH + manufacturer + ".json", null, response -> {
             try {
@@ -55,7 +56,7 @@ public class SensitivitiesHelper {
                     ));
                 }
                 recyclerView.setLayoutManager(new LinearLayoutManager(context));
-                recyclerView.setAdapter(new DevicesAdapter(context, list));
+                recyclerView.setAdapter(new DevicesAdapter(context, fragment, list));
             } catch (JSONException e) {
                 e.printStackTrace();
             }
@@ -70,7 +71,7 @@ public class SensitivitiesHelper {
         queue.add(jsonObjectRequest);
     };
 
-    public void getSensitivitiesFromAssets(Context context, RecyclerView recyclerView, String manufacturer, ShimmerFrameLayout shimmerFrameLayout) {
+    public void getSensitivitiesFromAssets(Context context, Fragment fragment, RecyclerView recyclerView, String manufacturer, ShimmerFrameLayout shimmerFrameLayout) {
         shimmerFrameLayout.stopShimmer();
         shimmerFrameLayout.setVisibility(View.GONE);
         recyclerView.setVisibility(View.VISIBLE);
@@ -97,7 +98,7 @@ public class SensitivitiesHelper {
                 ));
             }
             recyclerView.setLayoutManager(new LinearLayoutManager(context));
-            recyclerView.setAdapter(new DevicesAdapter(context, list));
+            recyclerView.setAdapter(new DevicesAdapter(context, fragment, list));
         } catch (JSONException | IOException e) {
             e.printStackTrace();
             new MaterialAlertDialogBuilder(context)

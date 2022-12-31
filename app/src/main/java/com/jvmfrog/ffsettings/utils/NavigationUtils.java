@@ -56,7 +56,7 @@ public class NavigationUtils {
 
     //open deeplink
     public static void openDeepLink(FragmentActivity activity, String deepLink) {
-        NavHostFragment navHostFragment = (NavHostFragment) activity.getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment);
+        NavHostFragment navHostFragment = (NavHostFragment) activity.getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment_content_main);
         NavController navController = navHostFragment.getNavController();
         navController.navigate(Uri.parse(deepLink));
     }

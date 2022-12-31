@@ -12,7 +12,11 @@
         tools:layout="@layout/fragment_manufacturer">
         <action
             android:id="@+id/action_manufacturerFragment_to_devicesFragment"
-            app:destination="@id/devicesFragment" />
+            app:destination="@id/devicesFragment"
+            app:enterAnim="@anim/enter_from_right"
+            app:exitAnim="@anim/exit_to_left"
+            app:popEnterAnim="@anim/enter_from_left"
+            app:popExitAnim="@anim/exit_to_right" />
         <action
             android:id="@+id/action_manufacturerFragment_to_aboutAppFragment"
             app:destination="@id/aboutAppFragment" />
@@ -27,7 +31,11 @@
         tools:layout="@layout/fragment_devices" >
         <action
             android:id="@+id/action_devicesFragment_to_deviceSettingsFragment"
-            app:destination="@id/deviceSettingsFragment" />
+            app:destination="@id/deviceSettingsFragment"
+            app:enterAnim="@anim/enter_from_right"
+            app:exitAnim="@anim/exit_to_left"
+            app:popEnterAnim="@anim/enter_from_left"
+            app:popExitAnim="@anim/exit_to_right" />
         <action
             android:id="@+id/action_devicesFragment_to_manufacturerFragment"
             app:destination="@id/manufacturerFragment" />
