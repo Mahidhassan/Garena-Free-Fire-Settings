@@ -27,9 +27,7 @@ import com.jvmfrog.ffsettings.utils.SharedPreferencesUtils;
 import com.jvmfrog.ffsettings.utils.UMPHelper;
 
 public class MainActivity extends AppCompatActivity {
-
     private ActivityMainBinding binding;
-    public InterstitialAdHelper interstitialAdHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,8 +41,6 @@ public class MainActivity extends AppCompatActivity {
             new UMPHelper(this).initConsent();
             ((MyApplication) application).showAdIfAvailable(this, () -> {});
             new BannerAdHelper(this).init(binding.bannerAd);
-            interstitialAdHelper = new InterstitialAdHelper(this);
-            interstitialAdHelper.loadInterstitialAd();
         }
 
         if (!SharedPreferencesUtils.getBoolean(this, "isFirstOpen")) {
@@ -52,13 +48,12 @@ public class MainActivity extends AppCompatActivity {
             builder.setIcon(R.drawable.ic_round_insert_emoticon_24);
             builder.setTitle(R.string.welcome);
             builder.setMessage(R.string.welcome_message);
-            builder.setPositiveButton("OK", (dialog, which) -> {
-                SharedPreferencesUtils.saveBoolean(this, "isFirstOpen", true);
-            });
+            builder.setPositiveButton("OK", (dialog, which) -> SharedPreferencesUtils.saveBoolean(this, "isFirstOpen", true));
             builder.show();
         }
 
         NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment_content_main);
+        assert navHostFragment != null;
         NavController navController = navHostFragment.getNavController();
         BottomNavigationView bottomNav = findViewById(R.id.bottomAppBar);
         NavigationUI.setupWithNavController(bottomNav, navController);

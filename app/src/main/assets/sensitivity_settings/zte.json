@@ -1,0 +1,80 @@
+[
+    {
+        "__id__": "47fnGZRsIGNkElOkx9Cz",
+        "collimator": 92,
+        "device_name": "ZTE Blade A31",
+        "dpi": 0,
+        "fire_button": 52,
+        "free_review": 40,
+        "review": 96,
+        "settings_source_url": "https://youtu.be/0_b1M991raY",
+        "sniper_scope": 60,
+        "x2_scope": 94,
+        "x4_scope": 94
+    },
+    {
+        "__id__": "7QWDZO2eeqZnLa7sdhVf",
+        "collimator": 89,
+        "device_name": "ZTE V30 Vita",
+        "dpi": 471,
+        "fire_button": 43,
+        "free_review": 37,
+        "review": 93,
+        "settings_source_url": "",
+        "sniper_scope": 24,
+        "x2_scope": 98,
+        "x4_scope": 92
+    },
+    {
+        "__id__": "RlL6B5TYDg7MrjQqp1vr",
+        "collimator": 91,
+        "device_name": "ZTE Blade A7",
+        "dpi": 603,
+        "fire_button": 50,
+        "free_review": 33,
+        "review": 93,
+        "settings_source_url": "",
+        "sniper_scope": 26,
+        "x2_scope": 90,
+        "x4_scope": 99
+    },
+    {
+        "__id__": "UvqMcVwNSH8naf6yMyKP",
+        "collimator": 98,
+        "device_name": "ZTE V10 Vita",
+        "dpi": 558,
+        "fire_button": 41,
+        "free_review": 51,
+        "review": 95,
+        "settings_source_url": "",
+        "sniper_scope": 22,
+        "x2_scope": 90,
+        "x4_scope": 96
+    },
+    {
+        "__id__": "WE1YKPqYtCLYexniCG6P",
+        "collimator": 98,
+        "device_name": "ZTE V9 Vita",
+        "dpi": 671,
+        "fire_button": 45,
+        "free_review": 52,
+        "review": 96,
+        "settings_source_url": "",
+        "sniper_scope": 37,
+        "x2_scope": 97,
+        "x4_scope": 92
+    },
+    {
+        "__id__": "xk09hhajvuyu8fEkJPfL",
+        "collimator": 97,
+        "device_name": "ZTE Blade A51",
+        "dpi": 0,
+        "fire_button": 44,
+        "free_review": 34,
+        "review": 95,
+        "settings_source_url": "",
+        "sniper_scope": 32,
+        "x2_scope": 95,
+        "x4_scope": 98
+    }
+]
