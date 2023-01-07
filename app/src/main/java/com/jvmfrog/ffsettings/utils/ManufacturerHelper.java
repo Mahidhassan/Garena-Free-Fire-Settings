@@ -14,6 +14,7 @@ import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.facebook.shimmer.ShimmerFrameLayout;
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.jvmfrog.ffsettings.adapter.ManufacturerAdapter;
 import com.jvmfrog.ffsettings.model.ManufacturersModel;
 
@@ -50,8 +51,20 @@ public class ManufacturerHelper {
                 recyclerView.setAdapter(new ManufacturerAdapter(fragment, list));
             } catch (JSONException e) {
                 e.printStackTrace();
+                new MaterialAlertDialogBuilder(context)
+                        .setTitle("Error")
+                        .setMessage(e.getMessage())
+                        .setPositiveButton("Ok", null)
+                        .show();
             }
-        }, error -> Log.e("Volley", error.toString()));
+        }, error -> {
+            Log.e("Volley", error.toString());
+            new MaterialAlertDialogBuilder(context)
+                    .setTitle("Error")
+                    .setMessage(error.getMessage())
+                    .setPositiveButton("Ok", null)
+                    .show();
+        });
         queue.addRequestEventListener((request, event) -> {
             if (event == RequestQueue.RequestEvent.REQUEST_FINISHED) {
                 shimmerFrameLayout.stopShimmer();

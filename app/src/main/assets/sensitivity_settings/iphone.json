@@ -137,6 +137,54 @@
       }
     },
     {
+      "__id__": "SkHTNb1I7UdusagQVuQt",
+      "manufacturer": "iPhone",
+      "name": "iPhone X",
+      "settings_source_url": "https://vm.tiktok.com/ZMNt4U6b9/",
+      "dpi": 0,
+      "fire_button": 54,
+      "sensitivities": {
+        "review": 97,
+        "collimator": 94,
+        "x2_scope": 36,
+        "x4_scope": 47,
+        "sniper_scope": 0,
+        "free_review": 15
+      }
+    },
+    {
+      "__id__": "4MvNtyzLDC5FTnBA9J4j",
+      "manufacturer": "iPhone",
+      "name": "XR",
+      "settings_source_url": "",
+      "dpi": 0,
+      "fire_button": 51,
+      "sensitivities": {
+        "review": 96,
+        "collimator": 96,
+        "x2_scope": 96,
+        "x4_scope": 95,
+        "sniper_scope": 57,
+        "free_review": 53
+      }
+    },
+    {
+      "__id__": "GE2ZAEdL4P8EjCJWLy78",
+      "manufacturer": "iPhone",
+      "name": "SE",
+      "settings_source_url": "",
+      "dpi": 0,
+      "fire_button": 46,
+      "sensitivities": {
+        "review": 94,
+        "collimator": 90,
+        "x2_scope": 97,
+        "x4_scope": 97,
+        "sniper_scope": 47,
+        "free_review": 43
+      }
+    },
+    {
       "manufacturer": "iPhone",
       "name": "8 Plus",
       "settings_source_url": null,
@@ -242,212 +290,20 @@
       }
     },
     {
-      "__id__": "4MvNtyzLDC5FTnBA9J4j",
-      "collimator": 96,
-      "device_name": "iPhone XR",
-      "dpi": 0,
-      "fire_button": 51,
-      "free_review": 53,
-      "review": 96,
-      "settings_source_url": "",
-      "sniper_scope": 57,
-      "x2_scope": 96,
-      "x4_scope": 95
-    },
-    {
-      "__id__": "AXSN4NwqSdQhxBBssnN7",
-      "collimator": 97,
-      "device_name": "iPhone 7 Plus",
-      "dpi": 0,
-      "fire_button": 49,
-      "free_review": 37,
-      "review": 97,
-      "settings_source_url": "",
-      "sniper_scope": 55,
-      "x2_scope": 100,
-      "x4_scope": 97
-    },
-    {
-      "__id__": "GE2ZAEdL4P8EjCJWLy78",
-      "collimator": 90,
-      "device_name": "iPhone SE",
-      "dpi": 0,
-      "fire_button": 46,
-      "free_review": 43,
-      "review": 94,
-      "settings_source_url": "",
-      "sniper_scope": 47,
-      "x2_scope": 97,
-      "x4_scope": 97
-    },
-    {
-      "__id__": "GeqHuy2CqJyYmIVzRO8V",
-      "collimator": 100,
-      "device_name": "iPhone 11",
-      "dpi": 0,
-      "fire_button": 30,
-      "free_review": 100,
-      "review": 100,
-      "settings_source_url": "https://www.tiktok.com/@ipman.pvp/video/7123320263701204229",
-      "sniper_scope": 100,
-      "x2_scope": 100,
-      "x4_scope": 100
-    },
-    {
-      "__id__": "GgMZ7AuzJJcxHy0t3h5F",
-      "collimator": 92,
-      "device_name": "iPhone 11 Pro",
-      "dpi": 0,
-      "fire_button": 46,
-      "free_review": 38,
-      "review": 97,
-      "settings_source_url": "",
-      "sniper_scope": 54,
-      "x2_scope": 97,
-      "x4_scope": 96
-    },
-    {
-      "__id__": "HLM3c5mtIFAXgKHlVIg7",
-      "collimator": 100,
-      "device_name": "iPhone 12 Pro Max",
-      "dpi": 0,
-      "fire_button": 60,
-      "free_review": 27,
-      "review": 100,
-      "settings_source_url": "https://www.tiktok.com/@ipman.pvp/video/7130000095751261445?_r=1&u_code=dj15bhad6ll0bb&preview_pb=0&language=ru&_d=e2lhi582j4aeb7&share_item_id=7130000095751261445&source=h5_m&timestamp=1660758724&user_id=6970031691679941637&sec_user_id=MS4wLjABAAAA9VEnNr3OTZIZwRyaljKP8rGsUnNkC8CA_r_UWWYn7-jul4BqD1V4tx-8sSN67lyL&utm_source=copy&utm_campaign=client_share&utm_medium=android&share_iid=7132842085208426245&share_link_id=32bf9e28-95e4-4040-9156-a64dad8c560c&share_app_id=1233&ugbiz_name=Main",
-      "sniper_scope": 57,
-      "x2_scope": 100,
-      "x4_scope": 100
-    },
-    {
-      "__id__": "JKdDaf6spP2sOEK8h6Mh",
-      "collimator": 100,
-      "device_name": "iPhone 7",
-      "dpi": 0,
-      "fire_button": 41,
-      "free_review": 100,
-      "review": 100,
-      "settings_source_url": "https://www.tiktok.com/@ipman.pvp/video/7108118105137614086",
-      "sniper_scope": 100,
-      "x2_scope": 100,
-      "x4_scope": 100
-    },
-    {
       "__id__": "RNmpj2JgCdEvHARLlgkK",
-      "collimator": 90,
-      "device_name": "iPhone 5c",
+      "manufacturer": "iPhone",
+      "name": "5c",
+      "settings_source_url": "",
       "dpi": 0,
       "fire_button": 50,
-      "free_review": 31,
-      "review": 95,
-      "settings_source_url": "",
-      "sniper_scope": 26,
-      "x2_scope": 93,
-      "x4_scope": 90
-    },
-    {
-      "__id__": "SkHTNb1I7UdusagQVuQt",
-      "collimator": 94,
-      "device_name": "iPhone X",
-      "dpi": 0,
-      "fire_button": 54,
-      "free_review": 15,
-      "review": 97,
-      "settings_source_url": "https://vm.tiktok.com/ZMNt4U6b9/",
-      "sniper_scope": 0,
-      "x2_scope": 36,
-      "x4_scope": 47
-    },
-    {
-      "__id__": "hKDWhQONg09aAl7ZDRyb",
-      "collimator": 94,
-      "device_name": "iPhone 8 Plus",
-      "dpi": 0,
-      "fire_button": 52,
-      "free_review": 50,
-      "review": 93,
-      "settings_source_url": "",
-      "sniper_scope": 45,
-      "x2_scope": 95,
-      "x4_scope": 96
-    },
-    {
-      "__id__": "kDESi5QFvVCkxp0YUsZp",
-      "collimator": 98,
-      "device_name": "iPhone 13 Pro Max",
-      "dpi": 0,
-      "fire_button": 39,
-      "free_review": 50,
-      "review": 95,
-      "settings_source_url": "",
-      "sniper_scope": 50,
-      "x2_scope": 95,
-      "x4_scope": 99
-    },
-    {
-      "__id__": "lkChBF8eQYV9pC6CQ8hB",
-      "collimator": 91,
-      "device_name": "iPhone 6s Plus",
-      "dpi": 0,
-      "fire_button": 44,
-      "free_review": 36,
-      "review": 97,
-      "settings_source_url": "",
-      "sniper_scope": 26,
-      "x2_scope": 98,
-      "x4_scope": 96
-    },
-    {
-      "__id__": "oq7dohrwkcw8Nq35m0Re",
-      "collimator": 92,
-      "device_name": "iPhone 6s",
-      "dpi": 0,
-      "fire_button": 43,
-      "free_review": 40,
-      "review": 97,
-      "settings_source_url": "",
-      "sniper_scope": 25,
-      "x2_scope": 91,
-      "x4_scope": 93
-    },
-    {
-      "__id__": "pwTcdBcSE0SG1OIumH79",
-      "collimator": 98,
-      "device_name": "iPhone 11 Pro Max",
-      "dpi": 0,
-      "fire_button": 49,
-      "free_review": 55,
-      "review": 93,
-      "settings_source_url": "",
-      "sniper_scope": 24,
-      "x2_scope": 98,
-      "x4_scope": 93
-    },
-    {
-      "__id__": "x185vXZn2OxFsAnuW7Zz",
-      "collimator": 95,
-      "device_name": "iPhone 13",
-      "dpi": 0,
-      "fire_button": 53,
-      "free_review": 50,
-      "review": 95,
-      "settings_source_url": "",
-      "sniper_scope": 31,
-      "x2_scope": 94,
-      "x4_scope": 93
-    },
-    {
-      "__id__": "xTRQS0oRQ0qbQE1SUlkk",
-      "collimator": 97,
-      "device_name": "iPhone 6",
-      "dpi": 0,
-      "fire_button": 52,
-      "free_review": 37,
-      "review": 96,
-      "settings_source_url": "",
-      "sniper_scope": 25,
-      "x2_scope": 95,
-      "x4_scope": 93
+      "sensitivities": {
+        "review": 95,
+        "collimator": 90,
+        "x2_scope": 93,
+        "x4_scope": 90,
+        "sniper_scope": 26,
+        "free_review": 31
+      }
     }
   ]
 }
