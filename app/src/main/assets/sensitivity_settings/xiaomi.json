@@ -3,120 +3,147 @@
     "models": [
     {
         "__id__": "0USqKBCtJABQV38b25Nx",
-        "collimator": 95,
-        "device_name": "Mi A2 Lite",
+        "manufacturer": "Xiaomi",
+        "name": "A2 Lite",
+        "settings_source_url": "",
         "dpi": 460,
         "fire_button": 52,
-        "free_review": 55,
-        "review": 97,
-        "settings_source_url": "",
-        "sniper_scope": 49,
-        "x2_scope": 91,
-        "x4_scope": 98
+        "sensitivities": {
+            "review": 97,
+            "collimator": 95,
+            "x2_scope": 91,
+            "x4_scope": 98,
+            "sniper_scope": 49,
+            "free_review": 55
+        }
     },
     {
         "__id__": "CV2x7TWjZ8Z7C3a2egn4",
-        "collimator": 93,
-        "device_name": "Mi 8 SE",
+        "manufacturer": "Xiaomi",
+        "name": "8 SE",
+        "settings_source_url": "",
         "dpi": 597,
         "fire_button": 48,
-        "free_review": 33,
-        "review": 94,
-        "settings_source_url": "",
-        "sniper_scope": 41,
-        "x2_scope": 91,
-        "x4_scope": 99
+        "sensitivities": {
+            "review": 94,
+            "collimator": 93,
+            "x2_scope": 91,
+            "x4_scope": 99,
+            "sniper_scope": 41,
+            "free_review": 33
+        }
     },
     {
         "__id__": "FwbTpmh3SMzHCTmvehAx",
-        "collimator": 88,
-        "device_name": "Mi 8 Lite",
+        "manufacturer": "Xiaomi",
+        "name": "8 Lite",
+        "settings_source_url": "",
         "dpi": 562,
         "fire_button": 52,
-        "free_review": 54,
-        "review": 94,
-        "settings_source_url": "",
-        "sniper_scope": 29,
-        "x2_scope": 100,
-        "x4_scope": 92
+        "sensitivities": {
+            "review": 94,
+            "collimator": 88,
+            "x2_scope": 100,
+            "x4_scope": 92,
+            "free_review": 54,
+            "sniper_scope": 29
+        }
     },
     {
         "__id__": "UR0MLwxGc1pzjGHNvPSs",
-        "collimator": 89,
-        "device_name": "Mi A3",
+        "manufacturer": "Xiaomi",
+        "name": "A3",
+        "settings_source_url": "",
         "dpi": 513,
         "fire_button": 49,
-        "free_review": 33,
-        "review": 95,
-        "settings_source_url": "",
-        "sniper_scope": 55,
-        "x2_scope": 99,
-        "x4_scope": 90
+        "sensitivities": {
+            "review": 95,
+            "collimator": 89,
+            "x2_scope": 99,
+            "x4_scope": 90,
+            "sniper_scope": 55,
+            "free_review": 33
+        }
     },
     {
         "__id__": "WFvImO2Q7X3jH5dFPw8h",
-        "collimator": 96,
-        "device_name": "Mi Note 10 Lite",
+        "manufacturer": "Xiaomi",
+        "name": "Note 10 Lite",
+        "settings_source_url": "https://www.tiktok.com/@ipman.pvp/video/7125034053258005765",
         "dpi": 100,
         "fire_button": 56,
-        "free_review": 71,
-        "review": 100,
-        "settings_source_url": "https://www.tiktok.com/@ipman.pvp/video/7125034053258005765?_r=1&u_code=dj15bhad6ll0bb&preview_pb=0&language=ru&_d=e2lhi582j4aeb7&share_item_id=7125034053258005765&source=h5_m&timestamp=1660760150&user_id=6970031691679941637&sec_user_id=MS4wLjABAAAA9VEnNr3OTZIZwRyaljKP8rGsUnNkC8CA_r_UWWYn7-jul4BqD1V4tx-8sSN67lyL&utm_source=copy&utm_campaign=client_share&utm_medium=android&share_iid=7132842085208426245&share_link_id=79aaa609-98fb-4d63-90fa-552fd9f8809b&share_app_id=1233&ugbiz_name=Main",
-        "sniper_scope": 16,
-        "x2_scope": 88,
-        "x4_scope": 96
+        "sensitivities": {
+            "review": 100,
+            "collimator": 96,
+            "x2_scope": 88,
+            "x4_scope": 96,
+            "sniper_scope": 16,
+            "free_review": 71
+        }
     },
     {
         "__id__": "ffLi0djZ5IkF4PDhsbG2",
-        "collimator": 89,
-        "device_name": "Mi 6",
+        "manufacturer": "Xiaomi",
+        "name": "6",
+        "settings_source_url": "",
         "dpi": 619,
         "fire_button": 39,
-        "free_review": 35,
-        "review": 95,
-        "settings_source_url": "",
-        "sniper_scope": 20,
-        "x2_scope": 100,
-        "x4_scope": 97
+        "sensitivities": {
+            "review": 95,
+            "collimator": 89,
+            "x2_scope": 100,
+            "x4_scope": 97,
+            "sniper_scope": 20,
+            "free_review": 35
+        }
     },
     {
         "__id__": "pERf8PHnCab98pzV2L3q",
-        "collimator": 90,
-        "device_name": "Mi A1",
+        "manufacturer": "Xiaomi",
+        "name": "A1",
+        "settings_source_url": "",
         "dpi": 584,
         "fire_button": 46,
-        "free_review": 36,
-        "review": 96,
-        "settings_source_url": "",
-        "sniper_scope": 23,
-        "x2_scope": 100,
-        "x4_scope": 100
+        "sensitivities": {
+            "review": 96,
+            "collimator": 90,
+            "x2_scope": 100,
+            "x4_scope": 100,
+            "sniper_scope": 23,
+            "free_review": 36
+        }
     },
     {
         "__id__": "ppt40sgYGmlHGHPyMSfr",
-        "collimator": 65,
-        "device_name": "Mi 11 Lite 5G",
+        "manufacturer": "Xiaomi",
+        "name": "11 Lite 5G",
+        "settings_source_url": "",
         "dpi": 0,
         "fire_button": 62,
-        "free_review": 100,
-        "review": 100,
-        "settings_source_url": "",
-        "sniper_scope": 83,
-        "x2_scope": 71,
-        "x4_scope": 77
+        "sensitivities": {
+            "review": 100,
+            "collimator": 65,
+            "x2_scope": 71,
+            "x4_scope": 77,
+            "sniper_scope": 83,
+            "free_review": 100
+        }
     },
     {
         "__id__": "vfnz69mDTY4vdRfmfjjE",
-        "collimator": 90,
-        "device_name": "Mi 9T Pro",
+        "manufacturer": "Xiaomi",
+        "name": "9T Pro",
+        "settings_source_url": "",
         "dpi": 613,
         "fire_button": 48,
-        "free_review": 55,
-        "review": 95,
-        "settings_source_url": "",
-        "sniper_scope": 32,
-        "x2_scope": 90,
-        "x4_scope": 90
+        "sensitivities": {
+            "review": 95,
+            "collimator": 90,
+            "x2_scope": 90,
+            "x4_scope": 90,
+            "sniper_scope": 32,
+            "free_review": 55
+        }
     }
 ]
 }

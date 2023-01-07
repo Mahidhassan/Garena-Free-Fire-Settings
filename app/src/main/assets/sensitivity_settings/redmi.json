@@ -3,432 +3,531 @@
     "models": [
     {
         "__id__": "1Fa7fi43zcin51cdkW0J",
-        "collimator": 90,
-        "device_name": "Redmi Note 8A",
+        "manufacturer": "Redmi",
+        "name": "Note 8A",
+        "settings_source_url": "",
         "dpi": 659,
         "fire_button": 40,
-        "free_review": 35,
-        "review": 97,
-        "settings_source_url": "",
-        "sniper_scope": 25,
-        "x2_scope": 100,
-        "x4_scope": 97
+        "sensitivities": {
+            "review": 97,
+            "collimator": 90,
+            "x2_scope": 100,
+            "x4_scope": 97,
+            "sniper_scope": 25,
+            "free_review": 35
+        }
     },
     {
         "__id__": "1y2yDCsJEdbQ1Gni4xDm",
-        "collimator": 93,
-        "device_name": "Redmi 10C",
+        "manufacturer": "Redmi",
+        "name": "10C",
+        "settings_source_url": "",
         "dpi": 0,
         "fire_button": 45,
-        "free_review": 46,
-        "review": 93,
-        "settings_source_url": "",
-        "sniper_scope": 22,
-        "x2_scope": 94,
-        "x4_scope": 92
+        "sensitivities": {
+            "review": 93,
+            "collimator": 93,
+            "x2_scope": 94,
+            "x4_scope": 92,
+            "sniper_scope": 22,
+            "free_review": 46
+        }
     },
     {
         "__id__": "3nDEyyZM6eb3DtBUQgoF",
-        "collimator": 97,
-        "device_name": "Redmi 9 NFC",
+        "manufacturer": "Redmi",
+        "name": "9 NFC",
+        "settings_source_url": "https://www.tiktok.com/@777_honour_777/video/7108353009192619269",
         "dpi": 430,
         "fire_button": 48,
-        "free_review": 47,
-        "review": 95,
-        "settings_source_url": "https://www.tiktok.com/@777_honour_777/video/7108353009192619269?is_from_webapp=1&sender_device=pc&web_id=7109889579923113478",
-        "sniper_scope": 54,
-        "x2_scope": 92,
-        "x4_scope": 92
+        "sensitivities": {
+            "review": 95,
+            "collimator": 97,
+            "x2_scope": 92,
+            "x4_scope": 92,
+            "sniper_scope": 54,
+            "free_review": 47
+        }
     },
     {
         "__id__": "75E97BExoPEYaVj00G90",
-        "collimator": 96,
-        "device_name": "Redmi Note 10 Pro",
+        "manufacturer": "Redmi",
+        "name": "Note 10 Pro",
+        "settings_source_url": "https://www.tiktok.com/@777_honour_777/video/7108029498716720389",
         "dpi": 553,
         "fire_button": 50,
-        "free_review": 32,
-        "review": 95,
-        "settings_source_url": "https://www.tiktok.com/@777_honour_777/video/7108029498716720389?is_from_webapp=1&sender_device=pc&web_id=7109889579923113478",
-        "sniper_scope": 60,
-        "x2_scope": 91,
-        "x4_scope": 100
+        "sensitivities": {
+            "review": 95,
+            "collimator": 96,
+            "x2_scope": 91,
+            "x4_scope": 100,
+            "sniper_scope": 60,
+            "free_review": 32
+        }
     },
     {
         "__id__": "7uF7uLvk9vO3aX9x6NMs",
-        "collimator": 97,
-        "device_name": "Redmi Note 5",
+        "manufacturer": "Redmi",
+        "name": "Note 5",
+        "settings_source_url": "",
         "dpi": 551,
         "fire_button": 43,
-        "free_review": 54,
-        "review": 98,
-        "settings_source_url": "",
-        "sniper_scope": 46,
-        "x2_scope": 99,
-        "x4_scope": 95
+        "sensitivities": {
+            "review": 98,
+            "collimator": 97,
+            "x2_scope": 99,
+            "x4_scope": 95,
+            "sniper_scope": 46,
+            "free_review": 54
+        }
     },
     {
         "__id__": "ADej1RTYA1RyX3PhKRC2",
-        "collimator": 93,
-        "device_name": "Redmi Note 10s",
+        "manufacturer": "Redmi",
+        "name": "Note 10s",
+        "settings_source_url": "",
         "dpi": 535,
         "fire_button": 52,
-        "free_review": 50,
-        "review": 96,
-        "settings_source_url": "",
-        "sniper_scope": 60,
-        "x2_scope": 96,
-        "x4_scope": 91
+        "sensitivities": {
+            "review": 96,
+            "collimator": 93,
+            "x2_scope": 96,
+            "x4_scope": 91,
+            "sniper_scope": 60,
+            "free_review": 50
+        }
     },
     {
         "__id__": "DGtFQmHzoFvFFTLZKeLb",
-        "collimator": 93,
-        "device_name": "Redmi Note 9 Pro",
+        "manufacturer": "Redmi",
+        "name": "Note 9 Pro",
+        "settings_source_url": "https://www.tiktok.com/@777_honour_777/video/7119490738747968773",
         "dpi": 619,
         "fire_button": 41,
-        "free_review": 100,
-        "review": 97,
-        "settings_source_url": "https://www.tiktok.com/@777_honour_777/video/7119490738747968773?is_from_webapp=1&sender_device=pc&web_id=7109889579923113478",
-        "sniper_scope": 45,
-        "x2_scope": 100,
-        "x4_scope": 100
+        "sensitivities": {
+            "review": 97,
+            "collimator": 93,
+            "x2_scope": 100,
+            "x4_scope": 100,
+            "sniper_scope": 45,
+            "free_review": 100
+        }
     },
     {
         "__id__": "HyWWx4XhxxH2Met6orIP",
-        "collimator": 94,
-        "device_name": "Redmi 10S",
+        "manufacturer": "Redmi",
+        "name": "10S",
+        "settings_source_url": "",
         "dpi": 0,
         "fire_button": 43,
-        "free_review": 50,
-        "review": 93,
-        "settings_source_url": "",
-        "sniper_scope": 20,
-        "x2_scope": 100,
-        "x4_scope": 93
+        "sensitivities": {
+            "review": 93,
+            "collimator": 94,
+            "x2_scope": 100,
+            "x4_scope": 93,
+            "sniper_scope": 20,
+            "free_review": 50
+        }
     },
     {
         "__id__": "LfYkDGMT9YC7kXrCkpQL",
-        "collimator": 90,
-        "device_name": "Redmi 10A",
+        "manufacturer": "Redmi",
+        "name": "10A",
+        "settings_source_url": "",
         "dpi": 0,
         "fire_button": 47,
-        "free_review": 45,
-        "review": 98,
-        "settings_source_url": "",
-        "sniper_scope": 36,
-        "x2_scope": 98,
-        "x4_scope": 90
+        "sensitivities": {
+            "review": 98,
+            "collimator": 90,
+            "x2_scope": 98,
+            "x4_scope": 90,
+            "sniper_scope": 36,
+            "free_review": 45
+        }
     },
     {
         "__id__": "LpglSR0JZPDoBkuIjGhl",
-        "collimator": 94,
-        "device_name": "Redmi 9t",
+        "manufacturer": "Redmi",
+        "name": "9T",
+        "settings_source_url": "",
         "dpi": 615,
         "fire_button": 43,
-        "free_review": 52,
-        "review": 97,
-        "settings_source_url": "",
-        "sniper_scope": 55,
-        "x2_scope": 96,
-        "x4_scope": 95
+        "sensitivities": {
+            "review": 97,
+            "collimator": 94,
+            "x2_scope": 96,
+            "x4_scope": 95,
+            "sniper_scope": 55,
+            "free_review": 52
+        }
     },
     {
         "__id__": "MPpzjh3s1qGX7MtQSAYf",
-        "collimator": 91,
-        "device_name": "Redmi Note 11 Pro",
+        "manufacturer": "Redmi",
+        "name": "Note 11 Pro",
+        "settings_source_url": "",
         "dpi": 0,
         "fire_button": 40,
-        "free_review": 30,
-        "review": 98,
-        "settings_source_url": "",
-        "sniper_scope": 56,
-        "x2_scope": 97,
-        "x4_scope": 91
+        "sensitivities": {
+            "review": 98,
+            "collimator": 91,
+            "x2_scope": 97,
+            "x4_scope": 91,
+            "sniper_scope": 56,
+            "free_review": 30
+        }
     },
     {
         "__id__": "NtyCIyBZuwC5UHAW85i4",
-        "collimator": 100,
-        "device_name": "Redmi 9A",
+        "manufacturer": "Redmi",
+        "name": "9A",
+        "settings_source_url": "https://vm.tiktok.com/ZMNt4MXko/",
         "dpi": 720,
         "fire_button": 53,
-        "free_review": 50,
-        "review": 100,
-        "settings_source_url": "https://vm.tiktok.com/ZMNt4MXko/",
-        "sniper_scope": 50,
-        "x2_scope": 100,
-        "x4_scope": 100
+        "sensitivities": {
+            "review": 100,
+            "collimator": 100,
+            "x2_scope": 100,
+            "x4_scope": 100,
+            "sniper_scope": 50,
+            "free_review": 50
+        }
     },
     {
         "__id__": "Pvty4WdM5WWqZ7bcJ8rZ",
-        "collimator": 98,
-        "device_name": "Redmi Note 9",
+        "manufacturer": "Redmi",
+        "name": "Note 9",
+        "settings_source_url": "",
         "dpi": 570,
         "fire_button": 41,
-        "free_review": 35,
-        "review": 95,
-        "settings_source_url": "",
-        "sniper_scope": 41,
-        "x2_scope": 93,
-        "x4_scope": 100
+        "sensitivities": {
+            "review": 95,
+            "collimator": 98,
+            "x2_scope": 93,
+            "x4_scope": 100,
+            "sniper_scope": 41,
+            "free_review": 35
+        }
     },
     {
         "__id__": "SZjhgRQuCqhVDWw5BFcJ",
-        "collimator": 98,
-        "device_name": "Redmi Note 11 Pro 5G",
+        "manufacturer": "Redmi",
+        "name": "Note 11 Pro 5G",
+        "settings_source_url": "",
         "dpi": 0,
         "fire_button": 40,
-        "free_review": 39,
-        "review": 93,
-        "settings_source_url": "",
-        "sniper_scope": 49,
-        "x2_scope": 98,
-        "x4_scope": 100
+        "sensitivities": {
+            "review": 93,
+            "collimator": 98,
+            "x2_scope": 98,
+            "x4_scope": 100,
+            "sniper_scope": 49,
+            "free_review": 39
+        }
     },
     {
         "__id__": "UIpPbjME6ex5Itih96g2",
-        "collimator": 100,
-        "device_name": "Redmi 9C",
+        "manufacturer": "Redmi",
+        "name": "9C",
+        "settings_source_url": "https://vm.tiktok.com/ZMNt4MXko/",
         "dpi": 730,
         "fire_button": 53,
-        "free_review": 50,
-        "review": 100,
-        "settings_source_url": "https://vm.tiktok.com/ZMNt4MXko/",
-        "sniper_scope": 50,
-        "x2_scope": 100,
-        "x4_scope": 100
+        "sensitivities": {
+            "review": 100,
+            "collimator": 100,
+            "x2_scope": 100,
+            "x4_scope": 100,
+            "sniper_scope": 50,
+            "free_review": 50
+        }
     },
     {
         "__id__": "XAbPGBgUMa4VSp82G06k",
-        "collimator": 93,
-        "device_name": "Redmi 10",
+        "manufacturer": "Redmi",
+        "name": "10",
+        "settings_source_url": "",
         "dpi": 0,
         "fire_button": 45,
-        "free_review": 40,
-        "review": 97,
-        "settings_source_url": "",
-        "sniper_scope": 59,
-        "x2_scope": 95,
-        "x4_scope": 91
+        "sensitivities": {
+            "review": 97,
+            "collimator": 93,
+            "x2_scope": 95,
+            "x4_scope": 91,
+            "sniper_scope": 59,
+            "free_review": 40
+        }
     },
     {
         "__id__": "XfgWjju5LJEp9RQwYfjb",
-        "collimator": 97,
-        "device_name": "Redmi Note 7",
+        "manufacturer": "Redmi",
+        "name": "Note 7",
+        "settings_source_url": "",
         "dpi": 536,
         "fire_button": 45,
-        "free_review": 53,
-        "review": 98,
-        "settings_source_url": "",
-        "sniper_scope": 96,
-        "x2_scope": 97,
-        "x4_scope": 97
+        "sensitivities": {
+            "review": 98,
+            "collimator": 97,
+            "x2_scope": 97,
+            "x4_scope": 97,
+            "sniper_scope": 96,
+            "free_review": 53
+        }
     },
     {
         "__id__": "ZcXJtgw4uQFcE4jTYsXw",
-        "collimator": 100,
-        "device_name": "Redmi 7",
+        "manufacturer": "Redmi",
+        "name": "7",
+        "settings_source_url": "https://vm.tiktok.com/ZMNt4rJh1/",
         "dpi": 420,
         "fire_button": 55,
-        "free_review": 50,
-        "review": 100,
-        "settings_source_url": "https://vm.tiktok.com/ZMNt4rJh1/",
-        "sniper_scope": 50,
-        "x2_scope": 100,
-        "x4_scope": 100
+        "sensitivities": {
+            "review": 100,
+            "collimator": 100,
+            "x2_scope": 100,
+            "x4_scope": 100,
+            "sniper_scope": 50,
+            "free_review": 50
+        }
     },
     {
         "__id__": "bRu4sYBbvwRoYv2fmKIY",
-        "collimator": 92,
-        "device_name": "Redmi 9C NFC",
+        "manufacturer": "Redmi",
+        "name": "9C NFC",
+        "settings_source_url": "",
         "dpi": 731,
         "fire_button": 48,
-        "free_review": 52,
-        "review": 95,
-        "settings_source_url": "",
-        "sniper_scope": 21,
-        "x2_scope": 93,
-        "x4_scope": 93
+        "sensitivities": {
+            "review": 95,
+            "collimator": 92,
+            "x2_scope": 93,
+            "x4_scope": 93,
+            "sniper_scope": 21,
+            "free_review": 52
+        }
     },
     {
         "__id__": "dGiuqHmW9QyqjQ9PpU2Z",
-        "collimator": 88,
-        "device_name": "Redmi 6 Pro",
+        "manufacturer": "Redmi",
+        "name": "6 Pro",
+        "settings_source_url": "",
         "dpi": 0,
         "fire_button": 43,
-        "free_review": 34,
-        "review": 95,
-        "settings_source_url": "",
-        "sniper_scope": 28,
-        "x2_scope": 95,
-        "x4_scope": 95
+        "sensitivities": {
+            "review": 95,
+            "collimator": 88,
+            "x2_scope": 95,
+            "x4_scope": 95,
+            "sniper_scope": 28,
+            "free_review": 34
+        }
     },
     {
         "__id__": "fIzGcS1cFWB9rT6kaC7s",
-        "collimator": 100,
-        "device_name": "Redmi 8",
+        "manufacturer": "Redmi",
+        "name": "8",
+        "settings_source_url": "https://www.tiktok.com/@777_honour_777/video/7123924103068798214",
         "dpi": 540,
         "fire_button": 57,
-        "free_review": 100,
-        "review": 95,
-        "settings_source_url": "https://www.tiktok.com/@777_honour_777/video/7123924103068798214?is_from_webapp=1&sender_device=pc&web_id=7109889579923113478",
-        "sniper_scope": 100,
-        "x2_scope": 100,
-        "x4_scope": 100
+        "sensitivities": {
+            "review": 95,
+            "collimator": 100,
+            "x2_scope": 100,
+            "x4_scope": 100,
+            "sniper_scope": 100,
+            "free_review": 100
+        }
     },
     {
         "__id__": "fthPvLlKx9gifMN4EdUV",
-        "collimator": 91,
-        "device_name": "Redmi Note 4",
+        "manufacturer": "Redmi",
+        "name": "Note 4",
+        "settings_source_url": "https://www.tiktok.com/@777_honour_777/video/7118534417764683013",
         "dpi": 0,
         "fire_button": 42,
-        "free_review": 100,
-        "review": 99,
-        "settings_source_url": "https://www.tiktok.com/@777_honour_777/video/7118534417764683013?is_from_webapp=1&sender_device=pc&web_id=7109889579923113478",
-        "sniper_scope": 38,
-        "x2_scope": 96,
-        "x4_scope": 97
+        "sensitivities": {
+            "review": 99,
+            "collimator": 91,
+            "x2_scope": 96,
+            "x4_scope": 97,
+            "sniper_scope": 38,
+            "free_review": 100
+        }
     },
     {
         "__id__": "heiozC3Kynh7xMbuqwKc",
-        "collimator": 95,
-        "device_name": "Redmi 6",
+        "manufacturer": "Redmi",
+        "name": "6",
+        "settings_source_url": "",
         "dpi": 0,
         "fire_button": 39,
-        "free_review": 42,
-        "review": 94,
-        "settings_source_url": "",
-        "sniper_scope": 20,
-        "x2_scope": 93,
-        "x4_scope": 94
+        "sensitivities": {
+            "review": 94,
+            "collimator": 95,
+            "x2_scope": 93,
+            "x4_scope": 94,
+            "sniper_scope": 20,
+            "free_review": 42
+        }
     },
     {
         "__id__": "i4H3gTuIjkg5ZkjmpH9M",
-        "collimator": 93,
-        "device_name": "Redmi Note 6 Pro",
+        "manufacturer": "Redmi",
+        "name": "Note 6 Pro",
+        "settings_source_url": "",
         "dpi": 470,
         "fire_button": 44,
-        "free_review": 37,
-        "review": 98,
-        "settings_source_url": "",
-        "sniper_scope": 27,
-        "x2_scope": 94,
-        "x4_scope": 94
+        "sensitivities": {
+            "review": 98,
+            "collimator": 93,
+            "x2_scope": 94,
+            "x4_scope": 94,
+            "sniper_scope": 27,
+            "free_review": 37
+        }
     },
     {
         "__id__": "iNGuSeN1ruHPUlD88quz",
-        "collimator": 97,
-        "device_name": "Redmi 8 Pro",
+        "manufacturer": "Redmi",
+        "name": "8 Pro",
+        "settings_source_url": "https://www.tiktok.com/@777_honour_777/video/7119277761180519686",
         "dpi": 540,
         "fire_button": 48,
-        "free_review": 100,
-        "review": 100,
-        "settings_source_url": "https://www.tiktok.com/@777_honour_777/video/7119277761180519686?is_from_webapp=1&sender_device=pc&web_id=7109889579923113478",
-        "sniper_scope": 80,
-        "x2_scope": 94,
-        "x4_scope": 88
+        "sensitivities": {
+            "review": 100,
+            "collimator": 97,
+            "x2_scope": 94,
+            "x4_scope": 88,
+            "sniper_scope": 80,
+            "free_review": 100
+        }
     },
     {
         "__id__": "o7Lrh84hsbXNXGNFk2O1",
-        "collimator": 93,
-        "device_name": "Redmi Note 8",
+        "manufacturer": "Redmi",
+        "name": "Note 8",
+        "settings_source_url": "",
         "dpi": 600,
         "fire_button": 44,
-        "free_review": 48,
-        "review": 94,
-        "settings_source_url": "",
-        "sniper_scope": 24,
-        "x2_scope": 94,
-        "x4_scope": 95
+        "sensitivities": {
+            "review": 94,
+            "collimator": 93,
+            "x2_scope": 94,
+            "x4_scope": 95,
+            "sniper_scope": 24,
+            "free_review": 48
+        }
     },
     {
         "__id__": "r5rGtwQ5velLfonnlFFS",
-        "collimator": 94,
-        "device_name": "Redmi 6A",
+        "manufacturer": "Redmi",
+        "name": "6A",
+        "settings_source_url": "",
         "dpi": 0,
         "fire_button": 39,
-        "free_review": 52,
-        "review": 98,
-        "settings_source_url": "",
-        "sniper_scope": 36,
-        "x2_scope": 90,
-        "x4_scope": 96
+        "sensitivities": {
+            "review": 98,
+            "collimator": 94,
+            "x2_scope": 90,
+            "x4_scope": 96,
+            "sniper_scope": 36,
+            "free_review": 52
+        }
     },
     {
         "__id__": "tgmbQwOuiw3AKQcRc62U",
-        "collimator": 96,
-        "device_name": "Redmi Note 9s",
+        "manufacturer": "Redmi",
+        "name": "Note 9s",
+        "settings_source_url": "",
         "dpi": 531,
         "fire_button": 53,
-        "free_review": 49,
-        "review": 95,
-        "settings_source_url": "",
-        "sniper_scope": 33,
-        "x2_scope": 93,
-        "x4_scope": 98
+        "sensitivities": {
+            "review": 95,
+            "collimator": 96,
+            "x2_scope": 93,
+            "x4_scope": 98,
+            "sniper_scope": 33,
+            "free_review": 49
+        }
     },
     {
         "__id__": "vcIR3ehMXeK72jU7HRz0",
-        "collimator": 88,
-        "device_name": "Redmi Note 8 Pro",
+        "manufacturer": "Redmi",
+        "name": "Note 8 Pro",
+        "settings_source_url": "",
         "dpi": 560,
         "fire_button": 42,
-        "free_review": 45,
-        "review": 94,
-        "settings_source_url": "",
-        "sniper_scope": 49,
-        "x2_scope": 97,
-        "x4_scope": 97
+        "sensitivities": {
+            "review": 94,
+            "collimator": 88,
+            "x2_scope": 97,
+            "x4_scope": 97,
+            "sniper_scope": 49,
+            "free_review": 45
+        }
     },
     {
         "__id__": "wv5mMubgM45vyZRh6OF6",
-        "collimator": 91,
-        "device_name": "Redmi S2",
+        "manufacturer": "Redmi",
+        "name": "S2",
+        "settings_source_url": "",
         "dpi": 614,
         "fire_button": 45,
-        "free_review": 32,
-        "review": 93,
-        "settings_source_url": "",
-        "sniper_scope": 26,
-        "x2_scope": 96,
-        "x4_scope": 93
+        "sensitivities": {
+            "review": 93,
+            "collimator": 91,
+            "x2_scope": 96,
+            "x4_scope": 93,
+            "sniper_scope": 26,
+            "free_review": 32
+        }
     },
     {
         "__id__": "yRn8bVAezx2eOn6IvLVm",
-        "collimator": 88,
-        "device_name": "Redmi Note 11",
+        "manufacturer": "Redmi",
+        "name": "Note 11",
+        "settings_source_url": "",
         "dpi": 0,
         "fire_button": 47,
-        "free_review": 36,
-        "review": 97,
-        "settings_source_url": "",
-        "sniper_scope": 21,
-        "x2_scope": 99,
-        "x4_scope": 97
+        "sensitivities": {
+            "review": 97,
+            "collimator": 88,
+            "x2_scope": 99,
+            "x4_scope": 97,
+            "sniper_scope": 21,
+            "free_review": 36
+        }
     },
     {
         "__id__": "yigT025TpoV7KXaBf0f5",
-        "collimator": 55,
-        "device_name": "Redmi 9",
+        "manufacturer": "Redmi",
+        "name": "9",
+        "settings_source_url": "https://www.tiktok.com/@ipman.pvp/video/7125938633269415173",
         "dpi": 720,
         "fire_button": 70,
-        "free_review": 100,
-        "review": 95,
-        "settings_source_url": "https://www.tiktok.com/@ipman.pvp/video/7125938633269415173",
-        "sniper_scope": 51,
-        "x2_scope": 70,
-        "x4_scope": 76
+        "sensitivities": {
+            "review": 95,
+            "collimator": 55,
+            "x2_scope": 70,
+            "x4_scope": 76,
+            "sniper_scope": 51,
+            "free_review": 100
+        }
     },
     {
         "__id__": "ztqq7qWAhIuRjzCpEg0V",
-        "collimator": 95,
-        "device_name": "Redmi A8",
+        "manufacturer": "Redmi",
+        "name": "A8",
+        "settings_source_url": "",
         "dpi": 639,
         "fire_button": 53,
-        "free_review": 44,
-        "review": 93,
-        "settings_source_url": "",
-        "sniper_scope": 18,
-        "x2_scope": 96,
-        "x4_scope": 91
+        "sensitivities": {
+            "review": 93,
+            "collimator": 95,
+            "x2_scope": 96,
+            "x4_scope": 91,
+            "sniper_scope": 18,
+            "free_review": 44
+        }
     }
 ]
 }
