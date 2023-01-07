@@ -1,4 +1,6 @@
-[
+{
+    "manufacturer": "Xiaomi",
+    "models": [
     {
         "__id__": "0USqKBCtJABQV38b25Nx",
         "collimator": 95,
@@ -117,3 +119,4 @@
         "x4_scope": 90
     }
 ]
+}

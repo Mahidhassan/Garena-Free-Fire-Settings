@@ -1,4 +1,6 @@
-[
+{
+    "manufacturer": "Redmi",
+    "models": [
     {
         "__id__": "1Fa7fi43zcin51cdkW0J",
         "collimator": 90,
@@ -429,3 +431,4 @@
         "x4_scope": 91
     }
 ]
+}

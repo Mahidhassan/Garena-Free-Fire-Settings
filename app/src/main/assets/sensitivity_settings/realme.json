@@ -1,4 +1,6 @@
-[
+{
+    "manufacturer": "Realme",
+    "models": [
     {
         "__id__": "309x4f8RMnwA5ahuokWh",
         "manufacturer": "Realme",
@@ -160,3 +162,4 @@
         }
     }
 ]
+}

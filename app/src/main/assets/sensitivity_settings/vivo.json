@@ -1,4 +1,6 @@
-[
+{
+    "manufacturer": "Vivo",
+    "models": [
     {
         "__id__": "FlOkJPxf5Cpa0xKe3R8u",
         "manufacturer": "Vivo",
@@ -128,3 +130,4 @@
         }
     }
 ]
+}

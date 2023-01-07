@@ -1,4 +1,6 @@
-[
+{
+    "manufacturer": "ZTE",
+    "models": [
     {
         "__id__": "47fnGZRsIGNkElOkx9Cz",
         "collimator": 92,
@@ -78,3 +80,4 @@
         "x4_scope": 98
     }
 ]
+}

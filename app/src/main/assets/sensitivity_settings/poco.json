@@ -1,4 +1,6 @@
-[
+{
+    "manufacturer": "Poco",
+    "models": [
     {
         "__id__": "DGVeNTJ5yjRXSWXWlw1Q",
         "manufacturer": "Poco",
@@ -80,3 +82,4 @@
         }
     }
 ]
+}

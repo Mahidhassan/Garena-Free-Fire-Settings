@@ -1,4 +1,6 @@
-[
+{
+    "manufacturer": "Huawei",
+    "models": [
     {
         "__id__": "0lCKHl7PpRNJjo8NHbbI",
         "manufacturer": "Huawei",
@@ -14,7 +16,7 @@
             "sniper_scope": 20,
             "free_review": 38
         }
-        },
+    },
     {
         "__id__": "8A4zbRGQpaJpFfe1WzBI",
         "manufacturer": "Huawei",
@@ -416,3 +418,4 @@
         }
     }
 ]
+}

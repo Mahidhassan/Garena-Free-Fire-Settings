@@ -1,4 +1,6 @@
-[
+{
+    "manufacturer": "Motorola",
+    "models": [
     {
         "__id__": "5FZJ4JQZLJz7tbZ3w2ak",
         "manufacturer": "Motorola",
@@ -528,3 +530,4 @@
         }
     }
 ]
+}

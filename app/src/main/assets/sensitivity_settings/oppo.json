@@ -1,4 +1,6 @@
-[
+{
+    "manufacturer": "Oppo",
+    "models": [
     {
         "__id__": "0c6ZB3ZrK59nWb3Pz2sI",
         "manufacturer": "Oppo",
@@ -208,3 +210,4 @@
         }
     }
 ]
+}

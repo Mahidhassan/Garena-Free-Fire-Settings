@@ -1,4 +1,6 @@
-[
+{
+    "manufacturer": "Honor",
+    "models": [
     {
         "__id__": "6PnwsqTa22y536AacIIX",
         "manufacturer": "Honor",
@@ -129,3 +131,4 @@
         }
     }
 ]
+}

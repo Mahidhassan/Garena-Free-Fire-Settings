@@ -1,4 +1,6 @@
-[
+{
+    "manufacturer": "LG",
+    "models": [
     {
         "__id__": "7Na7IXvYc8WVDCfxKBtH",
         "manufacturer": "LG",
@@ -192,3 +194,4 @@
         }
     }
 ]
+}

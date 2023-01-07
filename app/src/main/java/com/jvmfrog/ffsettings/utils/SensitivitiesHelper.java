@@ -59,8 +59,20 @@ public class SensitivitiesHelper {
                 recyclerView.setAdapter(new DevicesAdapter(context, fragment, list));
             } catch (JSONException e) {
                 e.printStackTrace();
+                new MaterialAlertDialogBuilder(context)
+                        .setTitle("Error")
+                        .setMessage(e.getMessage())
+                        .setPositiveButton("Ok", null)
+                        .show();
             }
-        }, error -> Log.e("Volley", error.toString()));
+        }, error -> {
+            Log.e("Volley", error.toString());
+            new MaterialAlertDialogBuilder(context)
+                    .setTitle("Error")
+                    .setMessage(error.getMessage())
+                    .setPositiveButton("Ok", null)
+                    .show();
+        });
         queue.addRequestEventListener((request, event) -> {
             if (event == RequestQueue.RequestEvent.REQUEST_FINISHED) {
                 shimmerFrameLayout.stopShimmer();
