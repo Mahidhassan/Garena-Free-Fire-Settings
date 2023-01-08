@@ -50,25 +50,63 @@
     <com.facebook.shimmer.ShimmerFrameLayout
         android:id="@+id/shimmer_layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        app:shimmer_auto_start="true">
 
         <GridLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:columnCount="2"
-            android:rowCount="2"
+            android:rowCount="6"
             android:orientation="vertical">
-            <include layout="@layout/shimmer_placeholder_layout"/>
-            <include layout="@layout/shimmer_placeholder_layout"/>
-            <include layout="@layout/shimmer_placeholder_layout"/>
-            <include layout="@layout/shimmer_placeholder_layout"/>
-            <include layout="@layout/shimmer_placeholder_layout"/>
-            <include layout="@layout/shimmer_placeholder_layout"/>
-            <include layout="@layout/shimmer_placeholder_layout"/>
-            <include layout="@layout/shimmer_placeholder_layout"/>
-            <include layout="@layout/shimmer_placeholder_layout"/>
-            <include layout="@layout/shimmer_placeholder_layout"/>
-            <include layout="@layout/shimmer_placeholder_layout"/>
+            <include layout="@layout/shimmer_placeholder_layout"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_columnWeight="1"/>
+            <include layout="@layout/shimmer_placeholder_layout"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_columnWeight="1"/>
+            <include layout="@layout/shimmer_placeholder_layout"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_columnWeight="1"/>
+            <include layout="@layout/shimmer_placeholder_layout"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_columnWeight="1"/>
+            <include layout="@layout/shimmer_placeholder_layout"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_columnWeight="1"/>
+            <include layout="@layout/shimmer_placeholder_layout"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_columnWeight="1"/>
+            <include layout="@layout/shimmer_placeholder_layout"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_columnWeight="1"/>
+            <include layout="@layout/shimmer_placeholder_layout"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_columnWeight="1"/>
+            <include layout="@layout/shimmer_placeholder_layout"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_columnWeight="1"/>
+            <include layout="@layout/shimmer_placeholder_layout"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_columnWeight="1"/>
+            <include layout="@layout/shimmer_placeholder_layout"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_columnWeight="1"/>
+            <include layout="@layout/shimmer_placeholder_layout"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_columnWeight="1"/>
         </GridLayout>
     </com.facebook.shimmer.ShimmerFrameLayout>
     <androidx.recyclerview.widget.RecyclerView

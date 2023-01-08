@@ -6,7 +6,6 @@ import android.view.View;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.volley.Request;
@@ -14,7 +13,6 @@ import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.facebook.shimmer.ShimmerFrameLayout;
-import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.jvmfrog.ffsettings.adapter.ManufacturerAdapter;
 import com.jvmfrog.ffsettings.model.ManufacturersModel;
 
@@ -34,6 +32,9 @@ public class ManufacturerHelper {
     public static String GITHUB_MANUFACTURERS_FILES_PATH = "https://raw.githubusercontent.com/IbremMiner837/Garena-Free-Fire-Settings/master/app/src/main/assets/sensitivity_settings/manufacturers.json";
 
     public void getManufacturersFromURL(Context context, Fragment fragment, RecyclerView recyclerView, ShimmerFrameLayout shimmerFrameLayout) {
+        shimmerFrameLayout.startShimmer();
+        shimmerFrameLayout.setVisibility(View.VISIBLE);
+        recyclerView.setVisibility(View.GONE);
         RequestQueue queue = Volley.newRequestQueue(context);
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, GITHUB_MANUFACTURERS_FILES_PATH, null, response -> {
             try {
@@ -49,22 +50,8 @@ public class ManufacturerHelper {
                 }
                 recyclerView.setLayoutManager(new GridLayoutManager(context, 2));
                 recyclerView.setAdapter(new ManufacturerAdapter(fragment, list));
-            } catch (JSONException e) {
-                e.printStackTrace();
-                new MaterialAlertDialogBuilder(context)
-                        .setTitle("Error")
-                        .setMessage(e.getMessage())
-                        .setPositiveButton("Ok", null)
-                        .show();
-            }
-        }, error -> {
-            Log.e("Volley", error.toString());
-            new MaterialAlertDialogBuilder(context)
-                    .setTitle("Error")
-                    .setMessage(error.getMessage())
-                    .setPositiveButton("Ok", null)
-                    .show();
-        });
+            } catch (JSONException e) {e.printStackTrace();}
+        }, error -> Log.e("Volley", error.toString()));
         queue.addRequestEventListener((request, event) -> {
             if (event == RequestQueue.RequestEvent.REQUEST_FINISHED) {
                 shimmerFrameLayout.stopShimmer();
@@ -73,7 +60,7 @@ public class ManufacturerHelper {
             }
         });
         queue.add(jsonObjectRequest);
-    };
+    }
 
     public void getManufacturersFromAssets(Context context, Fragment fragment, RecyclerView recyclerView, ShimmerFrameLayout shimmerFrameLayout) {
         shimmerFrameLayout.stopShimmer();
@@ -94,9 +81,7 @@ public class ManufacturerHelper {
             }
             recyclerView.setLayoutManager(new GridLayoutManager(context, 2));
             recyclerView.setAdapter(new ManufacturerAdapter(fragment, list));
-        } catch (JSONException | IOException e) {
-            e.printStackTrace();
-        }
+        } catch (JSONException | IOException e) {e.printStackTrace();}
     }
 
     private String readJSONDataFromFile(Context context) throws IOException {
@@ -106,9 +91,7 @@ public class ManufacturerHelper {
             String jsonString = null;
             inputStream = context.getAssets().open("sensitivity_settings/manufacturers.json");
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream, StandardCharsets.UTF_8));
-            while ((jsonString = bufferedReader.readLine()) != null) {
-                builder.append(jsonString);
-            }
+            while ((jsonString = bufferedReader.readLine()) != null) {builder.append(jsonString);}
         } finally {
             if (inputStream != null) {
                 inputStream.close();

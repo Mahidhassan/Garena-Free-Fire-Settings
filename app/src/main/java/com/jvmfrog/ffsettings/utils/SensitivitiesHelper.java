@@ -13,7 +13,6 @@ import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.facebook.shimmer.ShimmerFrameLayout;
-import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.jvmfrog.ffsettings.adapter.DevicesAdapter;
 import com.jvmfrog.ffsettings.model.SensitivityModel;
 
@@ -33,6 +32,9 @@ public class SensitivitiesHelper {
     public static String GITHUB_SENSITIVITIES_FILES_PATH = "https://raw.githubusercontent.com/IbremMiner837/Garena-Free-Fire-Settings/master/app/src/main/assets/sensitivity_settings/";
 
     public void getSensitivitiesFromURL(Context context, Fragment fragment, RecyclerView recyclerView, String manufacturer, ShimmerFrameLayout shimmerFrameLayout) {
+        shimmerFrameLayout.startShimmer();
+        shimmerFrameLayout.setVisibility(View.VISIBLE);
+        recyclerView.setVisibility(View.GONE);
         RequestQueue queue = Volley.newRequestQueue(context);
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, GITHUB_SENSITIVITIES_FILES_PATH + manufacturer + ".json", null, response -> {
             try {
@@ -57,22 +59,8 @@ public class SensitivitiesHelper {
                 }
                 recyclerView.setLayoutManager(new LinearLayoutManager(context));
                 recyclerView.setAdapter(new DevicesAdapter(context, fragment, list));
-            } catch (JSONException e) {
-                e.printStackTrace();
-                new MaterialAlertDialogBuilder(context)
-                        .setTitle("Error")
-                        .setMessage(e.getMessage())
-                        .setPositiveButton("Ok", null)
-                        .show();
-            }
-        }, error -> {
-            Log.e("Volley", error.toString());
-            new MaterialAlertDialogBuilder(context)
-                    .setTitle("Error")
-                    .setMessage(error.getMessage())
-                    .setPositiveButton("Ok", null)
-                    .show();
-        });
+            } catch (JSONException e) {e.printStackTrace();}
+        }, error -> Log.e("Volley", error.toString()));
         queue.addRequestEventListener((request, event) -> {
             if (event == RequestQueue.RequestEvent.REQUEST_FINISHED) {
                 shimmerFrameLayout.stopShimmer();
@@ -81,7 +69,7 @@ public class SensitivitiesHelper {
             }
         });
         queue.add(jsonObjectRequest);
-    };
+    }
 
     public void getSensitivitiesFromAssets(Context context, Fragment fragment, RecyclerView recyclerView, String manufacturer, ShimmerFrameLayout shimmerFrameLayout) {
         shimmerFrameLayout.stopShimmer();
@@ -111,14 +99,7 @@ public class SensitivitiesHelper {
             }
             recyclerView.setLayoutManager(new LinearLayoutManager(context));
             recyclerView.setAdapter(new DevicesAdapter(context, fragment, list));
-        } catch (JSONException | IOException e) {
-            e.printStackTrace();
-            new MaterialAlertDialogBuilder(context)
-                    .setTitle("Error")
-                    .setMessage(e.getMessage())
-                    .setPositiveButton("OK", null)
-                    .show();
-        }
+        } catch (JSONException | IOException e) {e.printStackTrace();}
     }
 
     private String readJSONDataFromFile(Context context, String manufacturer) throws IOException {
@@ -128,9 +109,7 @@ public class SensitivitiesHelper {
             String jsonString = null;
             inputStream = context.getAssets().open("sensitivity_settings/" + manufacturer + ".json");
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream, StandardCharsets.UTF_8));
-            while ((jsonString = bufferedReader.readLine()) != null) {
-                builder.append(jsonString);
-            }
+            while ((jsonString = bufferedReader.readLine()) != null) {builder.append(jsonString);}
         } finally {
             if (inputStream != null) {
                 inputStream.close();

@@ -15,7 +15,6 @@ import com.jvmfrog.ffsettings.ui.dialog.ChangeUsernameDialog;
 import com.jvmfrog.ffsettings.utils.CustomTabUtil;
 import com.jvmfrog.ffsettings.utils.ManufacturerHelper;
 import com.jvmfrog.ffsettings.utils.NetworkCheckHelper;
-import com.jvmfrog.ffsettings.utils.SensitivitiesHelper;
 import com.jvmfrog.ffsettings.utils.SharedPreferencesUtils;
 
 public class ManufacturerFragment extends Fragment {
@@ -55,7 +54,7 @@ public class ManufacturerFragment extends Fragment {
         }
 
         binding.setUserNameBtn.setOnClickListener(view1 -> ChangeUsernameDialog.showDialog(getActivity()));
-        binding.googleFormBtn.setOnClickListener(view1 -> new CustomTabUtil().OpenCustomTab(getActivity(), getString(R.string.google_form), R.color.md_theme_light_onSecondary));
+        binding.googleFormBtn.setOnClickListener(view1 -> new CustomTabUtil().OpenCustomTab(getActivity(), "https://t.me/freefiresettingsapp", R.color.md_theme_light_onSecondary));
     }
 
     @Override
@@ -63,4 +62,6 @@ public class ManufacturerFragment extends Fragment {
         super.onDestroyView();
         binding = null;
     }
+
+
 }
