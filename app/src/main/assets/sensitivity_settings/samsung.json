@@ -194,6 +194,22 @@
       }
     },
     {
+      "__id__": "i73f6jXcCR9ohlhJtREU",
+      "manufacturer": "Samsung",
+      "name": "A22s",
+      "settings_source_url": "https://vk.com/zxc.sampa",
+      "dpi": 497,
+      "fire_button": 53,
+      "sensitivities": {
+        "review": 95,
+        "collimator": 91,
+        "x2_scope": 100,
+        "x4_scope": 40,
+        "sniper_scope": 50,
+        "free_review": 100
+      }
+    },
+    {
       "__id__": "0wYypo7haX7DsjIgY7PZ",
       "manufacturer": "Samsung",
       "name": "A12",
