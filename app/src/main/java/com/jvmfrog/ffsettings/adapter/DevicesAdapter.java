@@ -9,38 +9,33 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentActivity;
-import androidx.navigation.fragment.NavHostFragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.jvmfrog.ffsettings.R;
 import com.jvmfrog.ffsettings.model.SensitivityModel;
-import com.jvmfrog.ffsettings.utils.InterstitialAdHelper;
-import com.jvmfrog.ffsettings.utils.NavigationUtils;
+import com.jvmfrog.ffsettings.utils.UnityAdsManager;
+import com.unity3d.ads.UnityAds;
 
 import java.util.List;
 
 public class DevicesAdapter extends RecyclerView.Adapter<DevicesAdapter.DeviceViewHolder> {
-
-    private final Context context;
     private final Fragment fragment;
-    private InterstitialAdHelper interstitialAdHelper;
     private final List<SensitivityModel> models;
 
-    public DevicesAdapter(Context context, Fragment fragment, List<SensitivityModel> models) {
-        this.context = context;
+    public DevicesAdapter(Fragment fragment, List<SensitivityModel> models) {
         this.fragment = fragment;
         this.models = models;
     }
 
     @Override
     public void onBindViewHolder(@NonNull DevicesAdapter.DeviceViewHolder holder, int position) {
-        holder.device_name.setText(models.get(position).getManufacturerName() + " " + models.get(position).getDeviceName());
-        interstitialAdHelper = new InterstitialAdHelper(context);
-        interstitialAdHelper.loadInterstitialAd();
+        StringBuilder deviceName = new StringBuilder(models.get(position).getManufacturerName() + " " + models.get(position).getDeviceName());
+        holder.device_name.setText(deviceName);
 
         holder.itemView.setOnClickListener(v -> {
-            interstitialAdHelper.showInterstitial();
+            //UnityAdsManager.instance.showInterstitialAd();
             Bundle finalBundle = new Bundle();
             finalBundle.putFloat("review", models.get(position).getReview());
             finalBundle.putFloat("collimator", models.get(position).getCollimator());
@@ -51,9 +46,8 @@ public class DevicesAdapter extends RecyclerView.Adapter<DevicesAdapter.DeviceVi
             finalBundle.putFloat("dpi", models.get(position).getDpi());
             finalBundle.putFloat("fire_button", models.get(position).getFireButton());
             finalBundle.putString("settings_source_url", models.get(position).getSettingsSourceUrl());
-            NavHostFragment.findNavController(fragment)
-                    .navigate(R.id.action_devicesFragment_to_deviceSettingsFragment,
-                            finalBundle);
+            NavController navController = Navigation.findNavController(fragment.requireActivity(), R.id.nav_host_fragment_content_main);
+            navController.navigate(R.id.action_devicesFragment_to_deviceSettingsFragment, finalBundle);
         });
     }
 

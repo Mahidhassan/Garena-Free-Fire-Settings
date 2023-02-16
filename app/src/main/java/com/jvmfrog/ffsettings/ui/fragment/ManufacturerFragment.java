@@ -31,13 +31,13 @@ public class ManufacturerFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        if (SharedPreferencesUtils.getString(getActivity(), "user_name") == null || SharedPreferencesUtils.getString(getActivity(), "user_name").equals("")) {
-            binding.welcomeAndUserName.setText(getString(R.string.welcome) + "," + "\n" + getString(R.string.user_name) + "!");
-        } else {
-            binding.welcomeAndUserName.setText(getString(R.string.welcome) + "," + "\n" + SharedPreferencesUtils.getString(getActivity(), "user_name") + "!");
-        }
+        String name = SharedPreferencesUtils.getString(requireActivity(), "user_name");
+        StringBuilder userName = new StringBuilder(getString(R.string.welcome) + "," + "\n" + name + "!");
+        StringBuilder defaultUserName = new StringBuilder(getString(R.string.welcome) + "," + "\n" + getString(R.string.user_name) + "!");
 
-        if (NetworkCheckHelper.isNetworkAvailable(getActivity())) {
+        binding.welcomeAndUserName.setText(name.equals("") ? defaultUserName : userName);
+
+        if (NetworkCheckHelper.isNetworkAvailable(requireActivity())) {
             new ManufacturerHelper().getManufacturersFromURL(
                     getActivity(),
                     ManufacturerFragment.this,

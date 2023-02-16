@@ -3,26 +3,16 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/manufacturerFragment">
+    app:startDestination="@id/manufacturerFragment2">
 
     <fragment
-        android:id="@+id/manufacturerFragment"
+        android:id="@+id/manufacturerFragment2"
         android:name="com.jvmfrog.ffsettings.ui.fragment.ManufacturerFragment"
         android:label="fragment_manufacturer"
-        tools:layout="@layout/fragment_manufacturer">
+        tools:layout="@layout/fragment_manufacturer" >
         <action
-            android:id="@+id/action_manufacturerFragment_to_devicesFragment"
-            app:destination="@id/devicesFragment"
-            app:enterAnim="@anim/enter_from_right"
-            app:exitAnim="@anim/exit_to_left"
-            app:popEnterAnim="@anim/enter_from_left"
-            app:popExitAnim="@anim/exit_to_right" />
-        <action
-            android:id="@+id/action_manufacturerFragment_to_aboutAppFragment"
-            app:destination="@id/aboutAppFragment" />
-        <deepLink
-            android:id="@+id/deepLink"
-            app:uri="https://ffsettings.com/{collection}/{document-id}" />
+            android:id="@+id/action_manufacturerFragment2_to_devicesFragment"
+            app:destination="@id/devicesFragment" />
     </fragment>
     <fragment
         android:id="@+id/devicesFragment"
@@ -31,24 +21,17 @@
         tools:layout="@layout/fragment_devices" >
         <action
             android:id="@+id/action_devicesFragment_to_deviceSettingsFragment"
-            app:destination="@id/deviceSettingsFragment"
-            app:enterAnim="@anim/enter_from_right"
-            app:exitAnim="@anim/exit_to_left"
-            app:popEnterAnim="@anim/enter_from_left"
-            app:popExitAnim="@anim/exit_to_right" />
-        <action
-            android:id="@+id/action_devicesFragment_to_manufacturerFragment"
-            app:destination="@id/manufacturerFragment" />
+            app:destination="@id/deviceSettingsFragment" />
     </fragment>
     <fragment
         android:id="@+id/deviceSettingsFragment"
         android:name="com.jvmfrog.ffsettings.ui.fragment.DeviceSettingsFragment"
         android:label="fragment_device_settings"
-        tools:layout="@layout/fragment_device_settings" >
-        <action
-            android:id="@+id/action_deviceSettingsFragment_to_devicesFragment"
-            app:destination="@id/devicesFragment" />
-    </fragment>
+        tools:layout="@layout/fragment_device_settings" />
+    <fragment
+        android:id="@+id/settingsFragment2"
+        android:name="com.jvmfrog.ffsettings.ui.fragment.SettingsFragment"
+        android:label="SettingsFragment" />
     <fragment
         android:id="@+id/aboutAppFragment"
         android:name="com.jvmfrog.ffsettings.ui.fragment.AboutAppFragment"

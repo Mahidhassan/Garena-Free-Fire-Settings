@@ -1,6 +1,5 @@
 package com.jvmfrog.ffsettings.adapter;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,13 +8,12 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentActivity;
-import androidx.navigation.fragment.NavHostFragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.jvmfrog.ffsettings.R;
 import com.jvmfrog.ffsettings.model.ManufacturersModel;
-import com.jvmfrog.ffsettings.utils.NavigationUtils;
 
 import java.util.List;
 import java.util.Locale;
@@ -41,9 +39,8 @@ public class ManufacturerAdapter extends RecyclerView.Adapter<ManufacturerAdapte
         holder.itemView.setOnClickListener(v -> {
             Bundle finalBundle = new Bundle();
             finalBundle.putString("model", models.get(position).getModel().toLowerCase(Locale.ROOT));
-            NavHostFragment.findNavController(fragment)
-                    .navigate(R.id.action_manufacturerFragment_to_devicesFragment,
-                    finalBundle);
+            NavController navController = Navigation.findNavController(fragment.requireActivity(), R.id.nav_host_fragment_content_main);
+            navController.navigate(R.id.action_manufacturerFragment2_to_devicesFragment, finalBundle);
         });
     }
 

@@ -58,7 +58,7 @@ public class SensitivitiesHelper {
                     ));
                 }
                 recyclerView.setLayoutManager(new LinearLayoutManager(context));
-                recyclerView.setAdapter(new DevicesAdapter(context, fragment, list));
+                recyclerView.setAdapter(new DevicesAdapter(fragment, list));
             } catch (JSONException e) {e.printStackTrace();}
         }, error -> Log.e("Volley", error.toString()));
         queue.addRequestEventListener((request, event) -> {
@@ -98,7 +98,7 @@ public class SensitivitiesHelper {
                 ));
             }
             recyclerView.setLayoutManager(new LinearLayoutManager(context));
-            recyclerView.setAdapter(new DevicesAdapter(context, fragment, list));
+            recyclerView.setAdapter(new DevicesAdapter(fragment, list));
         } catch (JSONException | IOException e) {e.printStackTrace();}
     }
 
