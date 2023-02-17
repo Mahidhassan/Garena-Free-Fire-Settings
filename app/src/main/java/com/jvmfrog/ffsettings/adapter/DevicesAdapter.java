@@ -34,10 +34,10 @@ public class DevicesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
     @NonNull
     @Override
-    public DeviceNameViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         if (viewType == VIEW_TYPE_BANNER) {
-            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.device_name_item, parent, false);
-            return new DeviceNameViewHolder(view);
+            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.banner_item, parent, false);
+            return new BannerViewHolder(view);
         } else {
             View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.device_name_item, parent, false);
             return new DeviceNameViewHolder(view);
@@ -46,9 +46,6 @@ public class DevicesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder viewHolder, int position) {
-        SensitivityModel model = models.get(position);
-        if (model == null)
-            return;
         if (viewHolder.getItemViewType() == VIEW_TYPE_BANNER) {
             BannerViewHolder holder = (BannerViewHolder) viewHolder;
             BannerView banner = new BannerView(fragment.requireActivity(), "Banner_Android", new UnityBannerSize(320, 50));
