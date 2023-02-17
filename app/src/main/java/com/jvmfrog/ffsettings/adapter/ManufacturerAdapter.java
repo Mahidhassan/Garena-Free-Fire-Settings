@@ -52,7 +52,7 @@ public class ManufacturerAdapter extends RecyclerView.Adapter<ManufacturerAdapte
     @NonNull
     @Override
     public ManufacturersHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.device_name_item, parent, false);
         return new ManufacturersHolder(view);
     }
 

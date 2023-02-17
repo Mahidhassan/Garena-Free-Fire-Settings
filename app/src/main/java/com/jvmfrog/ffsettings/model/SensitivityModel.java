@@ -1,8 +1,5 @@
 package com.jvmfrog.ffsettings.model;
 
-import androidx.annotation.Keep;
-
-@Keep
 public class SensitivityModel {
     public String deviceName, manufacturerName, settingsSourceUrl;
     public int dpi, fireButton, review, collimator, x2Scope, x4Scope, sniperScope, freeReview;
