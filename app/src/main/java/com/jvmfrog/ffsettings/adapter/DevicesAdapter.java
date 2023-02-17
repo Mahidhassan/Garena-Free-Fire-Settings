@@ -1,6 +1,5 @@
 package com.jvmfrog.ffsettings.adapter;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,7 +15,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.jvmfrog.ffsettings.R;
 import com.jvmfrog.ffsettings.model.SensitivityModel;
 import com.jvmfrog.ffsettings.utils.UnityAdsManager;
-import com.unity3d.ads.UnityAds;
 
 import java.util.List;
 
