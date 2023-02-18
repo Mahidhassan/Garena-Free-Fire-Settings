@@ -57,9 +57,10 @@ In any case, you find or notice any bugs please report them by creating an issue
 If you have any feature suggestions, please create an issue with detailed information or by contacting us in the [Telegram help & Feedback group](https://t.me/freefiresettingsapp_chat).
 
 ## 🔗 Social links
-**Telegram:** https://t.me/freefiresettingsapp <br>
-**VK:** https://vk.com/jvmfrog <br>
-**Crowdin**: https://crwd.in/settings-for-free-fire-app <br>
+**Official Telegram channel:** https://t.me/jvmfrog </br>
+**Official group in VK:** https://vk.com/jvmfrog <br>
+**Telegram channel of the application:** https://t.me/freefiresettingsapp <br>
+**Crowdin if you want to help with the translation of the application**: https://crwd.in/settings-for-free-fire-app <br>
 
 ## 🗂️ License
 
