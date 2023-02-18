@@ -59,7 +59,10 @@ public class SensitivitiesHelper {
                 }
                 recyclerView.setLayoutManager(new LinearLayoutManager(context));
                 recyclerView.setAdapter(new DevicesAdapter(fragment, list));
-            } catch (JSONException e) {e.printStackTrace();}
+            } catch (JSONException e) {
+                e.printStackTrace();
+                Log.d("ERROR", e.getMessage());
+            }
         }, error -> Log.e("Volley", error.toString()));
         queue.addRequestEventListener((request, event) -> {
             if (event == RequestQueue.RequestEvent.REQUEST_FINISHED) {

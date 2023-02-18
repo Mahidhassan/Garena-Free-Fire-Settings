@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -24,7 +25,7 @@ import java.util.List;
 public class DevicesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private final Fragment fragment;
     private final List<SensitivityModel> models;
-    private static final int VIEW_TYPE_DEFAULT = 1;
+    private static final int VIEW_TYPE_DEFAULT = 0;
     private static final int VIEW_TYPE_BANNER = 1;
 
     public DevicesAdapter(Fragment fragment, List<SensitivityModel> models) {
@@ -35,25 +36,39 @@ public class DevicesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        if (viewType == VIEW_TYPE_BANNER) {
-            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.banner_item, parent, false);
-            return new BannerViewHolder(view);
-        } else {
-            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.device_name_item, parent, false);
-            return new DeviceNameViewHolder(view);
+        switch (viewType) {
+            case VIEW_TYPE_BANNER:
+                View default_view = LayoutInflater.from(parent.getContext()).inflate(R.layout.banner_item, parent, false);
+                return new BannerViewHolder(default_view);
+            case VIEW_TYPE_DEFAULT:
+                View banner_view = LayoutInflater.from(parent.getContext()).inflate(R.layout.device_name_item, parent, false);
+                return new DeviceNameViewHolder(banner_view);
+            default:
+                throw new IllegalArgumentException("Invalid view type");
         }
     }
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder viewHolder, int position) {
-        if (viewHolder.getItemViewType() == VIEW_TYPE_BANNER) {
+        SensitivityModel model = models.get(position);
+        if (model == null)
+            return;
+        else if (viewHolder.getItemViewType() == VIEW_TYPE_BANNER) {
             BannerViewHolder holder = (BannerViewHolder) viewHolder;
             BannerView banner = new BannerView(fragment.requireActivity(), "Banner_Android", new UnityBannerSize(320, 50));
+            banner.setGravity(RelativeLayout.CENTER_IN_PARENT);
             banner.load();
+            banner.setListener(new BannerView.Listener() {
+                @Override
+                public void onBannerLoaded(BannerView bannerAdView) {
+                    super.onBannerLoaded(bannerAdView);
+                    holder.bannerAdContainer.setVisibility(View.VISIBLE);
+                }
+            });
             holder.bannerAdContainer.addView(banner);
         } else if (viewHolder.getItemViewType() == VIEW_TYPE_DEFAULT) {
             DeviceNameViewHolder holder = (DeviceNameViewHolder) viewHolder;
-            StringBuilder deviceName = new StringBuilder(models.get(position).getManufacturerName() + " " + models.get(position).getDeviceName());
+            StringBuilder deviceName = new StringBuilder(model.getManufacturerName() + " " + model.getDeviceName());
             holder.device_name.setText(deviceName);
             holder.itemView.setOnClickListener(v -> {
                 //UnityAdsManager.instance.showInterstitialAd();
@@ -75,25 +90,27 @@ public class DevicesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
     @Override
     public int getItemCount() {
-        int count = models.size(); // Общее количество элементов
-        int bannerCount = count / 5; // Количество баннеров (один каждые 5 элементов)
-        if (count % 5 == 0) {
-            bannerCount--; // Если количество элементов меньше 5, последний баннер будет добавлен на позицию count
-        }
-        if (count >= 10) {
-            int extraBannerCount = (count - 10) / 8; // Количество дополнительных баннеров (один каждые 8 элементов после первых 10 элементов)
-            count += bannerCount + extraBannerCount; // Общее количество элементов с учетом баннеров
-        } else {
-            count++; // Если элементов меньше 10, добавляем баннер в конец
-        }
-        return count;
+        return models.size();
     }
 
     @Override
     public int getItemViewType(int position) {
-        if (position == 0 || ((position + 1) % 5 == 0 && position < getItemCount() - 1) || (position == getItemCount() - 1 && getItemCount() < 10)) {
+        int itemCount = getItemCount();
+        if (itemCount < 8) {
+            // Если меньше 8 элементов, то добавляем баннер в конец после элемента VIEW_TYPE_DEFAULT
+            if (position == itemCount - 1) {
+                return VIEW_TYPE_BANNER;
+            } else {
+                return VIEW_TYPE_DEFAULT;
+            }
+        } else if (position == 0) {
+            // Первый элемент всегда типа VIEW_TYPE_DEFAULT
+            return VIEW_TYPE_DEFAULT;
+        } else if ((position + 1) % 8 == 0 && position != itemCount - 1) {
+            // Добавляем баннер через каждые 8 элементов, кроме последнего элемента
             return VIEW_TYPE_BANNER;
         } else {
+            // Остальные элементы типа VIEW_TYPE_DEFAULT
             return VIEW_TYPE_DEFAULT;
         }
     }
