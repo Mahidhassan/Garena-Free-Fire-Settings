@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.fragment.SettingsFragment"
+    android:orientation="vertical">
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="16dp"
+        app:cardUseCompatPadding="true"
+        style="@style/Widget.Material3.CardView.Elevated">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:orientation="vertical">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Внешний вид"
+                android:textSize="21sp"
+                android:textStyle="bold"/>
+            <RadioGroup
+                android:id="@+id/appThemeRadioGroup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <com.google.android.material.radiobutton.MaterialRadioButton
+                    android:id="@+id/followSystemNightModeRadioButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Follow system"
+                    android:textSize="18sp"/>
+                <com.google.android.material.radiobutton.MaterialRadioButton
+                    android:id="@+id/noNightModeRadioButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Light mode"
+                    android:textSize="18sp"/>
+                <com.google.android.material.radiobutton.MaterialRadioButton
+                    android:id="@+id/nightModeRadioButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Night mode"
+                    android:textSize="18sp"/>
+            </RadioGroup>
+            <com.google.android.material.materialswitch.MaterialSwitch
+                android:id="@+id/dynamicColorsSwitch"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="8dp"
+                android:text="Use Dynamic colors"
+                android:textSize="18sp"/>
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+</LinearLayout>

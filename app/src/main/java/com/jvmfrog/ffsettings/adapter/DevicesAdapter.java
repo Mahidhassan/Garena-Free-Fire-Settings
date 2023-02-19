@@ -25,6 +25,7 @@ import java.util.List;
 public class DevicesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private final Fragment fragment;
     private final List<SensitivityModel> models;
+    private BannerView banner;
     private static final int VIEW_TYPE_DEFAULT = 0;
     private static final int VIEW_TYPE_BANNER = 1;
 
@@ -55,7 +56,7 @@ public class DevicesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
             return;
         else if (viewHolder.getItemViewType() == VIEW_TYPE_BANNER) {
             BannerViewHolder holder = (BannerViewHolder) viewHolder;
-            BannerView banner = new BannerView(fragment.requireActivity(), "Banner_Android", new UnityBannerSize(320, 50));
+            banner = new BannerView(fragment.requireActivity(), "Banner_Android", new UnityBannerSize(320, 50));
             banner.setGravity(RelativeLayout.CENTER_IN_PARENT);
             banner.load();
             banner.setListener(new BannerView.Listener() {
@@ -66,6 +67,7 @@ public class DevicesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
                 }
             });
             holder.bannerAdContainer.addView(banner);
+            holder.bannerAdContainer.setVisibility(View.GONE);
         } else if (viewHolder.getItemViewType() == VIEW_TYPE_DEFAULT) {
             DeviceNameViewHolder holder = (DeviceNameViewHolder) viewHolder;
             StringBuilder deviceName = new StringBuilder(model.getManufacturerName() + " " + model.getDeviceName());
@@ -95,22 +97,9 @@ public class DevicesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
     @Override
     public int getItemViewType(int position) {
-        int itemCount = getItemCount();
-        if (itemCount < 8) {
-            // Если меньше 8 элементов, то добавляем баннер в конец после элемента VIEW_TYPE_DEFAULT
-            if (position == itemCount - 1) {
-                return VIEW_TYPE_BANNER;
-            } else {
-                return VIEW_TYPE_DEFAULT;
-            }
-        } else if (position == 0) {
-            // Первый элемент всегда типа VIEW_TYPE_DEFAULT
-            return VIEW_TYPE_DEFAULT;
-        } else if ((position + 1) % 8 == 0 && position != itemCount - 1) {
-            // Добавляем баннер через каждые 8 элементов, кроме последнего элемента
+        if ((position + 1) % 8 == 0) {
             return VIEW_TYPE_BANNER;
         } else {
-            // Остальные элементы типа VIEW_TYPE_DEFAULT
             return VIEW_TYPE_DEFAULT;
         }
     }

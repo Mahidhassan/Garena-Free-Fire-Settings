@@ -1,15 +1,23 @@
 package com.jvmfrog.ffsettings.ui.fragment;
 
+import android.animation.ObjectAnimator;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
+import com.google.android.material.appbar.MaterialToolbar;
+import com.jvmfrog.ffsettings.R;
 import com.jvmfrog.ffsettings.databinding.FragmentDevicesBinding;
+import com.jvmfrog.ffsettings.ui.MainActivity;
 import com.jvmfrog.ffsettings.utils.NetworkCheckHelper;
 import com.jvmfrog.ffsettings.utils.SensitivitiesHelper;
 
@@ -20,6 +28,8 @@ public class DevicesFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         binding = FragmentDevicesBinding.inflate(inflater, container, false);
+        ActionBar actionBar = ((AppCompatActivity) getActivity()).getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
         return binding.getRoot();
     }
 
