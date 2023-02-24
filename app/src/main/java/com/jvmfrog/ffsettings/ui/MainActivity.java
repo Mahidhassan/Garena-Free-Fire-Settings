@@ -9,6 +9,7 @@ import android.util.TypedValue;
 import android.view.ContextThemeWrapper;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 
@@ -31,15 +32,15 @@ import com.jvmfrog.ffsettings.utils.SharedPreferencesUtils;
 import com.jvmfrog.ffsettings.utils.UnityAdsManager;
 
 public class MainActivity extends AppCompatActivity {
-    private ActivityMainBinding binding;
+    public ActivityMainBinding binding;
     private UnityAdsManager unityAdsManager;
     private NavHostFragment navHostFragment;
     private ActionBar actionBar;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         SplashScreen splashScreen = SplashScreen.installSplashScreen(this);
+        supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
         unityAdsManager = new UnityAdsManager(this);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
@@ -56,11 +57,19 @@ public class MainActivity extends AppCompatActivity {
         }
 
         unityAdsManager.showBannerAd(binding.bannerAd);
-        navHostFragment = (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment_content_main);
-        assert navHostFragment != null;
-        NavController navController = navHostFragment.getNavController();
-        BottomNavigationView bottomNav = findViewById(R.id.bottomAppBar);
-        NavigationUI.setupWithNavController(bottomNav, navController);
+        try {
+            navHostFragment = (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment_content_main);
+            assert navHostFragment != null;
+            NavController navController = navHostFragment.getNavController();
+            BottomNavigationView bottomNav = findViewById(R.id.bottomAppBar);
+            NavigationUI.setupWithNavController(bottomNav, navController);
+        } catch (Exception e) {
+            new MaterialAlertDialogBuilder(this)
+                    .setTitle("НА, ХАВАЙ")
+                    .setMessage("Ошибка в этом:" + "\n" + e.getMessage())
+                    .setPositiveButton("OK", null)
+                    .show();
+        }
     }
 
     @Override

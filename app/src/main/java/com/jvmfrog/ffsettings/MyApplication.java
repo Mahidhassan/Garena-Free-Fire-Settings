@@ -1,6 +1,7 @@
 package com.jvmfrog.ffsettings;
 
 import android.app.Application;
+import android.content.Context;
 import android.content.res.Configuration;
 
 import androidx.annotation.NonNull;
@@ -11,7 +12,8 @@ import com.google.android.material.color.DynamicColorsOptions;
 import com.jvmfrog.ffsettings.utils.SharedPreferencesUtils;
 
 public class MyApplication extends Application {
-    private static MyApplication instance = null;
+    public static MyApplication instance = null;
+    public static Context context;
 
     public static MyApplication getInstance() {
         if (instance == null)
@@ -23,6 +25,7 @@ public class MyApplication extends Application {
     public void onCreate() {
         super.onCreate();
         instance = this;
+        context = this;
         int nightMode = SharedPreferencesUtils.getInteger(this, "nightMode");
 
         switch (nightMode) {

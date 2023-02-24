@@ -8,8 +8,12 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.recyclerview.widget.GridLayoutManager;
 
+import com.google.android.material.progressindicator.LinearProgressIndicator;
 import com.jvmfrog.ffsettings.R;
+import com.jvmfrog.ffsettings.adapter.ManufacturerAdapter;
 import com.jvmfrog.ffsettings.databinding.FragmentManufacturerBinding;
 import com.jvmfrog.ffsettings.ui.dialog.ChangeUsernameDialog;
 import com.jvmfrog.ffsettings.utils.CustomTabUtil;
@@ -19,11 +23,16 @@ import com.jvmfrog.ffsettings.utils.SharedPreferencesUtils;
 
 public class ManufacturerFragment extends Fragment {
     private FragmentManufacturerBinding binding;
+    private ManufacturerHelper manager;
+    private LinearProgressIndicator indicator;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         binding = FragmentManufacturerBinding.inflate(inflater, container, false);
+        indicator = (LinearProgressIndicator) requireActivity().findViewById(R.id.progressIndicator);
+        manager = new ManufacturerHelper();
+        manager.updateAdapterDate(requireActivity());
         return binding.getRoot();
     }
 
@@ -37,21 +46,21 @@ public class ManufacturerFragment extends Fragment {
 
         binding.welcomeAndUserName.setText(name.equals("") ? defaultUserName : userName);
 
-        if (NetworkCheckHelper.isNetworkAvailable(requireActivity())) {
-            new ManufacturerHelper().getManufacturersFromURL(
-                    getActivity(),
-                    ManufacturerFragment.this,
-                    binding.recview,
-                    binding.shimmerLayout
-            );
-        } else {
-            new ManufacturerHelper().getManufacturersFromAssets(
-                    getActivity(),
-                    ManufacturerFragment.this,
-                    binding.recview,
-                    binding.shimmerLayout
-            );
-        }
+        manager.isRequestFinished().observe(getViewLifecycleOwner(), aBoolean -> {
+            if (!aBoolean) {
+                indicator.setVisibility(View.VISIBLE);
+                binding.shimmerLayout.startShimmer();
+                binding.shimmerLayout.setVisibility(View.VISIBLE);
+                binding.recview.setVisibility(View.GONE);
+            } else {
+                indicator.setVisibility(View.GONE);
+                binding.shimmerLayout.stopShimmer();
+                binding.shimmerLayout.setVisibility(View.GONE);
+                binding.recview.setVisibility(View.VISIBLE);
+                binding.recview.setLayoutManager(new GridLayoutManager(requireActivity(), 2));
+                binding.recview.setAdapter(new ManufacturerAdapter(this, manager.getManufacturersList()));
+            }
+        });
 
         binding.setUserNameBtn.setOnClickListener(view1 -> ChangeUsernameDialog.showDialog(getActivity()));
         binding.googleFormBtn.setOnClickListener(view1 -> new CustomTabUtil().OpenCustomTab(getActivity(), "https://t.me/freefiresettingsapp", R.color.md_theme_light_onSecondary));
