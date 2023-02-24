@@ -45,7 +45,6 @@ public class ManufacturerHelper {
     }
 
     public void updateAdapterDate(Context context) {
-        getManufacturersList().clear();
         if (getManufacturersList().isEmpty()) {
             isRequestFinished.setValue(false);
             RequestQueue queue = Volley.newRequestQueue(context);
