@@ -8,7 +8,6 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
 import androidx.recyclerview.widget.GridLayoutManager;
 
 import com.google.android.material.progressindicator.LinearProgressIndicator;
@@ -17,22 +16,21 @@ import com.jvmfrog.ffsettings.adapter.ManufacturerAdapter;
 import com.jvmfrog.ffsettings.databinding.FragmentManufacturerBinding;
 import com.jvmfrog.ffsettings.ui.dialog.ChangeUsernameDialog;
 import com.jvmfrog.ffsettings.utils.CustomTabUtil;
-import com.jvmfrog.ffsettings.utils.ManufacturerHelper;
-import com.jvmfrog.ffsettings.utils.NetworkCheckHelper;
+import com.jvmfrog.ffsettings.utils.ManufacturerManager;
 import com.jvmfrog.ffsettings.utils.SharedPreferencesUtils;
 
 public class ManufacturerFragment extends Fragment {
     private FragmentManufacturerBinding binding;
-    private ManufacturerHelper manager;
+    private ManufacturerManager manager;
     private LinearProgressIndicator indicator;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         binding = FragmentManufacturerBinding.inflate(inflater, container, false);
-        indicator = (LinearProgressIndicator) requireActivity().findViewById(R.id.progressIndicator);
-        manager = new ManufacturerHelper();
-        manager.updateAdapterDate(requireActivity());
+        indicator = requireActivity().findViewById(R.id.progressIndicator);
+        manager = new ManufacturerManager();
+        manager.updateAdapterData(requireActivity());
         return binding.getRoot();
     }
 
@@ -58,7 +56,7 @@ public class ManufacturerFragment extends Fragment {
                 binding.shimmerLayout.setVisibility(View.GONE);
                 binding.recview.setVisibility(View.VISIBLE);
                 binding.recview.setLayoutManager(new GridLayoutManager(requireActivity(), 2));
-                binding.recview.setAdapter(new ManufacturerAdapter(this, manager.getManufacturersList()));
+                binding.recview.setAdapter(new ManufacturerAdapter(this, manager.getManufacturersSet()));
             }
         });
 

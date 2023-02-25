@@ -13,7 +13,6 @@ import com.jvmfrog.ffsettings.utils.SharedPreferencesUtils;
 
 public class MyApplication extends Application {
     public static MyApplication instance = null;
-    public static Context context;
 
     public static MyApplication getInstance() {
         if (instance == null)
@@ -25,22 +24,8 @@ public class MyApplication extends Application {
     public void onCreate() {
         super.onCreate();
         instance = this;
-        context = this;
         int nightMode = SharedPreferencesUtils.getInteger(this, "nightMode");
-
-        switch (nightMode) {
-            case 0:
-                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM);
-                break;
-            case 1:
-                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-                break;
-            case 2:
-                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-                break;
-        }
-
-        if (!SharedPreferencesUtils.getBoolean(this, "useDynamicColors"))
-            DynamicColors.applyToActivitiesIfAvailable(this);
+        int[] mode = {AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM, AppCompatDelegate.MODE_NIGHT_NO, AppCompatDelegate.MODE_NIGHT_YES};
+        AppCompatDelegate.setDefaultNightMode(mode[nightMode]);
     }
 }

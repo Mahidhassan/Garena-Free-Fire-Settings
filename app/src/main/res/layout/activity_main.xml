@@ -19,12 +19,13 @@
             android:layout_height="?attr/actionBarSize"
             app:layout_scrollFlags="scroll|enterAlways|snap"
             app:title="@string/app_name"
-            style="@style/Widget.Material3.Toolbar.Surface"/>
+            style="@style/ThemeOverlay.Material3.Toolbar.Surface"/>
         <com.google.android.material.progressindicator.LinearProgressIndicator
             android:id="@+id/progressIndicator"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:indeterminate="true"/>
+            android:indeterminate="true"
+            android:visibility="gone"/>
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.core.widget.NestedScrollView
