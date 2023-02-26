@@ -68,24 +68,18 @@
     <!--Accessibility-->
     <string name="copy_settings_button">Copy settings button</string>
 
-    <string name="auto" translatable="false">Auto</string>
-    <string name="system" translatable="false">System</string>
-    <string name="light" translatable="false">Light</string>
-    <string name="dark" translatable="false">Dark</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <!-- Preference Titles -->
-    <string name="messages_header">Messages</string>
-    <string name="sync_header">Sync</string>
+    <string name="app_theme">App Theme</string>
+    <string name="auto">Auto</string>
+    <string name="system">System</string>
+    <string name="light">Light</string>
+    <string name="night">Night</string>
+    <string name="auto_theme_description">The appearance of the application will change automatically depending on the time of sunrise and sunset</string>
+    <string name="auto_level_of_charge_theme_description">The appearance of the application will change automatically depending on the level of charge of the phone</string>
+    <string name="light_theme_description">Light theme selected</string>
+    <string name="night_theme_description">Night theme selected</string>
+    <string name="system_theme_description">The appearance of the application will change depending on the Android theme</string>
+    <string name="use_dynamic_colors">Use dynamic colors</string>
+    <string name="dynamic_colors_are_not_supported">Dynamic colors are not supported</string>
 
-    <!-- Messages Preferences -->
-    <string name="signature_title">Your signature</string>
-    <string name="reply_title">Default reply action</string>
 
-    <!-- Sync Preferences -->
-    <string name="sync_title">Sync email periodically</string>
-    <string name="attachment_title">Download incoming attachments</string>
-    <string name="attachment_summary_on">Automatically download attachments for incoming emails
-    </string>
-    <string name="attachment_summary_off">Only download attachments when manually requested</string>
 </resources>

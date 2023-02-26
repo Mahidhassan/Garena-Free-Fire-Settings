@@ -30,7 +30,8 @@ public class DevicesFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         binding = FragmentDevicesBinding.inflate(inflater, container, false);
-        ActionBar actionBar = ((AppCompatActivity) getActivity()).getSupportActionBar();
+        ActionBar actionBar = ((AppCompatActivity) requireActivity()).getSupportActionBar();
+        assert actionBar != null;
         actionBar.setDisplayHomeAsUpEnabled(true);
         indicator = requireActivity().findViewById(R.id.progressIndicator);
         manager = new SensitivitiesManager();

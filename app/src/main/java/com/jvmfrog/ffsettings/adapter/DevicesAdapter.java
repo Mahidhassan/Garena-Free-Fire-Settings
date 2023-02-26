@@ -4,6 +4,8 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -97,11 +99,7 @@ public class DevicesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
     @Override
     public int getItemViewType(int position) {
-        if ((position + 1) % 8 == 0) {
-            return VIEW_TYPE_BANNER;
-        } else {
-            return VIEW_TYPE_DEFAULT;
-        }
+        return VIEW_TYPE_DEFAULT;
     }
 
     public static class DeviceNameViewHolder extends RecyclerView.ViewHolder {

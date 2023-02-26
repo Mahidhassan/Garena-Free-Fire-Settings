@@ -30,22 +30,28 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <com.google.android.material.radiobutton.MaterialRadioButton
-                    android:id="@+id/followSystemNightModeRadioButton"
+                    android:id="@+id/setAutoTheme"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Follow system"
+                    android:text="@string/auto"
                     android:textSize="18sp"/>
                 <com.google.android.material.radiobutton.MaterialRadioButton
-                    android:id="@+id/noNightModeRadioButton"
+                    android:id="@+id/setFollowSystemTheme"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Light mode"
+                    android:text="@string/system"
                     android:textSize="18sp"/>
                 <com.google.android.material.radiobutton.MaterialRadioButton
-                    android:id="@+id/nightModeRadioButton"
+                    android:id="@+id/setLightTheme"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Night mode"
+                    android:text="@string/light"
+                    android:textSize="18sp"/>
+                <com.google.android.material.radiobutton.MaterialRadioButton
+                    android:id="@+id/setNightTheme"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/night"
                     android:textSize="18sp"/>
             </RadioGroup>
             <com.google.android.material.materialswitch.MaterialSwitch
@@ -53,8 +59,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingHorizontal="8dp"
-                android:text="Use Dynamic colors"
-                android:textSize="18sp"/>
+                android:text="@string/use_dynamic_colors"
+                android:textSize="18sp"
+                style="@style/Widget.Material3.CompoundButton.MaterialSwitch"/>
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/themeDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/system_theme_description"/>
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
     <com.google.android.material.card.MaterialCardView

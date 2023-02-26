@@ -24,8 +24,12 @@ public class MyApplication extends Application {
     public void onCreate() {
         super.onCreate();
         instance = this;
-        int nightMode = SharedPreferencesUtils.getInteger(this, "nightMode");
-        int[] mode = {AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM, AppCompatDelegate.MODE_NIGHT_NO, AppCompatDelegate.MODE_NIGHT_YES};
+        setNightMode();
+    }
+
+    public void setNightMode() {
+        int nightMode = SharedPreferencesUtils.getInteger(this, "nightMode", 1);
+        int[] mode = {AppCompatDelegate.MODE_NIGHT_AUTO_BATTERY, AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM, AppCompatDelegate.MODE_NIGHT_NO, AppCompatDelegate.MODE_NIGHT_YES};
         AppCompatDelegate.setDefaultNightMode(mode[nightMode]);
     }
 }
