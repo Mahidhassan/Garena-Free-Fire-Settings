@@ -50,4 +50,17 @@
 
     <!--Accessibility-->
     <string name="copy_settings_button">Ayarları kopyala düğmesi</string>
+
+    <string name="app_theme">Uygulama Teması</string>
+    <string name="auto_theme">Otomatik tema</string>
+    <string name="system_theme">Sistem teması</string>
+    <string name="light_theme">Açık tema</string>
+    <string name="night_theme">Gece teması</string>
+    <string name="auto_theme_description">Uygulamanın görünümü gün doğumu ve gün batımı saatine göre otomatik olarak değişecektir.</string>
+    <string name="auto_level_of_charge_theme_description">Uygulamanın görünümü, telefonun şarj düzeyine göre otomatik olarak değişecektir.</string>
+    <string name="light_theme_description">Açık tema seçildi</string>
+    <string name="night_theme_description">Gece teması seçildi</string>
+    <string name="system_theme_description">Uygulamanın görünümü, Android temasına bağlı olarak değişecektir.</string>
+    <string name="use_dynamic_colors">Dinamik renkler kullanın</string>
+    <string name="dynamic_colors_are_not_supported">Dinamik renkler desteklenmez</string>
 </resources>

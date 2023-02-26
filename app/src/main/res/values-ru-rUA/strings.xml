@@ -49,4 +49,17 @@
     <string name="thank_for_review">Дякуємо за відгук :)</string>
 
     <string name="copy_settings_button">Кнопка копіювання налаштувань</string>
+
+    <string name="app_theme">Тема програми</string>
+    <string name="auto_theme">Авто тема</string>
+    <string name="system_theme">Тема системи</string>
+    <string name="light_theme">Світла тема</string>
+    <string name="night_theme">Нічна тема</string>
+    <string name="auto_theme_description">Зовнішній вигляд програми змінюватиметься автоматично залежно від часу сходу та заходу сонця</string>
+    <string name="auto_level_of_charge_theme_description">Зовнішній вигляд програми змінюватиметься автоматично в залежності від рівня заряду телефону</string>
+    <string name="light_theme_description">Вибрано світлу тему</string>
+    <string name="night_theme_description">Вибрано нічну тему</string>
+    <string name="system_theme_description">Зовнішній вигляд програми буде змінюватися в залежності від теми Android</string>
+    <string name="use_dynamic_colors">Використовуйте динамічні кольори</string>
+    <string name="dynamic_colors_are_not_supported">Динамічні кольори не підтримуються</string>
 </resources>

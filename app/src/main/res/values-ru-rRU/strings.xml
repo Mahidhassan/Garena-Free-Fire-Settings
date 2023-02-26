@@ -51,4 +51,17 @@
 
     <!--Accessibility-->
     <string name="copy_settings_button">Кнопка копирования настроек</string>
+
+    <string name="app_theme">Тема Приложения</string>
+    <string name="auto_theme">Авто</string>
+    <string name="system_theme">Системная тема</string>
+    <string name="light_theme">Светлая тема</string>
+    <string name="night_theme">Ночная тема</string>
+    <string name="auto_theme_description">Внешний вид приложения будет меняться автоматически в зависимости от времени восхода и захода солнца</string>
+    <string name="auto_level_of_charge_theme_description">Внешний вид приложения будет меняться автоматически в зависимости от уровня заряда телефона</string>
+    <string name="light_theme_description">Выбрана светлая тема</string>
+    <string name="night_theme_description">Выбрана ночная тема</string>
+    <string name="system_theme_description">Внешний вид приложения будет меняться в зависимости от темы Android</string>
+    <string name="use_dynamic_colors">Включить динамические цвета</string>
+    <string name="dynamic_colors_are_not_supported">Динамические цвета не поддерживаются</string>
 </resources>

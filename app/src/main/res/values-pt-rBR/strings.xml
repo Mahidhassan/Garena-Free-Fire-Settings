@@ -50,4 +50,17 @@
 
     <!--Accessibility-->
     <string name="copy_settings_button">Bouton Copier les paramètres</string>
+
+    <string name="app_theme">Tema do aplicativo</string>
+    <string name="auto_theme">Tema automático</string>
+    <string name="system_theme">Tema do sistema</string>
+    <string name="light_theme">Tema claro</string>
+    <string name="night_theme">Tema da noite</string>
+    <string name="auto_theme_description">A aparência do aplicativo mudará automaticamente dependendo da hora do nascer e do pôr do sol</string>
+    <string name="auto_level_of_charge_theme_description">A aparência do aplicativo mudará automaticamente dependendo do nível de carga do telefone</string>
+    <string name="light_theme_description">Tema claro selecionado</string>
+    <string name="night_theme_description">Tema noturno selecionado</string>
+    <string name="system_theme_description">A aparência do aplicativo mudará dependendo do tema do Android</string>
+    <string name="use_dynamic_colors">Use cores dinâmicas</string>
+    <string name="dynamic_colors_are_not_supported">Cores dinâmicas não são suportadas</string>
 </resources>

@@ -69,10 +69,10 @@
     <string name="copy_settings_button">Copy settings button</string>
 
     <string name="app_theme">App Theme</string>
-    <string name="auto">Auto</string>
-    <string name="system">System</string>
-    <string name="light">Light</string>
-    <string name="night">Night</string>
+    <string name="auto_theme">Auto theme</string>
+    <string name="system_theme">System theme</string>
+    <string name="light_theme">Light theme</string>
+    <string name="night_theme">Night theme</string>
     <string name="auto_theme_description">The appearance of the application will change automatically depending on the time of sunrise and sunset</string>
     <string name="auto_level_of_charge_theme_description">The appearance of the application will change automatically depending on the level of charge of the phone</string>
     <string name="light_theme_description">Light theme selected</string>
@@ -80,6 +80,4 @@
     <string name="system_theme_description">The appearance of the application will change depending on the Android theme</string>
     <string name="use_dynamic_colors">Use dynamic colors</string>
     <string name="dynamic_colors_are_not_supported">Dynamic colors are not supported</string>
-
-
 </resources>
