@@ -10,13 +10,6 @@
         app:showAsAction="ifRoom" />
 
     <item
-        android:id="@+id/settingsFragment"
-        android:icon="@drawable/ic_round_settings_24"
-        android:title="Settings"
-        android:tint="?attr/colorControlNormal"
-        app:showAsAction="ifRoom" />
-
-    <item
         android:id="@+id/aboutAppFragment"
         android:icon="@drawable/ic_round_info_24"
         android:title="@string/about_app"

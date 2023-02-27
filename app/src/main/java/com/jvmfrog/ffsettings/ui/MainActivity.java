@@ -2,9 +2,11 @@ package com.jvmfrog.ffsettings.ui;
 
 import android.os.Bundle;
 import android.view.ContextThemeWrapper;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.Window;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.splashscreen.SplashScreen;
@@ -15,6 +17,7 @@ import androidx.navigation.ui.NavigationUI;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.color.DynamicColors;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
+import com.google.android.material.navigation.NavigationBarView;
 import com.jvmfrog.ffsettings.MyApplication;
 import com.jvmfrog.ffsettings.R;
 import com.jvmfrog.ffsettings.databinding.ActivityMainBinding;
@@ -22,9 +25,11 @@ import com.jvmfrog.ffsettings.utils.SharedPreferencesUtils;
 import com.jvmfrog.ffsettings.utils.UnityAdsManager;
 
 public class MainActivity extends AppCompatActivity {
-    public ActivityMainBinding binding;
+    private ActivityMainBinding binding;
     private NavHostFragment navHostFragment;
     private ActionBar actionBar;
+    private NavController navController;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
         unityAdsManager.showBannerAd(binding.bannerAd);
         navHostFragment = (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment_content_main);
         assert navHostFragment != null;
-        NavController navController = navHostFragment.getNavController();
+        navController = navHostFragment.getNavController();
         BottomNavigationView bottomNav = findViewById(R.id.bottomAppBar);
         NavigationUI.setupWithNavController(bottomNav, navController);
     }
@@ -62,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
     public void onBackPressed() {
         super.onBackPressed();
         int id = navHostFragment.getNavController().getCurrentDestination().getId();
-        if (!(id == R.id.devicesFragment || id == R.id.deviceSettingsFragment)) {
+        if (!(id == R.id.devicesFragment || id == R.id.deviceSettingsFragment || id == R.id.settingsFragment)) {
             actionBar.setDisplayHomeAsUpEnabled(false);
         }
     }
@@ -74,12 +79,26 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-        if (id == android.R.id.home) {
-            onBackPressed();
-            return true;
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.top_app_bar_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem menuItem) {
+        int id = navHostFragment.getNavController().getCurrentDestination().getId();
+        int item = menuItem.getItemId();
+        switch (item) {
+            case android.R.id.home:
+                onBackPressed();
+                return true;
+            case R.id.settings:
+                if (id == R.id.manufacturerFragment2)
+                    navController.navigate(R.id.action_manufacturerFragment2_to_settingsFragment);
+                else if (id == R.id.aboutAppFragment)
+                    navController.navigate(R.id.action_aboutAppFragment_to_settingsFragment);
+                return true;
         }
-        return super.onOptionsItemSelected(item);
+        return super.onOptionsItemSelected(menuItem);
     }
 }
