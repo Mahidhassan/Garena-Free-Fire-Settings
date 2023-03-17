@@ -3,6 +3,21 @@
     "models": [
         {
             "manufacturer": "OnePlus",
+            "name": "10T",
+            "settings_source_url": "",
+            "dpi": 420,
+            "fire_button": 51,
+            "sensitivities": {
+              "review": 100,
+              "collimator": 100,
+              "x2_scope": 100,
+              "x4_scope": 100,
+              "sniper_scope": 100,
+              "free_review": 100
+            }
+        },
+        {
+            "manufacturer": "OnePlus",
             "name": "8 Pro",
             "settings_source_url": "",
             "dpi": 380,
@@ -18,21 +33,6 @@
         },
         {
             "manufacturer": "OnePlus",
-            "name": "Nord 12",
-            "settings_source_url": "",
-            "dpi": 900,
-            "fire_button": 50,
-            "sensitivities": {
-                "review": 100,
-                "collimator": 100,
-                "x2_scope": 100,
-                "x4_scope": 100,
-                "sniper_scope": 50,
-                "free_review": 100
-            }
-        },
-        {
-            "manufacturer": "OnePlus",
             "name": "8",
             "settings_source_url": "",
             "dpi": 591,
@@ -43,6 +43,21 @@
                 "x2_scope": 100,
                 "x4_scope": 100,
                 "sniper_scope": 100,
+                "free_review": 100
+            }
+        },
+        {
+            "manufacturer": "OnePlus",
+            "name": "Nord 12",
+            "settings_source_url": "",
+            "dpi": 900,
+            "fire_button": 50,
+            "sensitivities": {
+                "review": 100,
+                "collimator": 100,
+                "x2_scope": 100,
+                "x4_scope": 100,
+                "sniper_scope": 50,
                 "free_review": 100
             }
         }
