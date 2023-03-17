@@ -83,6 +83,12 @@
       "isAvailable": false,
       "name": "OnePlus",
       "model": "oneplus"
+    },
+    {
+      "showInProductionApp": true,
+      "isAvailable": false,
+      "name": "Tecno",
+      "model": "tecno"
     }
   ]
 }
