@@ -1,1 +1,20 @@
-
+{
+    "manufacturer": "Tecno",
+    "models": [
+      {
+        "manufacturer": "Tecno",
+        "name": "Spark 8",
+        "settings_source_url": "",
+        "dpi": 550,
+        "fire_button": 50,
+        "sensitivities": {
+          "review": 100,
+          "collimator": 95,
+          "x2_scope": 100,
+          "x4_scope": 42,
+          "sniper_scope": 96,
+          "free_review": 100
+        }
+      }
+    ]
+}
