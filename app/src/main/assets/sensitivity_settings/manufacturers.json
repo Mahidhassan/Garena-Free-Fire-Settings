@@ -89,6 +89,12 @@
       "isAvailable": false,
       "name": "Tecno",
       "model": "tecno"
+    },
+    {
+      "showInProductionApp": true,
+      "isAvailable": false,
+      "name": "Infinix",
+      "model": "infinix"
     }
   ]
 }

@@ -1,0 +1,20 @@
+{
+    "manufacturer": "Infinix",
+    "models": [
+      {
+        "manufacturer": "Infinix",
+        "name": "Infinix Hot 11s",
+        "settings_source_url": "",
+        "dpi": 360,
+        "fire_button": 70,
+        "sensitivities": {
+          "review": 100,
+          "collimator": 100,
+          "x2_scope": 100,
+          "x4_scope": 100,
+          "sniper_scope": 100,
+          "free_review": 100
+        }
+      }
+    ]
+}
